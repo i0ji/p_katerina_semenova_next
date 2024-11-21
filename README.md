@@ -9,13 +9,33 @@ Table of contents:
 <hr>
 1.<br>
 Next.JS, SASS, TS
+Choose React-slick to implement slider: it has fade in/out, dots, 
 <hr>
 2.<br>
-<b>v: 0.0.1 29.10.24</b> <br>    
+<b>v: 0.0.1 / d: 29.10.24</b> <br>    
 project/repo init, git-flow init, first commit,
 <br>
-<b>v: 0.0.1 30.10.24</b> <br>    
+<b>v: 0.0.1 / d: 30.10.24</b> <br>    
 The basic structure, layout and styles are copied from the original app, adapted to use Next.JS;
 Implement scroll, add new styles: mixins and link underline animation;
 Still have issue with SASS -> Migration;
+<br>  
+<b>v: 0.0.1 / d: 04.11.24<br></b> 
+MySQL connecting attempts;    <br>
+<b>v: 0.0.1a / d: 12.11.24<br></b> 
+While I have some problems with connecting to the DB, I decided to make a static, local resource storage as it was before;
+<br>Add react-slick lib to implement carousel;
+<br>
+<b>v: 0.0.3a / d: 20.11.24<br></b> 
+Setteled on the choice of react-slick lib to implement slider;
+Setting styles and small logic touches;
+<br><b>v: 0.1.0 a / d: 21.11.24<br></b> 
+Start GH Action settings and met some deploy issues with paths;
+After about <b>56(!SIC)</b> deploys found out how to set next.conifg+nextjs.yml for deploying static app;
+I have working styles and logic, although some features like fonts and library styles don't work as well;
+<br><br>
+Decided to use another lib - Swiper;<br>
+Styling in progress;<br>
+I am almost satisfied with everything;
+
 
