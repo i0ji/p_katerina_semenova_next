@@ -1,0 +1,15 @@
+@mixin redbg {
+  background-color: red;
+}
+
+@mixin flex($content, $direction) {
+  display: flex;
+
+  @if $content != null {
+    justify-content: $content;
+  }
+
+  @if $direction != null {
+    flex-direction: $direction;
+  }
+}

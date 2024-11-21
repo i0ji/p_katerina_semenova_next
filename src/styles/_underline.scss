@@ -1,0 +1,32 @@
+a {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+  font-weight: normal;
+}
+
+a:visited {
+  color: black;
+}
+
+a:after {
+  display: block;
+  content: '';
+  background-color: black;
+  height: 2px;
+  width: 0;
+  left: 50%;
+  position: absolute;
+  -webkit-transition: width 0.3s ease-in-out;
+  transition: width 0.3s ease-in-out;
+  transform: translateX(-50%);
+}
+//TODO
+//first and last lines are thiner
+
+a:hover:after,
+a:focus:after {
+  width: 100%;
+}
