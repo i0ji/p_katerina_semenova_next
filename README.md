@@ -13,14 +13,14 @@
 <hr> -->
 
 <br>
-<a id="stack-library-usage"></a>
-<h3> ## 1. Stack/libruary usage</h3>
+<h3> ## 1. Stack/libruary usage:</h3>
 1.1 Next.JS, SASS, TS;<br>
 1.2 Choose React-slick to implement slider: it has fade in/out, dots; <br>
 1.3 Next 15^, React 19^ (small compatibility issue), React-dom 19^ (small compatibility issue), TS, SASS, slick-carousel, react-slick, react-loading-skeleton, react-accessible-accordion, react-yandex-metrika<br>
 1.4 UUID for unqiue array IDs
-
-<h3> ## 2. Commit short history description/progress</h3>
+<br>
+<br>
+<h3> ## 2. Commit short history description/progress:</h3>
 <ul><li><b>v: 0.0.1 / d: 29.10.24</b> <br>    
 project/repo init, git-flow init, first commit,</li>
 <li><b>v: 0.0.1 / d: 30.10.24</b> <br>    
@@ -103,8 +103,7 @@ Return to react-slick and decided to fix this slider console issues;</li>
 </ul>
 
 <br>
- <a id="known-issues"></a>
-<h3> ## 3.  Known issues</h3>
+<h3> ## 3.  Known issues:</h3>
 [X] <del>Still have trouble with build/dev paths and aliases; Still have to change it manually when deploy to Pages or to prod;</del><br>
 <b>UPD: multiple path attempts and setting changings</b><br>
 <del>[X] New one: missing react-slick lib fonts, which i do not use at all. Get rid of console warning by removing Slick font-face settings from final output build. Still have to find the solution;</del><br>
