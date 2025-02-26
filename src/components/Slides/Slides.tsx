@@ -1,22 +1,57 @@
 'use client';
 
-import { useState, useRef } from 'react';
-import Image from 'next/image';
+import { useRef, useState, useEffect } from 'react';
 
+import Skeleton from 'react-loading-skeleton';
+import Image from 'next/image';
+import Slider from 'react-slick';
+
+import { v4 as uuidv4 } from 'uuid';
+
+import './Slider.scss';
 import styles from './Slides.module.scss';
 
-import Slider from 'react-slick';
-import './Slider.scss';
-
-import Accordion from '../Accordion/Accordion';
-
-export default function Slides(props: SlideModelNamespace.SlidesDataModel) {
+export default function Slides(
+  props: SlideModelNamespace.SlidesDataModel
+) {
   const sliderRef = useRef<Slider>(null);
-  const [visibility, setVisibility] = useState(false);
 
-  const handleToggleVisibility = () => {
-    setVisibility((prevVisibility) => !prevVisibility);
-  };
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+
+  useEffect(() => {
+    const imageElements = document.querySelectorAll(
+      `.${styles.slide__image}`
+    );
+    let loadedCount = 0;
+
+    const handleImageLoad = () => {
+      loadedCount++;
+      if (loadedCount === imageElements.length) {
+        setImagesLoaded(true);
+      }
+    };
+
+    imageElements.forEach((img) => {
+      const image = img as HTMLImageElement;
+
+      if (image.complete) {
+        handleImageLoad();
+      } else {
+        image.addEventListener('load', handleImageLoad);
+      }
+    });
+
+    if (imageElements.length === 0) {
+      setImagesLoaded(true);
+    }
+
+    return () => {
+      imageElements.forEach((img) => {
+        const image = img as HTMLImageElement;
+        image.removeEventListener('load', handleImageLoad);
+      });
+    };
+  }, [props.slides]);
 
   const settings = {
     dots: true,
@@ -28,7 +63,14 @@ export default function Slides(props: SlideModelNamespace.SlidesDataModel) {
     autoplay: true,
     autoplaySpeed: 4000,
     pauseOnHover: true,
-    arrows: false
+    arrows: false,
+    afterChange: () => {
+      const activeElement =
+        document.activeElement as HTMLElement;
+      if (activeElement) {
+        activeElement.blur();
+      }
+    },
   };
 
   return (
@@ -36,16 +78,23 @@ export default function Slides(props: SlideModelNamespace.SlidesDataModel) {
       <Slider ref={sliderRef} {...settings}>
         {props.slides.map((slide) => (
           <div key={slide.id} className={styles.slide}>
-            <Image
-              id="image"
-              src={slide.img}
-              alt={props.description}
-              className={styles.slide__image}
-              width={1600}
-              height={900}
-              priority
-            />
-
+            {!imagesLoaded ? (
+              <Skeleton height={900} width={2000} />
+            ) : (
+              slide.img && (
+                <div inert={true} key={uuidv4()}>
+                  <Image
+                    src={slide.img}
+                    alt={props.description}
+                    className={styles.slide__image}
+                    width={1600}
+                    height={900}
+                    priority
+                    aria-hidden={false}
+                  />
+                </div>
+              )
+            )}
             <button
               className={styles.slide__leftArrow}
               onClick={() => sliderRef.current?.slickPrev()}
@@ -57,20 +106,7 @@ export default function Slides(props: SlideModelNamespace.SlidesDataModel) {
           </div>
         ))}
       </Slider>
-      <div className={styles.slides__description}>
-        <button onClick={handleToggleVisibility}>
-          <p>
-            {props.description} {visibility ? '↓' : '↑'}
-          </p>
-        </button>
-        <Accordion
-          description={props.description}
-          plot={
-            'Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro esse atque obcaecati consequatur itaque illo incidunt quas quos aliquid repudiandae quia rerum libero voluptatibus repellendus beatae corporis doloribus, numquam praesentium!  '
-          }
-          visibility={visibility}
-        />
-      </div>
+      <p>{props.description}</p>
     </section>
   );
 }

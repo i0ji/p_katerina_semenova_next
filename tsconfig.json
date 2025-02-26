@@ -13,6 +13,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "noImplicitAny": false,
     "plugins": [
       {
         "name": "next"
@@ -23,7 +24,8 @@
       "@/*": ["./src/*"],
       "public": ["./public/"],
       "components": ["./src/app/components/"]
-    }
+    },
+    "typeRoots": ["./src/services"]
   },
   "include": [
     "**/*.ts",
