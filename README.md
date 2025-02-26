@@ -1,16 +1,16 @@
 <h1>Reworked <a href="https://katerinasemenova.ru"> KaterinaSemenova</a> site using Next.JS, new libs, Turbopack</h1>
 
-<!-- <h3>Table of contents:</h3>
-<a id="section">1. Stack/libruary usage<br></a>
+<h3>Table of contents:</h3>
+1. Stack/libruary usage<br>
 2. Commit short history description/progress<br>
 3. Known issues
-<hr> -->
+<hr>
 
-<h3>Table of contents:</h3>
+<!-- <h3>Table of contents:</h3>
 - [1. Stack/library usage](#stack-library-usage)
 - [2. Commit short history description/progress](#commit-history)
 - [3. Known issues](#known-issues)
-<hr>
+<hr> -->
 
 <br>
 <a id="stack-library-usage"></a>
