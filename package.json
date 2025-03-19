@@ -34,7 +34,16 @@
     "react-yandex-metrika": "^2.6.0",
     "sass": "^1.85.0",
     "sass-loader": "^16.0.5",
+    "swiper": "^11.2.5",
     "typescript": "^5.7.3",
     "uuid": "^11.1.0"
+  },
+  "pnpm": {
+    "ignoredBuiltDependencies": [
+      "styled-components"
+    ],
+    "onlyBuiltDependencies": [
+      "styled-components"
+    ]
   }
 }
