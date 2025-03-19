@@ -85,8 +85,7 @@ export default function Slides(
                     src={slide.img}
                     alt={props.description}
                     className={styles.slide__image}
-                    width={1600}
-                    height={900}
+                    width={160                    height={900}
                     priority
                     aria-hidden={false}
                   />
@@ -104,6 +103,14 @@ export default function Slides(
           </div>
         ))}
       </Slider>
+      <button
+          className={styles.slide__leftArrow}
+          onClick={() => sliderRef.current?.slickPrev()}
+      />
+      <button
+          className={styles.slide__rightArrow}
+          onClick={() => sliderRef.current?.slickNext()}
+      />
       <p>{props.description}</p>
     </section>
   );
