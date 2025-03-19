@@ -3,9 +3,6 @@ import { SlideData } from 'public';
 import { v4 as uuidv4 } from 'uuid';
 
 export default function Home() {
-  //CONSOLE
-  // console.log('v: 0.3.4/20.02.25');
-
   return (
     <>
       <Header />
@@ -14,6 +11,7 @@ export default function Home() {
           key={uuidv4()}
           slides={slides.slides}
           description={slides.description}
+          lastSlide={slides.lastSlide}
         />
       ))}
       <Footer />

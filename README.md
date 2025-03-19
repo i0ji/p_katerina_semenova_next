@@ -18,6 +18,11 @@
 1.2 Choose React-slick to implement slider: it has fade in/out, dots; <br>
 1.3 Next 15^, React 19^ (small compatibility issue), React-dom 19^ (small compatibility issue), TS, SASS, slick-carousel, react-slick, react-loading-skeleton, react-accessible-accordion, react-yandex-metrika<br>
 1.4 UUID for unqiue array IDs
+<<<<<<< HEAD
+=======
+
+<hr>
+>>>>>>> deploy_out
 <br>
 <br>
 <h3> ## 2. Commit short history description/progress:</h3>
@@ -37,10 +42,20 @@ Setting styles and small logic touches;</li>
 <li><b>v: 0.1.5 a / d: 21.11.24<br></b> 
 Start GH Action settings and met some deploy issues with paths;
 After about <b>56(!SIC)</b> deploys found out how to set next.conifg+nextjs.yml for deploying static app;
+<<<<<<< HEAD
 I have working styles and logic, although some features like fonts and library styles don't work as well;<br>
 Decided to use another lib - Swiper;<br>
 Styling in progress; I am almost satisfied with everything;</li>
 <li><b>v: 0.1.5 a / d: 10.12.24<br></b>
+=======
+I have working styles and logic, although some features like fonts and library styles don't work as well;
+<br><br>
+Decided to use another lib - Swiper;<br>
+Styling in progress;<br>
+I am almost satisfied with everything;
+
+<br><b>v: 0.1.5 a / d: 10.12.24<br></b> 
+>>>>>>> deploy_out
 Add 'scroll to top' button when rich lowest contacts block;
 Multiple style and logic touches;<br></li></li>
 <li><b>v: 0.1.6 a / d: 11.12.24<br></b>
@@ -105,7 +120,42 @@ Update packages;
 </ul>
 
 <br>
+<<<<<<< HEAD
 <h3> ## 3.  Known issues:</h3>
+=======
+<b>v: 0.3.0 / d: 14.01.25<br></b> 
+1. Multiple libs update: react/dom/sass/eslint/next/pnpm;
+2. Small image id refactor (should I use UUID?)<br>
+<br><b>v: 0.3.1 / d: 15.01.25<br></b> 
+Start making slide description; Multiple attepmts; Face an issue with paragraph height. Non of <p> parents have certain height in PX;<br>
+<br><b>v: 0.3.2 / d: 16.01.25<br></b> 
+Make dynamically changing height based on <Image> height;<br>
+Change my SCSS mixin flex forumla;<br>
+Font size issue to go<br>
+<br><b>v: 0.3.2 / d: 20.01.25<br></b> 
+1. Package updates;<br>
+2. Font issues resolved;<br>
+3. Continue skeleton loading setting;<br>
+<br><b>v: 0.3.2 / d: 28.01.25<br></b> 
+1. Restore <b>develop</b> branch to main view: w/o accordion, skeleton and descriptions;<br>
+2. Add conditional render to remove dev issues;<br>
+<br><b>v: 0.3.3 / d: 04.02.25<br></b> 
+1. moved away from the idea of ​​a slider with a description, switched to Skeleton implementation;<br>
+<br><b>v: 0.3.3a / d: 05.02.25<br></b> 
+1. Add UUID lib for unique ids<br>
+2. Finnaly found some new Splide-lib to implement carousel/swiper w/o focus issues like it was in the Slick-slider;<br>
+<br><b>v: 0.3.3a / d: 06.02.25<br></b> 
+1. Pagination dots set via scss selector magic!
+2. SASS^<br>
+<br><b>v: 0.3.3a / d: 07.02.25<br></b> 
+1. Add typeRoots setting to tsconfig
+2.
+<br>
+<hr>
+<hr>
+<br>
+<h3> 3.</h3>
+>>>>>>> deploy_out
 [X] <del>Still have trouble with build/dev paths and aliases; Still have to change it manually when deploy to Pages or to prod;</del><br>
 <b>UPD: multiple path attempts and setting changings</b><br>
 <del>[X] New one: missing react-slick lib fonts, which i do not use at all. Get rid of console warning by removing Slick font-face settings from final output build. Still have to find the solution;</del><br>
