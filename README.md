@@ -102,6 +102,8 @@ pnpm^<br></li>
 Return to react-slick and decided to fix this slider console issues;</li>   
 <li><b>v: 0.3.4 / d: 10.03.25</b><br>
 Update packages;
+<li><b>v: 0.3.4 / d: 19.03.25</b><br>
+Update packages;
 </ul>
 
 <br>
