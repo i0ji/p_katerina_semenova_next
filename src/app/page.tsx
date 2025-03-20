@@ -20,7 +20,7 @@ export default function Home() {
                     description={SlideData[0].description}
                 />
             ) : (
-                SlideData.map((slides: SlidesDataModel) => (
+                SlideData.map((slides: SlideModelNamespace.SlidesDataModel) => (
                     <Slides
                         key={uuidv4()}
                         slides={slides.slides}

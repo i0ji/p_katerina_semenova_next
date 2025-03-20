@@ -1,15 +1,18 @@
 'use client';
 
 import {useRef, useState, useEffect} from 'react';
+
+import Image from 'next/image';
+import Skeleton from 'react-loading-skeleton';
+
 import {Swiper, SwiperSlide} from 'swiper/react';
 import {Navigation, Autoplay} from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import Image from 'next/image';
-import Skeleton from 'react-loading-skeleton';
-import styles from './Slides.module.scss'; // Импорт стилей
 
-export default function Slides(props: SlidesDataModel) {
+import styles from './Slides.module.scss';
+
+export default function Slides(props: SlideModelNamespace.SlidesDataModel) {
     const [isLoaded, setIsLoaded] = useState(false);
     const imageRef = useRef<HTMLImageElement>(null);
     const navigationPrevRef = useRef<HTMLButtonElement>(null);
