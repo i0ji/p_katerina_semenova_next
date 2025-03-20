@@ -27,7 +27,7 @@
       background-color: transparent;
 
       opacity: 0;
-      transition: .3s all ease;
+      transition: 0.3s all ease;
       cursor: pointer;
     }
 
@@ -41,12 +41,14 @@
 
     .slide__leftArrow:hover {
       opacity: 0.5;
-      background: linear-gradient(-90deg, transparent, black) transparent;
+      background: linear-gradient(-90deg, transparent, black)
+        transparent;
     }
 
     .slide__rightArrow:hover {
       opacity: 0.5;
-      background: linear-gradient(90deg, transparent, black) transparent;
+      background: linear-gradient(90deg, transparent, black)
+        transparent;
     }
 
     .slide__image {
