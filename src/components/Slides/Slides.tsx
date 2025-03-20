@@ -1,92 +1,63 @@
 'use client';
-//COMMON
-import {useState, useEffect, useRef} from 'react';
-import Image from 'next/image';
-import styles from './Slides.module.scss';
-//CURRENT
+
+import {useRef, useState, useEffect} from 'react';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import {Navigation, Autoplay} from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
-// import 'swiper/css/lazy';
-// SKELETON
-import Skeleton from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css';
+import Image from 'next/image';
+import Skeleton from 'react-loading-skeleton';
+import styles from './Slides.module.scss'; // Импорт стилей
 
 export default function Slides(props: SlidesDataModel) {
-    const [imagesLoaded, setImagesLoaded] = useState(false);
-    const navigationPrevRef = useRef(null);
-    const navigationNextRef = useRef(null);
+    const [isLoaded, setIsLoaded] = useState(false);
+    const imageRef = useRef<HTMLImageElement>(null);
+    const navigationPrevRef = useRef<HTMLButtonElement>(null);
+    const navigationNextRef = useRef<HTMLButtonElement>(null);
 
-    // SKELETON USE EFFECT CONDITION
     useEffect(() => {
-        const imageElements = document.querySelectorAll(
-            `.${styles.slide__image}`
-        );
-        let loadedCount = 0;
-
-        const handleImageLoad = () => {
-            loadedCount++;
-            if (loadedCount === imageElements.length) {
-                setImagesLoaded(true);
-            }
-        };
-
-        imageElements.forEach((img) => {
-            const image = img as HTMLImageElement;
-            if (image.complete) {
-                handleImageLoad();
-            } else {
-                image.addEventListener('load', handleImageLoad);
-            }
-        });
-
-        if (imageElements.length === 0) {
-            setImagesLoaded(true);
-        }
-
-        return () => {
-            imageElements.forEach((img) => {
-                const image = img as HTMLImageElement;
-                image.removeEventListener('load', handleImageLoad);
-            });
+        const img = new globalThis.Image();
+        img.src = props.slides[0].img;
+        img.onload = () => {
+            setIsLoaded(true);
         };
     }, [props.slides]);
 
     return (
+
         <section className={styles.slides}>
-            <Swiper
-                modules={[Navigation, Autoplay]}
-                spaceBetween={0}
-                slidesPerView={1}
-                loop={true}
-                autoplay={{
-                    delay: 4000,
-                    pauseOnMouseEnter: true,
-                }}
-                navigation={{
-                    prevEl: navigationPrevRef.current,
-                    nextEl: navigationNextRef.current,
-                }}
-                onBeforeInit={(swiper) => {
-                    // Привязка кастомных кнопок навигации
-                    if (swiper.params.navigation) {
-                        swiper.params.navigation.prevEl = navigationPrevRef.current;
-                        swiper.params.navigation.nextEl = navigationNextRef.current;
-                    }
-                }}
-            >
-                {props.slides.map((slide) => (
-                    <SwiperSlide key={slide.id}>
-                        <div className={styles.slide}>
-                            {imagesLoaded ? (
+            <div className={styles.slide}>
+                <Swiper
+                    modules={[Navigation, Autoplay]}
+                    spaceBetween={0}
+                    slidesPerView={1}
+                    loop={true}
+                    autoplay={{
+                        delay: 4000,
+                        pauseOnMouseEnter: true,
+                    }}
+                    navigation={{
+                        prevEl: navigationPrevRef.current,
+                        nextEl: navigationNextRef.current,
+                    }}
+                    onBeforeInit={(swiper) => {
+                        if (typeof swiper.params.navigation !== 'boolean') {
+                            swiper.params.navigation!.prevEl = navigationPrevRef.current;
+                            swiper.params.navigation!.nextEl = navigationNextRef.current;
+                        }
+                    }}
+                >
+                    {props.slides.map((slide) => (
+                        <SwiperSlide key={slide.id}>
+                            {isLoaded ? (
                                 <Image
+                                    ref={imageRef}
                                     src={slide.img}
                                     alt={props.description}
                                     className={styles.slide__image}
                                     width={1600}
                                     height={900}
-                                    loading="lazy" // Ленивая загрузка изображений
+                                    loading="lazy"
                                 />
                             ) : (
                                 <Skeleton
@@ -95,15 +66,24 @@ export default function Slides(props: SlidesDataModel) {
                                     style={{borderRadius: 5}}
                                 />
                             )}
-                        </div>
-                    </SwiperSlide>
-                ))}
-            </Swiper>
 
-
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
+                <button
+                    ref={navigationPrevRef}
+                    className={styles.slide__leftArrow}
+                    aria-label="Previous slide"
+                />
+                <button
+                    ref={navigationNextRef}
+                    className={styles.slide__rightArrow}
+                    aria-label="Next slide"
+                />
+            </div>
             <p>{props.description}</p>
         </section>
-    );
-}
 
-// 5OKNNTN7YTB
+    )
+        ;
+}
