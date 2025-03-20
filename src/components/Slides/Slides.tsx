@@ -1,112 +1,91 @@
 'use client';
 
-import { useRef, useState, useEffect } from 'react';
+import {useRef, useState, useEffect} from 'react';
 
-import Skeleton from 'react-loading-skeleton';
+import {Swiper, SwiperSlide} from 'swiper/react';
+import {Navigation, Autoplay} from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+
 import Image from 'next/image';
-import Slider from 'react-slick';
+import Skeleton from 'react-loading-skeleton';
 
-import { v4 as uuidv4 } from 'uuid';
-
-import './Slider.scss';
 import styles from './Slides.module.scss';
 
-export default function Slides(
-  props: SlideModelNamespace.SlidesDataModel
-) {
-  const sliderRef = useRef<Slider>(null);
+export default function Slides(props: SlidesDataModel) {
+    const [isLoaded, setIsLoaded] = useState(false);
+    const imageRef = useRef<HTMLImageElement>(null);
+    const navigationPrevRef = useRef<HTMLButtonElement>(null);
+    const navigationNextRef = useRef<HTMLButtonElement>(null);
 
-  const [imagesLoaded, setImagesLoaded] = useState(false);
+    useEffect(() => {
+        const img = new globalThis.Image();
+        img.src = props.slides[0].img;
+        img.onload = () => {
+            setIsLoaded(true);
+        };
+    }, [props.slides]);
 
-  useEffect(() => {
-    const imageElements = document.querySelectorAll(
-      `.${styles.slide__image}`
+    return (
+
+        <section className={styles.slides}>
+            <div className={styles.slide}>
+                <Swiper
+                    modules={[Navigation, Autoplay]}
+                    spaceBetween={0}
+                    slidesPerView={1}
+                    loop={true}
+                    autoplay={{
+                        delay: 4000,
+                        pauseOnMouseEnter: true,
+                    }}
+                    // autoplay={false}
+                    navigation={{
+                        prevEl: navigationPrevRef.current,
+                        nextEl: navigationNextRef.current,
+                    }}
+                    onBeforeInit={(swiper) => {
+                        if (typeof swiper.params.navigation !== 'boolean') {
+                            swiper.params.navigation!.prevEl = navigationPrevRef.current;
+                            swiper.params.navigation!.nextEl = navigationNextRef.current;
+                        }
+                    }}
+                >
+                    {props.slides.map((slide) => (
+                        <SwiperSlide key={slide.id}>
+                            {isLoaded ? (
+                                <Image
+                                    ref={imageRef}
+                                    src={slide.img}
+                                    alt={props.description}
+                                    className={styles.slide__image}
+                                    width={1600}
+                                    height={900}
+                                    loading="lazy"
+                                />
+                            ) : (
+                                <Skeleton
+                                    height={900}
+                                    width={'100%'}
+                                    style={{borderRadius: 5}}
+                                />
+                            )}
+
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
+                <button
+                    ref={navigationPrevRef}
+                    className={styles.slide__leftArrow}
+                    aria-label="Previous slide"
+                />
+                <button
+                    ref={navigationNextRef}
+                    className={styles.slide__rightArrow}
+                    aria-label="Next slide"
+                />
+            </div>
+            <p>{props.description}</p>
+        </section>
     );
-    let loadedCount = 0;
-
-    const handleImageLoad = () => {
-      loadedCount++;
-      if (loadedCount === imageElements.length) {
-        setImagesLoaded(true);
-      }
-    };
-
-    imageElements.forEach((img) => {
-      const image = img as HTMLImageElement;
-
-      if (image.complete) {
-        handleImageLoad();
-      } else {
-        image.addEventListener('load', handleImageLoad);
-      }
-    });
-
-    if (imageElements.length === 0) {
-      setImagesLoaded(true);
-    }
-
-    return () => {
-      imageElements.forEach((img) => {
-        const image = img as HTMLImageElement;
-        image.removeEventListener('load', handleImageLoad);
-      });
-    };
-  }, [props.slides]);
-
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 300,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    waitForAnimate: true,
-    autoplay: true,
-    autoplaySpeed: 4000,
-    pauseOnHover: true,
-    arrows: false,
-    afterChange: () => {
-      const activeElement =
-        document.activeElement as HTMLElement;
-      if (activeElement) {
-        activeElement.blur();
-      }
-    },
-  };
-
-  return (
-    <section className={styles.slides}>
-      <Slider ref={sliderRef} {...settings}>
-        {props.slides.map((slide) => (
-          <div key={slide.id} className={styles.slide}>
-            {!imagesLoaded ? (
-              <Skeleton height={900} width={2000} />
-            ) : (
-              slide.img && (
-                <div inert={true} key={uuidv4()}>
-                  <Image
-                    src={slide.img}
-                    alt={props.description}
-                    className={styles.slide__image}
-                    width={1600}
-                    height={900}
-                    priority
-                    aria-hidden={false}
-                  />
-                </div>
-              )
-            )}
-            <button
-              className={styles.slide__leftArrow}
-              onClick={() => sliderRef.current?.slickPrev()}
-            />
-            <button
-              className={styles.slide__rightArrow}
-              onClick={() => sliderRef.current?.slickNext()}
-            />
-          </div>
-        ))}
-      </Slider>
-      <p>{props.description}</p>
-    </section>
-  );
 }

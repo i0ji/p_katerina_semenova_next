@@ -100,11 +100,11 @@ Now: Flickity;
 <br><b>v: 0.3.3.11 / d: 12.02.25<br></b>
 1. Package updates, pnpm update;<br>
 2. Cleared package.json from multiple libs;
-<br><b>v: 0.3.4 / d: 26.02.25<br></b>
+3. <br><b>v: 0.3.3.13 / d: 20.03.25<br></b>
 1. Package updates, pnpm update;<br>
-2. Return to react-slick and decided to fix this slider console issues;
-
-
+2. Return to Swiper lib;
+3. Created buttons that suit my plan;
+4. Deploy to GH-Pages to test;
 <br>
 <hr>
 <hr>
