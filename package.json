@@ -43,6 +43,8 @@
       "styled-components"
     ],
     "onlyBuiltDependencies": [
+      "@parcel/watcher",
+      "sharp",
       "styled-components"
     ]
   }

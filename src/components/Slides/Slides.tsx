@@ -39,7 +39,6 @@ export default function Slides(props: SlidesDataModel) {
                         delay: 4000,
                         pauseOnMouseEnter: true,
                     }}
-                    // autoplay={false}
                     navigation={{
                         prevEl: navigationPrevRef.current,
                         nextEl: navigationNextRef.current,
@@ -77,12 +76,10 @@ export default function Slides(props: SlidesDataModel) {
                 <button
                     ref={navigationPrevRef}
                     className={styles.slide__leftArrow}
-                    aria-label="Previous slide"
                 />
                 <button
                     ref={navigationNextRef}
                     className={styles.slide__rightArrow}
-                    aria-label="Next slide"
                 />
             </div>
             <p>{props.description}</p>
