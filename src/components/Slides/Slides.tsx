@@ -32,10 +32,11 @@ export default function Slides(props: SlidesDataModel) {
                     spaceBetween={0}
                     slidesPerView={1}
                     loop={true}
-                    autoplay={{
-                        delay: 4000,
-                        pauseOnMouseEnter: true,
-                    }}
+                    // autoplay={{
+                    //     delay: 4000,
+                    //     pauseOnMouseEnter: true,
+                    // }}
+                    autoplay={false}
                     navigation={{
                         prevEl: navigationPrevRef.current,
                         nextEl: navigationNextRef.current,

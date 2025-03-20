@@ -7,7 +7,7 @@ export default function Home() {
     console.log('v: 0.3.3.13a/20.02.25');
 
     //OPTION
-    const isTested = 0;
+    const isTested = 1;
 
     return (
         <>

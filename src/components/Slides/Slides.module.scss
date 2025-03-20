@@ -1,12 +1,18 @@
-@use '@/styles/colors' as *;
-
 .slides {
-
   margin-bottom: 50px;
 
+  width: 100%;
 
   .slide {
     position: relative;
+
+    &__image {
+      max-width: 100%;
+      height: 100%;
+      width: auto;
+
+      border-radius: 5px;
+    }
 
     .slide__leftArrow,
     .slide__rightArrow {
