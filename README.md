@@ -105,6 +105,10 @@ Now: Flickity;
 2. Return to Swiper lib;
 3. Created buttons that suit my plan;
 4. Deploy to GH-Pages to test;
+3. <br><b>v: 0.3.3.13d / d: 21.03.25<br></b>
+1. Continue setting Swiper;<br>
+2. Get rid of blue background while pushing buttons and achores;<br>
+3. Set Media for mobile phone (<767px) <br>
 <br>
 <hr>
 <hr>
