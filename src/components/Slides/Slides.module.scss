@@ -54,10 +54,42 @@
         transparent;
     }
 
+    .swiper-pagination {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .swiper-pagination-bullet {
+      width: 10px;
+      height: 10px;
+      background-color: rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .swiper-pagination-bullet-active {
+      background-color: #fff;
+    }
+
     .slide__image {
       max-width: 100%;
       height: auto;
       border-radius: 5px;
     }
+  }
+}
+
+@media (max-width: 767px) {
+  .slide__leftArrow,
+  .slide__rightArrow {
+    pointer-events: none;
+    display: none;
   }
 }
