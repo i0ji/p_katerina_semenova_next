@@ -1,20 +1,22 @@
 <h1>Reworked <a href="https://katerinasemenova.ru"> KaterinaSemenova</a> site using Next.JS, new libs, Turbopack</h1>
 
 <h3>Table of contents:</h3>
-1. Stack/libruary usage<br>
+1. Stack / libruary usage<br>
 2. Commit short history description/progress<br>
-3. Known issues<br>
+3. Known issues / to go<br>
 <hr>
 
-<h3> 1.</h3>
-1.1 Next.JS, SASS, TS;<br>
+<h3> 1. Stack / libruary usage</h3>
+<b>1.1 Next.JS, SASS, TS;<br>
 1.2 Choose React-slick to implement slider: it has fade in/out, dots; <br>
-1.3 Next 15^, React 19^ (small compatibility issue), React-dom 19^ (small compatibility issue), TS, SASS, slick-carousel, react-slick, react-loading-skeleton, <br>react-accessible-accordion, react-yandex-metrika
+1.3 Next 15^, React 19^ (small compatibility issue), React-dom 19^ (small compatibility issue), TS, SASS, react-loading-skeleton, react-yandex-metrika<br>
 1.4 UUID for unqiue array IDs<br>
+1.5 Swiper (since 0.3.13)<br></b>
+1.6 Previous: multiple carousel/slider libs, react-accessible-accordion;
 
 <hr>
 
-<h3> 2. Commit/process history</h3>
+<h3> 2. Commit / process history</h3>
 <ul>
 <li><b>v: 0.0.1 / d: 29.10.24  </b>   
 project/repo init, git-flow init, first commit,</li>
@@ -81,7 +83,7 @@ Continue setting Swiper; get rid of blue background while pushing buttons and ac
 <hr>
 <hr>
 
-<h3> 3.</h3>
+<h3> 3. Known issues/to go</h3>
 [X] <del>Still have trouble with build/dev paths and aliases; Still have to change it manually when deploy to Pages or to prod;</del><br>
 <b>UPD: multiple path attempts and setting changings</b><br>
 <del>[X] New one: missing react-slick lib fonts, which i do not use at all. Get rid of console warning by removing Slick font-face settings from final output build. Still have to find the solution;</del><br>
