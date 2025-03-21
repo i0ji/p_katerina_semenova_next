@@ -43,15 +43,13 @@
     }
 
     .slide__leftArrow:hover {
-      opacity: 0.5;
-      // pointer-events: auto;
+      opacity: 0.3;
       background: linear-gradient(-90deg, transparent, black)
         transparent;
     }
 
     .slide__rightArrow:hover {
-      opacity: 0.5;
-      pointer-events: auto;
+      opacity: 0.3;
       background: linear-gradient(90deg, transparent, black)
         transparent;
     }

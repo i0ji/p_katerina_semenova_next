@@ -24,6 +24,10 @@ a:visited {
   color: black;
 }
 
+a, button {
+  -webkit-tap-highlight-color: transparent;
+}
+
 a:hover {
   text-decoration: none;
 }
