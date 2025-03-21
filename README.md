@@ -49,7 +49,7 @@ faced some difficultes trying to insert Yandex-Metrika script inside the < Head 
 <li><b>v: 0.3.0 / d: 14.01.25</b>
 Multiple libs update: react/dom/sass/eslint/next/pnpm; small image id refactor (should I use UUID?)
 <li><b>v: 0.3.1 / d: 15.01.25</b>
-Start making slide description; multiple attepmts; face an issue with paragraph height. non of ```<p>``` parents have certain height in PX;
+Start making slide description; multiple attepmts; face an issue with paragraph height. non of paragraph parents have certain height in PX;
 <li><b>v: 0.3.2 / d: 16.01.25</b> 
 Make dynamically changing height based on <Image> height; change my SCSS mixin flex forumla; font size issue to go
 <li><b>v: 0.3.2 / d: 20.01.25</b>
@@ -82,12 +82,12 @@ Continue setting Swiper; get rid of blue background while pushing buttons and ac
 <hr>
 
 <h3> 3.</h3>
-[X] <del>Still have trouble with build/dev paths and aliases; Still have to change it manually when deploy to Pages or to prod;</del>
-<b>UPD: multiple path attempts and setting changings</b>
-<del>[X] New one: missing react-slick lib fonts, which i do not use at all. Get rid of console warning by removing Slick font-face settings from final output build. Still have to find the solution;</del>
-<b>UPD: moved slick styles to component folder and get rid of unused classes</b>
-<del>[X] Yandex.Analytics - UPD: have an integration issue; For now do not know where to put in in the dev version; I just put the script into the final bundle;</del>
-<b>UPD: use lib to add Metrika;</b>
-[&nbsp;&nbsp;] Non typed YM script
-[&nbsp;&nbsp;] Implement DB with phpAdminPanel - to go;
-[&nbsp;&nbsp;] Skeleton loading - still can`t figure out if it works correctly or not <strong>UPD: NOW TESTINGS</strong>;
+[X] <del>Still have trouble with build/dev paths and aliases; Still have to change it manually when deploy to Pages or to prod;</del><br>
+<b>UPD: multiple path attempts and setting changings</b><br>
+<del>[X] New one: missing react-slick lib fonts, which i do not use at all. Get rid of console warning by removing Slick font-face settings from final output build. Still have to find the solution;</del><br>
+<b>UPD: moved slick styles to component folder and get rid of unused classes</b><br>
+<del>[X] Yandex.Analytics - UPD: have an integration issue; For now do not know where to put in in the dev version; I just put the script into the final bundle;</del><br>
+<b>UPD: use lib to add Metrika;</b><br>
+[&nbsp;&nbsp;] Non typed YM script<br>
+[&nbsp;&nbsp;] Implement DB with phpAdminPanel - to go;<br>
+[X] Skeleton loading - still can`t figure out if it works correctly or not <strong><br>UPD: NOW TESTINGS</strong>;<br>
