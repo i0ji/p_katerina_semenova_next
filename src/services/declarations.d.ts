@@ -7,5 +7,3 @@ interface SlidesDataModel {
     slides: Array<SlideModel>;
     description: string;
 }
-
-export {}
