@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import {
   Navigation,
   Autoplay,
-  Pagination,
+  // Pagination,
 } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -41,9 +41,9 @@ export default function Slides(props: SlidesDataModel) {
               delay: 4000,
               pauseOnMouseEnter: true,
           }}
-          pagination={{
-            clickable: true,
-          }}
+          // pagination={{
+          //   clickable: true,
+          // }}
           navigation={{
             prevEl: navigationPrevRef.current,
             nextEl: navigationNextRef.current,
