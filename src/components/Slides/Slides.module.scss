@@ -22,7 +22,7 @@
       z-index: 1;
       top: 0;
 
-      width: 30%;
+      width: 25%;
       height: calc(100% - 6px);
 
       border-radius: 5px;
@@ -31,6 +31,7 @@
       opacity: 0;
       transition: 0.3s all ease;
       cursor: pointer;
+      pointer-events: auto;
     }
 
     .slide__leftArrow {
@@ -43,12 +44,14 @@
 
     .slide__leftArrow:hover {
       opacity: 0.5;
+      // pointer-events: auto;
       background: linear-gradient(-90deg, transparent, black)
         transparent;
     }
 
     .slide__rightArrow:hover {
       opacity: 0.5;
+      pointer-events: auto;
       background: linear-gradient(90deg, transparent, black)
         transparent;
     }
