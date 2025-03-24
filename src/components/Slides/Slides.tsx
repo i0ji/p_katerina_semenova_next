@@ -1,14 +1,16 @@
 'use client';
 
 import { useRef, useState, useEffect } from 'react';
+
 import { Swiper, SwiperSlide } from 'swiper/react';
 import {
   Navigation,
   Autoplay,
-  // Pagination,
+  Pagination,
 } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 import Image from 'next/image';
 import Skeleton from 'react-loading-skeleton';
@@ -33,17 +35,14 @@ export default function Slides(props: SlidesDataModel) {
     <section className={styles.slides}>
       <div className={styles.slide}>
         <Swiper
-          modules={[Navigation, Autoplay]}
+          modules={[Navigation, Autoplay, Pagination]}
           spaceBetween={0}
           slidesPerView={1}
           loop={true}
           autoplay={{
-              delay: 4000,
-              pauseOnMouseEnter: true,
+            delay: 4000,
+            pauseOnMouseEnter: true,
           }}
-          // pagination={{
-          //   clickable: true,
-          // }}
           navigation={{
             prevEl: navigationPrevRef.current,
             nextEl: navigationNextRef.current,
@@ -55,6 +54,12 @@ export default function Slides(props: SlidesDataModel) {
               swiper.params.navigation!.nextEl =
                 navigationNextRef.current;
             }
+          }}
+          pagination={{
+            clickable: true,
+            // el: paginationStyle,
+            // bulletClass: paginationStyleBullet,
+            // bulletActiveClass: paginationStyleBulletActive,
           }}
         >
           {props.slides.map((slide) => (
