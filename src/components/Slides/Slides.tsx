@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef, useState, useEffect } from 'react';
+
 import { Swiper, SwiperSlide } from 'swiper/react';
 import {
   Navigation,
@@ -9,6 +10,7 @@ import {
 } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 import Image from 'next/image';
 import Skeleton from 'react-loading-skeleton';
@@ -29,20 +31,51 @@ export default function Slides(props: SlidesDataModel) {
     };
   }, [props.slides]);
 
+
+  //CURRENT
+  //PAGINATION
+  const paginationStyle = styles.pagination;
+  const paginationStyleBullet = styles.bullet;
+  const paginationStyleBulletActive = styles.bulletActive;
+
+  //OPTION
+  // const sliderParams = {
+  //   modules: [Navigation, Autoplay, Pagination],
+  //   loop: true,
+  //   spaceBetween: 0,
+  //   slidesPerView: 1,
+  //   autoplay: {
+  //     delay: 4000,
+  //     pauseOnMouseEnter: true,
+  //   },
+  //   pagination: {
+  //     clickable: true,
+  //   },
+  //   navigation: {
+  //     prevEl: navigationPrevRef.current,
+  //     nextEl: navigationNextRef.current,
+  //   },
+  //   onBeforeInit: (swiper) => {
+  //     if (typeof swiper.params.navigation !== 'boolean') {
+  //       swiper.params.navigation!.prevEl =
+  //         navigationPrevRef.current;
+  //       swiper.params.navigation!.nextEl =
+  //         navigationNextRef.current;
+  //     }
+  //   },
+  // };
+
   return (
     <section className={styles.slides}>
       <div className={styles.slide}>
         <Swiper
-          modules={[Navigation, Autoplay]}
+          modules={[Navigation, Autoplay, Pagination]}
           spaceBetween={0}
           slidesPerView={1}
           loop={true}
           autoplay={{
-              delay: 4000,
-              pauseOnMouseEnter: true,
-          }}
-          pagination={{
-            clickable: true,
+            delay: 4000,
+            pauseOnMouseEnter: true,
           }}
           navigation={{
             prevEl: navigationPrevRef.current,
@@ -55,6 +88,12 @@ export default function Slides(props: SlidesDataModel) {
               swiper.params.navigation!.nextEl =
                 navigationNextRef.current;
             }
+          }}
+          pagination={{
+            clickable: true,
+            // el: paginationStyle,
+            // bulletClass: paginationStyleBullet,
+            // bulletActiveClass: paginationStyleBulletActive,
           }}
         >
           {props.slides.map((slide) => (
