@@ -1,6 +1,6 @@
 {
   "name": "semenova_next",
-  "version": "0.3.3.4",
+  "version": "0.3.3.4a",
   "private": true,
   "repository": {
     "type": "git",
@@ -13,6 +13,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "embla-carousel-react": "^8.5.2",
     "next": "15.2.3",
     "react": "19.0.0",
     "react-dom": "19.0.0"
