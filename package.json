@@ -13,8 +13,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "embla-carousel-react": "^8.5.2",
-    "next": "15.2.3",
+    "next": "15.2.4",
     "react": "19.0.0",
     "react-dom": "19.0.0"
   },
@@ -22,31 +21,27 @@
     "/temp/"
   ],
   "devDependencies": {
-    "@types/node": "^22.13.12",
+    "@types/node": "^22.13.13",
     "@types/react": "^19.0.12",
     "@types/react-dom": "^19.0.4",
+    "embla-carousel-react": "^8.5.2",
     "eslint": "^9.23.0",
-    "eslint-config-next": "15.2.3",
+    "eslint-config-next": "15.2.4",
     "file-loader": "^6.2.0",
     "gh-pages": "^6.3.0",
-    "react-grid-carousel": "^1.0.1",
     "react-image-gallery": "^1.4.0",
     "react-loading-skeleton": "^3.5.0",
+    "react-multi-carousel": "^2.8.5",
     "react-yandex-metrika": "^2.6.0",
     "sass": "^1.86.0",
     "sass-loader": "^16.0.5",
-    "swiper": "^11.2.6",
     "typescript": "^5.8.2",
     "uuid": "^11.1.0"
   },
   "pnpm": {
-    "ignoredBuiltDependencies": [
-      "styled-components"
-    ],
     "onlyBuiltDependencies": [
       "@parcel/watcher",
-      "sharp",
-      "styled-components"
+      "sharp"
     ]
   }
 }

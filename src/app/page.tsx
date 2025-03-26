@@ -1,6 +1,6 @@
 import { Header, Slides, Footer } from '@/components/index';
 import { SlideData } from 'public';
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv } from 'uuid';
 
 export default function Home() {
   //CONSOLE
@@ -15,14 +15,14 @@ export default function Home() {
 
       {isTested ? (
         <Slides
-          key={uuidv4()}
+          key={uuidv()}
           slides={SlideData[0].slides}
           description={SlideData[0].description}
         />
       ) : (
         SlideData.map((slides: SlidesDataModel) => (
           <Slides
-            key={uuidv4()}
+            key={uuidv()}
             slides={slides.slides}
             description={slides.description}
           />
