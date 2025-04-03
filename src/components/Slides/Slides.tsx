@@ -91,14 +91,15 @@ export default function Slides(props: SlidesDataModel) {
         </div>
       </div>
 
-      <div className={styles.slide__description}>
-        <p>{props.description}</p>
-        <Bullets
-          slides={props.slides}
-          activeIndex={activeIndex}
-          onBulletClick={goToSlide}
-        />
-      </div>
+      <p className={styles.slide__description}>
+        {props.description}
+      </p>
+
+      <Bullets
+        slides={props.slides}
+        activeIndex={activeIndex}
+        onBulletClick={goToSlide}
+      />
     </section>
   );
 }
