@@ -3,6 +3,7 @@
 import styles from './Slides.module.scss';
 import Image from 'next/image';
 import { nanoid } from 'nanoid';
+import { NextButton, PrevButton } from '@/components/index';
 
 export default function Slides(props: SlidesDataModel) {
   return (
@@ -18,6 +19,8 @@ export default function Slides(props: SlidesDataModel) {
           loading="lazy"
         />
       ))}
+      <NextButton />
+      <PrevButton />
 
       <p>{props.description}</p>
     </section>

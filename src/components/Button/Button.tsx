@@ -5,5 +5,5 @@ export function NextButton() {
 }
 
 export function PrevButton() {
-  return <button className={styles.button__next} />;
+  return <button className={styles.button__prev} />;
 }
