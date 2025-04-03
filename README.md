@@ -66,7 +66,7 @@ Pagination dots set via scss selector magic!; SASS^</li>
 <li><b>v: 0.3.3a / d: 07.02.25</b>
 Add typeRoots setting to tsconfig;</li>
 <li><b>v: 0.3.3b / d: 10.02.25</b>
-    1.Multiple libs: keen, nuka, slick, embla, alice, response carousel and others were tested; Now: Flickity; eslint^; pnpm^</li>
+Multiple libs: keen, nuka, slick, embla, alice, response carousel and others were tested; Now: Flickity; eslint^; pnpm^</li>
 <li><b>v: 0.3.3.11 / d: 11.02.25</b>
 I decided to assign versions based on the number of carousel/slider variations; So 11 will stand for 11 lib - AwesomeSlider. For some reason and due to unsuitable implementation, none of the recent libraries suited my needs;</li>
 <li><b>v: 0.3.3.11 / d: 12.02.25</b>
@@ -77,6 +77,9 @@ package updates, pnpm update; return to Swiper lib; created buttons that suit my
 Continue setting Swiper; get rid of blue background while pushing buttons and achores; set 'Media' for mobile phone (<767px)</li> 
 <li><b>v: 0.3.3.4 / d: 24.03.25</b> 
 deps update;
+</li>
+<li><b>v: 0.3.3.5 / d: 03.04.25</b> 
+deps update; pure-slider testinZg; replace uuid w/ nanoid;
 </li>
 
 <hr>

@@ -16,43 +16,7 @@
       border-radius: 5px;
     }
 
-    .slide__leftArrow,
-    .slide__rightArrow {
-      position: absolute;
-      z-index: 1;
-      top: 0;
-
-      width: 25%;
-      height: calc(100% - 6px);
-
-      border-radius: 5px;
-      background-color: transparent;
-
-      opacity: 0;
-      transition: 0.3s all ease;
-      cursor: pointer;
-      pointer-events: auto;
-    }
-
-    .slide__leftArrow {
-      left: 0;
-    }
-
-    .slide__rightArrow {
-      right: 0;
-    }
-
-    .slide__leftArrow:hover {
-      opacity: 0.3;
-      background: linear-gradient(-90deg, transparent, black)
-        transparent;
-    }
-
-    .slide__rightArrow:hover {
-      opacity: 0.3;
-      background: linear-gradient(90deg, transparent, black)
-        transparent;
-    }
+    
 
     .slide__image {
       max-width: 100%;
@@ -78,13 +42,5 @@
         }
       }
     }
-  }
-}
-
-@media (max-width: 767px) {
-  .slide__leftArrow,
-  .slide__rightArrow {
-    pointer-events: none;
-    display: none;
   }
 }
