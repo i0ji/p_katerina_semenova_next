@@ -1,0 +1,27 @@
+
+.bulletsContainer {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .bullet {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+  
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.8);
+    }
+  }
+  
+  .activeBullet {
+    background-color: #fff;
+    transform: scale(1.2);
+  }

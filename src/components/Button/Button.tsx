@@ -1,9 +1,25 @@
 import styles from './Button.module.scss';
 
-export function NextButton() {
-  return <button className={styles.button__next} />;
+interface ButtonProps {
+  onClick: () => void;
 }
 
-export function PrevButton() {
-  return <button className={styles.button__prev} />;
+export function NextButton(props: ButtonProps) {
+  return (
+    <button
+      onClick={props.onClick}
+      className={styles.button__next}
+      aria-label="Next slide"
+    />
+  );
+}
+
+export function PrevButton(props: ButtonProps) {
+  return (
+    <button
+      onClick={props.onClick}
+      className={styles.button__prev}
+      aria-label="Previous slide"
+    />
+  );
 }
