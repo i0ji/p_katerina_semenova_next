@@ -4,22 +4,22 @@ interface ButtonProps {
   onClick: () => void;
 }
 
-export function NextButton(props: ButtonProps) {
+export function PrevButton({ onClick }: ButtonProps) {
   return (
     <button
-      onClick={props.onClick}
-      className={styles.button__next}
-      aria-label="Next slide"
+      onClick={onClick}
+      className={styles.button__prev}
+      aria-label="Previous slide"
     />
   );
 }
 
-export function PrevButton(props: ButtonProps) {
+export function NextButton({ onClick }: ButtonProps) {
   return (
     <button
-      onClick={props.onClick}
-      className={styles.button__prev}
-      aria-label="Previous slide"
+      onClick={onClick}
+      className={styles.button__next}
+      aria-label="Next slide"
     />
   );
 }

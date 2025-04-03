@@ -1,17 +1,35 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import Glide from '@glidejs/glide';
 import '@glidejs/glide/dist/css/glide.core.min.css';
 import '@glidejs/glide/dist/css/glide.theme.min.css';
 import styles from './Slides.module.scss';
 import Image from 'next/image';
-import { NextButton, PrevButton, Bullets } from '@/components/index';
+import {
+  NextButton,
+  PrevButton,
+  Bullets,
+} from '@/components/index';
 
 export default function Slides(props: SlidesDataModel) {
   const glideRef = useRef<HTMLDivElement>(null);
-  const glideInstance = useRef<Glide.Properties | null>(null);
+  const glideInstance = useRef<any>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+
+
+  //CURRENT
+  const handleNext = useCallback(() => {
+    glideInstance.current?.go('>');
+  }, []);
+
+  const handlePrev = useCallback(() => {
+    glideInstance.current?.go('<');
+  }, []);
+
+  const goToSlide = useCallback((index: number) => {
+    glideInstance.current?.go(`=${index}`);
+  }, []);
 
   useEffect(() => {
     if (!glideRef.current) return;
@@ -22,54 +40,46 @@ export default function Slides(props: SlidesDataModel) {
         glideRef.current!,
         {
           type: 'carousel',
+          startAt: 0,
           perView: 1,
-          gap: 0,
-          autoplay: 4000,
+          gap: 10,
+          autoplay: false, // временно отключаем для отладки
           hoverpause: true,
           animationDuration: 500,
-          afterInit: () => setActiveIndex(0),
-          afterChange: ({ index }) => setActiveIndex(index),
         }
-      ).mount();
+      );
+
+      glideInstance.current.on('run', () => {
+        setActiveIndex(glideInstance.current.index);
+      });
+
+      glideInstance.current.mount();
+
+      // Сохраняем экземпляр для доступа из других функций
+      return () => glideInstance.current?.destroy();
     };
 
     initGlide();
-
-    return () => {
-      glideInstance.current?.destroy();
-    };
   }, []);
-
-  const handleNext = () => {
-    glideInstance.current?.go('>');
-  };
-
-  const handlePrev = () => {
-    glideInstance.current?.go('<');
-  };
-
-  const goToSlide = (index: number) =>
-    glideInstance.current?.go(`=${index}`);
 
   return (
     <section className={styles.slides}>
       <div className="glide" ref={glideRef}>
         <div className="glide__track" data-glide-el="track">
           <ul className="glide__slides">
-            {props.slides.map((slide) => (
+            {props.slides.map((slide, index) => (
               <li
                 key={slide.id}
                 className={`glide__slide ${styles.slide}`}
               >
-                <div className={styles.imageWrapper}>
+                <div className={styles.slide__image_wrapper}>
                   <Image
                     src={slide.img}
                     alt={props.description}
-                    width={1840}
+                    width={1600}
                     height={900}
-                    className={styles.slideImage}
-                    sizes="(max-width: 768px) 100vw, 80vw"
-                    loading="lazy"
+                    className={styles.slide__image}
+                    priority={index === 0}
                   />
                 </div>
               </li>
@@ -83,12 +93,14 @@ export default function Slides(props: SlidesDataModel) {
         </div>
       </div>
 
-      <Bullets 
-
-      />
-
-  
-      <p className={styles.description}>{props.description}</p>
+      <div className={styles.slide__description}>
+        <p>{props.description}</p>
+        <Bullets
+          slides={props.slides}
+          activeIndex={activeIndex}
+          onBulletClick={goToSlide}
+        />
+      </div>
     </section>
   );
 }

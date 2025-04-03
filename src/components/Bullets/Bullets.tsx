@@ -1,3 +1,5 @@
+'use client';
+
 import styles from './Bullets.module.scss';
 
 export default function Bullets({
@@ -5,20 +7,21 @@ export default function Bullets({
   activeIndex,
   onBulletClick,
 }: {
-  slides: SlidesDataModel['slides'];
+  slides: any[];
   activeIndex: number;
   onBulletClick: (index: number) => void;
 }) {
   return (
-    <div className={styles.customBullets}>
-      {slides.map((slide, index) => (
+    <div className={styles.bullets}>
+      {slides.map((_, index) => (
         <button
-          key={`bullet-${slide.id}`}
+          key={`bullet-${index}`}
           className={`${styles.bullet} ${
             index === activeIndex ? styles.active : ''
           }`}
           onClick={() => onBulletClick(index)}
-          aria-label={`Go to slide ${index + 1}`}
+          aria-label={`Slide ${index + 1}`}
+          aria-current={index === activeIndex}
         />
       ))}
     </div>

@@ -14,7 +14,19 @@
   transition: 0.3s all ease;
   cursor: pointer;
   pointer-events: auto;
-  border-radius: 15px;
+  border-radius: .5rem;
+
+//   &:hover,
+//   &:focus,
+//   &:active {
+//     outline: none;
+//     box-shadow: none;
+//     -webkit-tap-highlight-color: transparent;
+//   }
+}
+
+.button__next:active .button__prev:active {
+  border-radius: .5rem;
 }
 
 .button__prev {
@@ -29,12 +41,14 @@
   opacity: 0.3;
   background: linear-gradient(-90deg, transparent, black)
     transparent;
+  border-radius: 1rem;
 }
 
 .button__next:hover {
   opacity: 0.3;
   background: linear-gradient(90deg, transparent, black)
     transparent;
+  border-radius: 1rem;
 }
 
 @media (max-width: 767px) {
