@@ -7,7 +7,7 @@ export default function Bullets({
   activeIndex,
   onBulletClick,
 }: {
-  slides: any[];
+  slides: SlideModel[];
   activeIndex: number;
   onBulletClick: (index: number) => void;
 }) {

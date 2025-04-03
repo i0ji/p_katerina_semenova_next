@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef, useCallback } from 'react';
-import Glide from '@glidejs/glide';
+// import Glide from '@glidejs/glide';
 import '@glidejs/glide/dist/css/glide.core.min.css';
 import '@glidejs/glide/dist/css/glide.theme.min.css';
 import styles from './Slides.module.scss';
@@ -14,9 +14,8 @@ import {
 
 export default function Slides(props: SlidesDataModel) {
   const glideRef = useRef<HTMLDivElement>(null);
-  const glideInstance = useRef<any>(null);
+  const glideInstance = useRef<GlideInstanceModel | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
-
 
   //CURRENT
   const handleNext = useCallback(() => {
@@ -43,19 +42,18 @@ export default function Slides(props: SlidesDataModel) {
           startAt: 0,
           perView: 1,
           gap: 10,
-          autoplay: false, // временно отключаем для отладки
+          autoplay: false,
           hoverpause: true,
           animationDuration: 500,
         }
       );
 
-      glideInstance.current.on('run', () => {
-        setActiveIndex(glideInstance.current.index);
+      glideInstance.current!.on('run', () => {
+        setActiveIndex(glideInstance.current!.index);
       });
 
-      glideInstance.current.mount();
+      glideInstance.current!.mount();
 
-      // Сохраняем экземпляр для доступа из других функций
       return () => glideInstance.current?.destroy();
     };
 
