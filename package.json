@@ -1,6 +1,6 @@
 {
   "name": "semenova_next",
-  "version": "0.3.3.4",
+  "version": "0.3.3.5t",
   "private": true,
   "repository": {
     "type": "git",
@@ -13,39 +13,33 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "15.2.3",
-    "react": "19.0.0",
-    "react-dom": "19.0.0"
+    "@glidejs/glide": "^3.7.1",
+    "next": "15.2.4",
+    "react": "19.1.0",
+    "react-dom": "19.1.0"
   },
   "ignore": [
     "/temp/"
   ],
   "devDependencies": {
-    "@types/node": "^22.13.12",
-    "@types/react": "^19.0.12",
-    "@types/react-dom": "^19.0.4",
+    "@types/node": "^22.14.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.1",
     "eslint": "^9.23.0",
-    "eslint-config-next": "15.2.3",
+    "eslint-config-next": "15.2.4",
     "file-loader": "^6.2.0",
     "gh-pages": "^6.3.0",
-    "react-grid-carousel": "^1.0.1",
-    "react-image-gallery": "^1.4.0",
+    "nanoid": "^5.1.5",
     "react-loading-skeleton": "^3.5.0",
     "react-yandex-metrika": "^2.6.0",
-    "sass": "^1.86.0",
+    "sass": "^1.86.2",
     "sass-loader": "^16.0.5",
-    "swiper": "^11.2.6",
-    "typescript": "^5.8.2",
-    "uuid": "^11.1.0"
+    "typescript": "^5.8.2"
   },
   "pnpm": {
-    "ignoredBuiltDependencies": [
-      "styled-components"
-    ],
     "onlyBuiltDependencies": [
       "@parcel/watcher",
-      "sharp",
-      "styled-components"
+      "sharp"
     ]
   }
 }

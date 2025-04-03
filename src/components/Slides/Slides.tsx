@@ -1,101 +1,106 @@
 'use client';
 
-import { useRef, useState, useEffect } from 'react';
-
-import { Swiper, SwiperSlide } from 'swiper/react';
-import {
-  Navigation,
-  Autoplay,
-  Pagination,
-} from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-
-import Image from 'next/image';
-import Skeleton from 'react-loading-skeleton';
-
+import { useState, useEffect, useRef, useCallback } from 'react';
+import Glide from '@glidejs/glide';
+import '@glidejs/glide/dist/css/glide.core.min.css';
+import '@glidejs/glide/dist/css/glide.theme.min.css';
 import styles from './Slides.module.scss';
+import Image from 'next/image';
+import {
+  NextButton,
+  PrevButton,
+  Bullets,
+} from '@/components/index';
 
 export default function Slides(props: SlidesDataModel) {
-  const [isLoaded, setIsLoaded] = useState(false);
-  const imageRef = useRef<HTMLImageElement>(null);
-  const navigationPrevRef = useRef<HTMLButtonElement>(null);
-  const navigationNextRef = useRef<HTMLButtonElement>(null);
+  const glideRef = useRef<HTMLDivElement>(null);
+  const glideInstance = useRef<any>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+
+  //CURRENT
+  const handleNext = useCallback(() => {
+    glideInstance.current?.go('>');
+  }, []);
+
+  const handlePrev = useCallback(() => {
+    glideInstance.current?.go('<');
+  }, []);
+
+  const goToSlide = useCallback((index: number) => {
+    glideInstance.current?.go(`=${index}`);
+  }, []);
 
   useEffect(() => {
-    const img = new globalThis.Image();
-    img.src = props.slides[0].img;
-    img.onload = () => {
-      setIsLoaded(true);
+    if (!glideRef.current) return;
+
+    const initGlide = async () => {
+      const GlideModule = await import('@glidejs/glide');
+      glideInstance.current = new GlideModule.default(
+        glideRef.current!,
+        {
+          type: 'carousel',
+          startAt: 0,
+          perView: 1,
+          gap: 10,
+          autoplay: false, // временно отключаем для отладки
+          hoverpause: true,
+          animationDuration: 500,
+        }
+      );
+
+      glideInstance.current.on('run', () => {
+        setActiveIndex(glideInstance.current.index);
+      });
+
+      glideInstance.current.mount();
+
+      // Сохраняем экземпляр для доступа из других функций
+      return () => glideInstance.current?.destroy();
     };
-  }, [props.slides]);
+
+    initGlide();
+  }, []);
 
   return (
     <section className={styles.slides}>
-      <div className={styles.slide}>
-        <Swiper
-          modules={[Navigation, Autoplay, Pagination]}
-          spaceBetween={0}
-          slidesPerView={1}
-          loop={true}
-          autoplay={{
-            delay: 4000,
-            pauseOnMouseEnter: true,
-          }}
-          navigation={{
-            prevEl: navigationPrevRef.current,
-            nextEl: navigationNextRef.current,
-          }}
-          onBeforeInit={(swiper) => {
-            if (typeof swiper.params.navigation !== 'boolean') {
-              swiper.params.navigation!.prevEl =
-                navigationPrevRef.current;
-              swiper.params.navigation!.nextEl =
-                navigationNextRef.current;
-            }
-          }}
-          pagination={{
-            clickable: true,
-            // el: paginationStyle,
-            // bulletClass: paginationStyleBullet,
-            // bulletActiveClass: paginationStyleBulletActive,
-          }}
-        >
-          {props.slides.map((slide) => (
-            <SwiperSlide key={slide.id}>
-              {isLoaded ? (
-                <Image
-                  ref={imageRef}
-                  src={slide.img}
-                  alt={props.description}
-                  className={styles.slide__image}
-                  width={1600}
-                  height={900}
-                  loading="lazy"
-                />
-              ) : (
-                <Skeleton
-                  height={900}
-                  width={'100%'}
-                  style={{ borderRadius: 5 }}
-                />
-              )}
-            </SwiperSlide>
-          ))}
-        </Swiper>
-        <button
-          ref={navigationPrevRef}
-          className={styles.slide__leftArrow}
-          aria-label="Previous slide"
-        />
-        <button
-          ref={navigationNextRef}
-          className={styles.slide__rightArrow}
-          aria-label="Next slide"
+      <div className="glide" ref={glideRef}>
+        <div className="glide__track" data-glide-el="track">
+          <ul className="glide__slides">
+            {props.slides.map((slide, index) => (
+              <li
+                key={slide.id}
+                className={`glide__slide ${styles.slide}`}
+              >
+                <div className={styles.slide__image_wrapper}>
+                  <Image
+                    src={slide.img}
+                    alt={props.description}
+                    width={1600}
+                    height={900}
+                    className={styles.slide__image}
+                    priority={index === 0}
+                  />
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className={styles.navigation}>
+          <PrevButton onClick={handlePrev} />
+          <NextButton onClick={handleNext} />
+        </div>
+      </div>
+
+      <div className={styles.slide__description}>
+        <p>{props.description}</p>
+        <Bullets
+          slides={props.slides}
+          activeIndex={activeIndex}
+          onBulletClick={goToSlide}
         />
       </div>
-      <p>{props.description}</p>
     </section>
   );
 }

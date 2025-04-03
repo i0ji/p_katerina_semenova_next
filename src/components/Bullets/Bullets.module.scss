@@ -1,0 +1,30 @@
+@use '@/styles/colors' as *;
+
+.bullets {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  position: absolute;
+  right: 0;
+}
+
+.bullet {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.3);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: $brand_gray;
+    transform: scale(1.1);
+  }
+}
+
+.bullet.active {
+  background: rgb(0, 0, 0);
+  transform: scale(1.2);
+}
