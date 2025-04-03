@@ -1,14 +1,15 @@
 'use client';
 
-import './Slider.scss';
 import styles from './Slides.module.scss';
 import Image from 'next/image';
+import { nanoid } from 'nanoid';
 
 export default function Slides(props: SlidesDataModel) {
   return (
     <section className={styles.slides}>
       {props.slides.map((slide) => (
         <Image
+          key={nanoid()}
           src={slide.img}
           alt={props.description}
           className={styles.slide__image}
