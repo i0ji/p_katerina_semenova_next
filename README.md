@@ -85,7 +85,6 @@ deps update; pure-slider testinZg; replace uuid w/ nanoid;
 Style and positioning of bullets/description fix; deps update;
 </li>
 </ul>
-<br>
 <hr>
 <h3> 3. Known issues/to go</h3>
 [X] <del>Still have trouble with build/dev paths and aliases; Still have to change it manually when deploy to Pages or to prod;</del><br>
