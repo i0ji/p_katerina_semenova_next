@@ -42,7 +42,7 @@ export default function Slides(props: SlidesDataModel) {
           startAt: 0,
           perView: 1,
           gap: 10,
-          autoplay: false,
+          autoplay: true,
           hoverpause: true,
           animationDuration: 500,
         }
