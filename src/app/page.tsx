@@ -4,7 +4,7 @@ import { nanoid } from 'nanoid';
 
 export default function Home() {
   //CONSOLE
-  console.log('v: 0.3.3.5t/03.04.25');
+  console.log('v: 0.3.3.5ta/03.04.25');
 
   //OPTION
   const isTested = 0;

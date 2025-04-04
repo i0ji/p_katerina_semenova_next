@@ -2,11 +2,10 @@
 
 .bullets {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 12px;
   order: 2;
   display: flex;
-  justify-content: start;
 }
 
 .bullet {
