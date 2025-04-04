@@ -23,11 +23,31 @@
       aspect-ratio: 16/9;
     }
 
-    // &__description {
-    //   @include flex(row, null, center);
-    //   justify-content: space-between;
-    // }
+    &__description {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
   }
 }
 
+@media (max-width: 800px) {
+  .slide__description {
+    display: flex;
+    flex-direction: column;
 
+    p {
+      order: 2;
+      border: 1px solid red;
+      width: 100%;
+      margin-top: .5rem;
+    }
+
+    div {
+      width: 100%;
+      border: 1px solid green;
+      order: 1;
+    }
+  }
+}

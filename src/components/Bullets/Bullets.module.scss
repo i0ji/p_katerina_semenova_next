@@ -4,9 +4,9 @@
   display: flex;
   justify-content: center;
   gap: 12px;
-  position: absolute;
-  right: 0;
-  bottom: 0.5rem;
+  order: 2;
+  display: flex;
+  justify-content: start;
 }
 
 .bullet {
@@ -28,13 +28,4 @@
 .bullet.active {
   background: rgb(0, 0, 0);
   transform: scale(1.2);
-}
-
-@media (max-width: 800px) {
-  .bullets {
-    // border: 2px solid red;
-    bottom: 2rem;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
 }
