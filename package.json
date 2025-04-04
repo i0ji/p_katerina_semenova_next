@@ -32,7 +32,7 @@
     "nanoid": "^5.1.5",
     "react-loading-skeleton": "^3.5.0",
     "react-yandex-metrika": "^2.6.0",
-    "sass": "^1.86.2",
+    "sass": "^1.86.3",
     "sass-loader": "^16.0.5",
     "typescript": "^5.8.2"
   },
