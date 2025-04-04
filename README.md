@@ -66,7 +66,7 @@ Pagination dots set via scss selector magic!; SASS^</li>
 <li><b>v: 0.3.3a / d: 07.02.25</b>
 Add typeRoots setting to tsconfig;</li>
 <li><b>v: 0.3.3b / d: 10.02.25</b>
-    1.Multiple libs: keen, nuka, slick, embla, alice, response carousel and others were tested; Now: Flickity; eslint^; pnpm^</li>
+Multiple libs: keen, nuka, slick, embla, alice, response carousel and others were tested; Now: Flickity; eslint^; pnpm^</li>
 <li><b>v: 0.3.3.11 / d: 11.02.25</b>
 I decided to assign versions based on the number of carousel/slider variations; So 11 will stand for 11 lib - AwesomeSlider. For some reason and due to unsuitable implementation, none of the recent libraries suited my needs;</li>
 <li><b>v: 0.3.3.11 / d: 12.02.25</b>
@@ -78,6 +78,12 @@ Continue setting Swiper; get rid of blue background while pushing buttons and ac
 <li><b>v: 0.3.3.4 / d: 24.03.25</b> 
 deps update;
 </li>
+<li><b>v: 0.3.3.5t / d: 03.04.25</b> 
+deps update; pure-slider testinZg; replace uuid w/ nanoid;
+</li>
+<li><b>v: 0.3.3.5ta / d: 04.04.25</b> 
+Style and positioning of bullets/description fix; deps update;
+</li>
 
 <hr>
 <h3> 3. Known issues/to go</h3>
@@ -87,6 +93,10 @@ deps update;
 <b>UPD: moved slick styles to component folder and get rid of unused classes</b><br>
 <del>[X] Yandex.Analytics - UPD: have an integration issue; For now do not know where to put in in the dev version; I just put the script into the final bundle;</del><br>
 <b>UPD: use lib to add Metrika;</b><br>
-[&nbsp;&nbsp;] Non typed YM script<br>
+[&nbsp;&nbsp;] Non typed YM script;<br>
 [&nbsp;&nbsp;] Implement DB with phpAdminPanel - to go;<br>
 [X] Skeleton loading - still can`t figure out if it works correctly or not <strong><br>UPD: NOW TESTINGS</strong>;<br>
+<hr>
+Version naming:<br>
+t - test;<br>
+a, b, c - test attempts;
