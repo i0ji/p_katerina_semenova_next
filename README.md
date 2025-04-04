@@ -95,7 +95,7 @@ Style and positioning of bullets/description fix; deps update;
 <b>UPD: use lib to add Metrika;</b><br>
 [&nbsp;&nbsp;] Non typed YM script;<br>
 [&nbsp;&nbsp;] Implement DB with phpAdminPanel - to go;<br>
-[X] Skeleton loading - still can`t figure out if it works correctly or not <strong><br>UPD: NOW TESTINGS</strong>;<br>
+[&nbsp;&nbsp;] Skeleton loading - to go again;
 <hr>
 Version naming:<br>
 t - test;<br>
