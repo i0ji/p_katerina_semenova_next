@@ -82,9 +82,13 @@ deps update;
 deps update; pure-slider testinZg; replace uuid w/ nanoid;
 </li>
 <li><b>v: 0.3.3.5ta / d: 04.04.25</b> 
-Style and positioning of bullets/description fix;
+Style and positioning of bullets/description fix; deps update;
 </li>
-
+<li><b>v: 0.3.3.6 / d: 08.04.25</b> 
+Return to slcik; start dark theme; deps^;
+Skeleton loading refactor;
+</li>
+</ul>
 <hr>
 <h3> 3. Known issues/to go</h3>
 [X] <del>Still have trouble with build/dev paths and aliases; Still have to change it manually when deploy to Pages or to prod;</del><br>
@@ -95,7 +99,7 @@ Style and positioning of bullets/description fix;
 <b>UPD: use lib to add Metrika;</b><br>
 [&nbsp;&nbsp;] Non typed YM script;<br>
 [&nbsp;&nbsp;] Implement DB with phpAdminPanel - to go;<br>
-[X] Skeleton loading - still can`t figure out if it works correctly or not <strong><br>UPD: NOW TESTINGS</strong>;<br>
+[&nbsp;&nbsp;] Skeleton loading - to go again;
 <hr>
 Version naming:<br>
 t - test;<br>

@@ -5,13 +5,5 @@ import {
   NextButton,
   PrevButton,
 } from '@/components/Button/Button';
-import Bullets from '@/components/Bullets/Bullets';
 
-export {
-  Slides,
-  Header,
-  Footer,
-  NextButton,
-  PrevButton,
-  Bullets,
-};
+export { Slides, Header, Footer, NextButton, PrevButton };
