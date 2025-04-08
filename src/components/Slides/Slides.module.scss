@@ -43,11 +43,13 @@
 
     &__leftArrow:hover {
       opacity: 0.5;
-      background: linear-gradient(-90deg, transparent, black) transparent;
+      background: linear-gradient(-90deg, transparent, black)
+        transparent;
     }
     &__rightArrow:hover {
       opacity: 0.5;
-      background: linear-gradient(90deg, transparent, black) transparent;
+      background: linear-gradient(90deg, transparent, black)
+        transparent;
     }
   }
 
