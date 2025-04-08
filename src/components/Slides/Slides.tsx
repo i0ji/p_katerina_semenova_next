@@ -9,49 +9,10 @@ import { nanoid } from 'nanoid';
 
 import './Slick.scss';
 import styles from './Slides.module.scss';
+import { NextButton, PrevButton } from '../Button/Button';
 
-
-export default function Slides(
-  props: SlideModelNamespace.SlidesDataModel
-) {
+export default function Slides(props: SlidesDataModel) {
   const sliderRef = useRef<Slider>(null);
-
-  const [imagesLoaded, setImagesLoaded] = useState(false);
-
-  useEffect(() => {
-    const imageElements = document.querySelectorAll(
-      `.${styles.slide__image}`
-    );
-    let loadedCount = 0;
-
-    const handleImageLoad = () => {
-      loadedCount++;
-      if (loadedCount === imageElements.length) {
-        setImagesLoaded(true);
-      }
-    };
-
-    imageElements.forEach((img) => {
-      const image = img as HTMLImageElement;
-
-      if (image.complete) {
-        handleImageLoad();
-      } else {
-        image.addEventListener('load', handleImageLoad);
-      }
-    });
-
-    if (imageElements.length === 0) {
-      setImagesLoaded(true);
-    }
-
-    return () => {
-      imageElements.forEach((img) => {
-        const image = img as HTMLImageElement;
-        image.removeEventListener('load', handleImageLoad);
-      });
-    };
-  }, [props.slides]);
 
   const settings = {
     dots: true,
@@ -60,7 +21,7 @@ export default function Slides(
     slidesToShow: 1,
     slidesToScroll: 1,
     waitForAnimate: true,
-    autoplay: true,
+    autoplay: !props.isTested,
     autoplaySpeed: 4000,
     pauseOnHover: true,
     arrows: false,
@@ -75,41 +36,30 @@ export default function Slides(
 
   return (
     <section className={styles.slides}>
-      <Slider ref={sliderRef} {...settings}>
-        {props.slides.map((slide) => (
-          <div
-            key={slide.id}
-            className={styles.slide}
-            inert={false}
-          >
-            {!imagesLoaded ? (
-              <Skeleton height={900} width={2000} />
-            ) : (
-              slide.img && (
-                <div inert={true} key={nanoid()}>
-                  <Image
-                    src={slide.img}
-                    alt={props.description}
-                    className={styles.slide__image}
-                    width={160}
-                    height={900}
-                    priority
-                    aria-hidden={false}
-                  />
-                </div>
-              )
-            )}
-            <button
-              className={styles.slide__leftArrow}
-              onClick={() => sliderRef.current?.slickPrev()}
-            />
-            <button
-              className={styles.slide__rightArrow}
-              onClick={() => sliderRef.current?.slickNext()}
-            />
-          </div>
-        ))}
-      </Slider>
+      <div className={styles.slides__wrapper}>
+        <Slider ref={sliderRef} {...settings}>
+          {props.slides.map((slide) => (
+            <div key={slide.id} className={styles.slide}>
+              <div inert={true} key={nanoid()}>
+                <Image
+                  src={slide.img}
+                  alt={props.description}
+                  className={styles.slide__image}
+                  width={2000}
+                  height={900}
+                  priority
+                />
+              </div>
+            </div>
+          ))}
+        </Slider>
+        <PrevButton
+          onClick={() => sliderRef.current?.slickPrev()}
+        />
+        <NextButton
+          onClick={() => sliderRef.current?.slickNext()}
+        />
+      </div>
       <p>{props.description}</p>
     </section>
   );
