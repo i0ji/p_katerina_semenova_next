@@ -5,11 +5,11 @@ import { useRef, useState, useEffect } from 'react';
 import Skeleton from 'react-loading-skeleton';
 import Image from 'next/image';
 import Slider from 'react-slick';
+import { nanoid } from 'nanoid';
 
 import './Slick.scss';
 import styles from './Slides.module.scss';
 
-import { nanoid } from 'nanoid';
 
 export default function Slides(
   props: SlideModelNamespace.SlidesDataModel
