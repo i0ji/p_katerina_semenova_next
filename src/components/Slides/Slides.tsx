@@ -1,45 +1,60 @@
 'use client';
 
-import { useRef, useState, useEffect } from 'react';
-
-import Skeleton from 'react-loading-skeleton';
+import { useEffect, useRef } from 'react';
 import Image from 'next/image';
-import Slider from 'react-slick';
 import { nanoid } from 'nanoid';
+import Swiper, {
+  SwiperPluginLazyload,
+  SwiperPluginPagination,
+} from 'tiny-swiper';
+// import 'tiny-swiper/dist/tiny-swiper.css';
 
-import './Slick.scss';
 import styles from './Slides.module.scss';
 import { NextButton, PrevButton } from '../Button/Button';
 
-export default function Slides(props: SlidesDataModel) {
-  const sliderRef = useRef<Slider>(null);
 
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 300,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    waitForAnimate: true,
-    autoplay: !props.isTested,
-    autoplaySpeed: 4000,
-    pauseOnHover: true,
-    arrows: false,
-    afterChange: () => {
-      const activeElement =
-        document.activeElement as HTMLElement;
-      if (activeElement) {
-        activeElement.blur();
+export default function Slides(props: SlidesDataModel) {
+  const swiperContainerRef = useRef<HTMLDivElement>(null);
+  const swiperInstance = useRef<any>(null);
+
+  // Инициализация tiny-swiper
+  useEffect(() => {
+    if (swiperContainerRef.current && !swiperInstance.current) {
+      swiperInstance.current = new Swiper(
+        swiperContainerRef.current,
+        {
+          plugins: [
+            SwiperPluginLazyload,
+            SwiperPluginPagination,
+          ],
+          loop: true,
+          speed: 500,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+        }
+      );
+    }
+
+    // Очистка при размонтировании
+    return () => {
+      if (swiperInstance.current) {
+        swiperInstance.current.destroy();
       }
-    },
-  };
+    };
+  }, []);
+
+  // Функции для кнопок навигации
+  const goNext = () => swiperInstance.current?.slideNext();
+  const goPrev = () => swiperInstance.current?.slidePrev();
 
   return (
     <section className={styles.slides}>
-      <div className={styles.slides__wrapper}>
-        <Slider ref={sliderRef} {...settings}>
+      <div className="swiper-container" ref={swiperContainerRef}>
+        <div className="swiper-wrapper">
           {props.slides.map((slide) => (
-            <div key={slide.id} className={styles.slide}>
+            <div key={slide.id} className="swiper-slide">
               <div inert={true} key={nanoid()}>
                 <Image
                   src={slide.img}
@@ -52,13 +67,14 @@ export default function Slides(props: SlidesDataModel) {
               </div>
             </div>
           ))}
-        </Slider>
-        <PrevButton
-          onClick={() => sliderRef.current?.slickPrev()}
-        />
-        <NextButton
-          onClick={() => sliderRef.current?.slickNext()}
-        />
+        </div>
+
+        {/* Кастомные кнопки навигации */}
+        <PrevButton onClick={goPrev} />
+        <NextButton onClick={goNext} />
+
+        {/* Пагинация (если нужно) */}
+        <div className="swiper-pagination"></div>
       </div>
       <p>{props.description}</p>
     </section>

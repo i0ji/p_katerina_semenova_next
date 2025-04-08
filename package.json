@@ -35,6 +35,7 @@
     "sass": "^1.86.3",
     "sass-loader": "^16.0.5",
     "slick-carousel": "^1.8.1",
+    "tiny-swiper": "^2.2.0",
     "typescript": "^5.8.3"
   }
 }

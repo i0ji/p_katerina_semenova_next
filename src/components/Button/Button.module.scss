@@ -69,19 +69,19 @@
   transition: 0.3s all ease;
   cursor: pointer;
   pointer-events: auto;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
 
-//   &:hover,
-//   &:focus,
-//   &:active {
-//     outline: none;
-//     box-shadow: none;
-//     -webkit-tap-highlight-color: transparent;
-//   }
+  //   &:hover,
+  //   &:focus,
+  //   &:active {
+  //     outline: none;
+  //     box-shadow: none;
+  //     -webkit-tap-highlight-color: transparent;
+  //   }
 }
 
 .button__next:active .button__prev:active {
-  border-radius: .5rem;
+  border-radius: 0.5rem;
 }
 
 .button__prev {
