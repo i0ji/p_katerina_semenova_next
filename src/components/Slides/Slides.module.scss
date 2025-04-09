@@ -33,49 +33,6 @@
   }
 }
 
-/* Slides.module.scss */
-
-.swiper-container {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-}
-
-.swiper-wrapper {
-  display: flex;
-  width: 100%;
-  height: 100%;
-}
-
-.swiper-slide {
-  flex-shrink: 0;
-  width: 100%;
-  position: relative;
-}
-
-/* Пагинация (если используете) */
-.swiper-pagination {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 8px;
-  z-index: 10;
-}
-
-.swiper-pagination-bullet {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #ccc;
-  cursor: pointer;
-
-  &-active {
-    background: #333;
-  }
-}
-
 @media (max-width: 840px) {
   .slides {
     ul {
