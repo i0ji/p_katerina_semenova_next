@@ -84,6 +84,9 @@ deps update; pure-slider testinZg; replace uuid w/ nanoid;
 <li><b>v: 0.3.3.5ta / d: 04.04.25</b> 
 Style and positioning of bullets/description fix; deps update;
 </li>
+<li><b>v: 0.3.3.5t / d: 16.04.25</b> 
+deps update;
+</li>
 </ul>
 <hr>
 <h3> 3. Known issues/to go</h3>
