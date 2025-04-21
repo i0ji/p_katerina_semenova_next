@@ -21,7 +21,7 @@
       max-width: 100%;
       height: 100%;
       width: auto;
-      
+
       border-radius: 5px;
     }
   }
@@ -61,12 +61,13 @@
 }
 
 @media (max-width: 840px) {
-  .slides {
+
     .dots {
+      background-color: red;
       position: absolute;
       bottom: 20px;
       left: 0;
       right: 0;
     }
-  }
+  
 }
