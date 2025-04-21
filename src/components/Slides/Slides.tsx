@@ -1,103 +1,102 @@
 'use client';
 
-import { useState, useEffect, useRef, useCallback } from 'react';
-// import Glide from '@glidejs/glide';
-import '@glidejs/glide/dist/css/glide.core.min.css';
-import '@glidejs/glide/dist/css/glide.theme.min.css';
-import styles from './Slides.module.scss';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import {
-  NextButton,
-  PrevButton,
-  Bullets,
-} from '@/components/index';
+import { nanoid } from 'nanoid';
+
+import styles from './Slides.module.scss';
+import { NextButton, PrevButton } from '@/components/index';
+
+//CURRENT
+import { useKeenSlider } from 'keen-slider/react';
+import 'keen-slider/keen-slider.min.css';
 
 export default function Slides(props: SlidesDataModel) {
-  const glideRef = useRef<HTMLDivElement>(null);
-  const glideInstance = useRef<GlideInstanceModel | null>(null);
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [loaded, setLoaded] = useState(false);
 
-  //CURRENT
-  const handleNext = useCallback(() => {
-    glideInstance.current?.go('>');
-  }, []);
-
-  const handlePrev = useCallback(() => {
-    glideInstance.current?.go('<');
-  }, []);
-
-  const goToSlide = useCallback((index: number) => {
-    glideInstance.current?.go(`=${index}`);
-  }, []);
+  const [sliderRef, sliderInstance] = useKeenSlider({
+    loop: true,
+    initial: 0,
+    slideChanged(slider) {
+      setCurrentSlide(slider.track.details.rel);
+    },
+    created() {
+      setLoaded(true);
+    },
+    mode: 'free-snap',
+    slides: {
+      perView: 1,
+      spacing: 0,
+    },
+  });
 
   useEffect(() => {
-    if (!glideRef.current) return;
+    const interval = setInterval(() => {
+      // sliderInstance.current &&
+      //   !props.isTested &&
+        sliderInstance!.current!.next();
+    }, 3000);
 
-    const initGlide = async () => {
-      const GlideModule = await import('@glidejs/glide');
-      glideInstance.current = new GlideModule.default(
-        glideRef.current!,
-        {
-          type: 'carousel',
-          startAt: 0,
-          perView: 1,
-          gap: 10,
-          autoplay: true,
-          hoverpause: true,
-          animationDuration: 500,
-        }
-      );
-
-      glideInstance.current!.on('run', () => {
-        setActiveIndex(glideInstance.current!.index);
-      });
-
-      glideInstance.current!.mount();
-
-      return () => glideInstance.current?.destroy();
+    return () => {
+      clearInterval(interval);
     };
+  }, [sliderInstance, props.isTested]);
 
-    initGlide();
-  }, []);
+  const goNext = () => sliderInstance.current?.next();
+  const goPrev = () => sliderInstance.current?.prev();
 
   return (
     <section className={styles.slides}>
-      <div className="glide" ref={glideRef}>
-        <div className="glide__track" data-glide-el="track">
-          <ul className="glide__slides">
-            {props.slides.map((slide, index) => (
-              <li
-                key={slide.id}
-                className={`glide__slide ${styles.slide}`}
-              >
-                <div className={styles.slide__image_wrapper}>
-                  <Image
-                    src={slide.img}
-                    alt={props.description}
-                    width={1600}
-                    height={900}
-                    className={styles.slide__image}
-                    priority={index === 0}
-                  />
-                </div>
-              </li>
-            ))}
-          </ul>
+      <div className={styles.slides__wrapper}>
+        <div className="keen-slider" ref={sliderRef}>
+          {props.slides.map((slide, index) => (
+            <div key={slide.id} className="keen-slider__slide">
+              <div inert={true} key={nanoid()}>
+                <Image
+                  src={slide.img}
+                  alt={props.description}
+                  className={styles.slide__image}
+                  width={2000}
+                  height={900}
+                  priority={index === 0}
+                  loading={index <= 1 ? 'eager' : 'lazy'}
+                  quality={85}
+                />
+              </div>
+            </div>
+          ))}
         </div>
 
-        <div className={styles.navigation}>
-          <PrevButton onClick={handlePrev} />
-          <NextButton onClick={handleNext} />
+        {loaded && sliderInstance.current && (
+          <>
+            <PrevButton onClick={goPrev} />
+            <NextButton onClick={goNext} />
+          </>
+        )}
+      </div>
+
+      {loaded && sliderInstance.current && (
+        <div className={styles.dots}>
+          {[
+            ...Array(
+              sliderInstance.current.track.details.slides.length
+            ).keys(),
+          ].map((idx) => (
+            <button
+              key={idx}
+              onClick={() =>
+                sliderInstance.current?.moveToIdx(idx)
+              }
+              className={`${styles.dot} ${
+                currentSlide === idx ? styles.active : ''
+              }`}
+            />
+          ))}
         </div>
-      </div>
-      <div className={styles.slide__description}>
-        <p>{props.description}</p>
-        <Bullets
-          slides={props.slides}
-          activeIndex={activeIndex}
-          onBulletClick={goToSlide}
-        />
-      </div>
+      )}
+
+      <p>{props.description}</p>
     </section>
   );
 }

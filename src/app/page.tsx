@@ -1,13 +1,15 @@
 import { Header, Slides, Footer } from '@/components/index';
 import { SlideData } from 'public';
 import { nanoid } from 'nanoid';
+import packageJson from '../../package.json';
 
 export default function Home() {
   //CONSOLE
-  console.log('v: 0.3.3.5ta/03.04.25');
+  console.log(`${packageJson.version} / 08.04.25`);
 
   //OPTION
-  const isTested = 0;
+  //FIXME
+  const isTested = false;
 
   return (
     <>
@@ -18,6 +20,7 @@ export default function Home() {
           key={nanoid()}
           slides={SlideData[0].slides}
           description={SlideData[0].description}
+          isTested={isTested}
         />
       ) : (
         SlideData.map((slides: SlidesDataModel) => (
@@ -25,16 +28,10 @@ export default function Home() {
             key={nanoid()}
             slides={slides.slides}
             description={slides.description}
+            isTested={isTested}
           />
         ))
       )}
-
-      {/* OPTION */}
-      {/* <Slides
-        key={nanoid()}
-        slides={SlideData[1].slides}
-        description={SlideData[1].description}
-      /> */}
       <Footer />
     </>
   );

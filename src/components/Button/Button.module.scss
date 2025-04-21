@@ -1,32 +1,25 @@
 .button__prev,
 .button__next {
   position: absolute;
-  z-index: 1;
   top: 0;
+  z-index: 1;
 
-  width: 25%;
+  width: 20%;
   height: calc(100% - 6px);
+  padding: 0;
+  margin: 0;
 
   border-radius: 5px;
-  background-color: transparent;
 
   opacity: 0;
-  transition: 0.3s all ease;
-  cursor: pointer;
-  pointer-events: auto;
-  border-radius: .5rem;
+  background-color: transparent;
 
-//   &:hover,
-//   &:focus,
-//   &:active {
-//     outline: none;
-//     box-shadow: none;
-//     -webkit-tap-highlight-color: transparent;
-//   }
+  cursor: pointer;
+  transition: 1s all ease;
 }
 
 .button__next:active .button__prev:active {
-  border-radius: .5rem;
+  border-radius: 0.5rem;
 }
 
 .button__prev {

@@ -10,6 +10,7 @@ export function PrevButton({ onClick }: ButtonProps) {
       onClick={onClick}
       className={styles.button__prev}
       aria-label="Previous slide"
+      tabIndex={-1}
     />
   );
 }
@@ -20,6 +21,7 @@ export function NextButton({ onClick }: ButtonProps) {
       onClick={onClick}
       className={styles.button__next}
       aria-label="Next slide"
+      tabIndex={-1}
     />
   );
 }
