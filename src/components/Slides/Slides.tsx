@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { nanoid } from 'nanoid';
 
@@ -18,6 +18,7 @@ export default function Slides(props: SlidesDataModel) {
   const [loaded, setLoaded] = useState(false);
 
   //CURRENT
+  const sliderContainerRef = useRef<HTMLDivElement>(null);
   const [sliderReady, setSliderReady] = useState(false);
   const [sliderHeight, setSliderHeight] = useState(0);
 
@@ -30,11 +31,14 @@ export default function Slides(props: SlidesDataModel) {
     created() {
       setLoaded(true);
       //CURRENT
-      const slideElement = sliderRef.current?.querySelector(
-        '.keen-slider__slide'
-      );
-      if (slideElement) {
-        setSliderHeight(slideElement.clientHeight);
+      if (sliderContainerRef.current) {
+        const slideElement =
+          sliderContainerRef.current.querySelector(
+            '.keen-slider__slide'
+          );
+        if (slideElement) {
+          setSliderHeight(slideElement.clientHeight);
+        }
       }
       setSliderReady(true);
     },
@@ -63,6 +67,7 @@ export default function Slides(props: SlidesDataModel) {
   return (
     <section className={styles.slides}>
       <div className={styles.slides__wrapper}>
+
         {!sliderReady && (
           <Skeleton
             height={sliderHeight > 0 ? sliderHeight : 500}
@@ -99,7 +104,6 @@ export default function Slides(props: SlidesDataModel) {
             </div>
           ))}
         </div>
-
         {loaded && sliderInstance.current && (
           <>
             <PrevButton onClick={goPrev} />
