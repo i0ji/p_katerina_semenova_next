@@ -7,13 +7,19 @@ import { nanoid } from 'nanoid';
 import styles from './Slides.module.scss';
 import { NextButton, PrevButton } from '@/components/index';
 
-//CURRENT
 import { useKeenSlider } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
+//CURRENT
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 export default function Slides(props: SlidesDataModel) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [loaded, setLoaded] = useState(false);
+
+  //CURRENT
+  const [sliderReady, setSliderReady] = useState(false);
+  const [sliderHeight, setSliderHeight] = useState(0);
 
   const [sliderRef, sliderInstance] = useKeenSlider({
     loop: true,
@@ -23,6 +29,14 @@ export default function Slides(props: SlidesDataModel) {
     },
     created() {
       setLoaded(true);
+      //CURRENT
+      const slideElement = sliderRef.current?.querySelector(
+        '.keen-slider__slide'
+      );
+      if (slideElement) {
+        setSliderHeight(slideElement.clientHeight);
+      }
+      setSliderReady(true);
     },
     mode: 'free-snap',
     slides: {
@@ -49,7 +63,25 @@ export default function Slides(props: SlidesDataModel) {
   return (
     <section className={styles.slides}>
       <div className={styles.slides__wrapper}>
-        <div className="keen-slider" ref={sliderRef}>
+        {!sliderReady && (
+          <Skeleton
+            height={sliderHeight > 0 ? sliderHeight : 500}
+            containerClassName={styles.skeletonContainer}
+            style={{
+              display: 'block',
+              width: '100%',
+            }}
+            baseColor="#f0f0f0"
+            highlightColor="#e0e0e0"
+          />
+        )}
+        <div
+          className="keen-slider"
+          ref={sliderRef}
+          style={{
+            visibility: sliderReady ? 'visible' : 'hidden',
+          }}
+        >
           {props.slides.map((slide, index) => (
             <div key={slide.id} className="keen-slider__slide">
               <div inert={true} key={nanoid()}>
@@ -95,27 +127,6 @@ export default function Slides(props: SlidesDataModel) {
           </div>
         )}
       </div>
-
-      {/* {loaded && sliderInstance.current && (
-        <div className={styles.dots}>
-          {[
-            ...Array(
-              sliderInstance.current.track.details.slides.length
-            ).keys(),
-          ].map((idx) => (
-            <button
-              key={idx}
-              onClick={() =>
-                sliderInstance.current?.moveToIdx(idx)
-              }
-              className={`${styles.dot} ${
-                currentSlide === idx ? styles.active : ''
-              }`}
-            />
-          ))}
-        </div>
-      )} */}
-
       <p>{props.description}</p>
     </section>
   );

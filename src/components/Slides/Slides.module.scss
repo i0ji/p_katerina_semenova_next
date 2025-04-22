@@ -8,6 +8,16 @@
     height: 100%;
   }
 
+  .skeletonContainer {
+    width: 100%;
+    margin-bottom: 1rem;
+
+    // Если нужно закругленные углы
+    span {
+      border-radius: 4px;
+    }
+  }
+
   .keen-slider {
     position: relative;
 
