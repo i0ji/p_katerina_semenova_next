@@ -61,13 +61,20 @@
 }
 
 @media (max-width: 840px) {
-
+  .slides {
+    position: relative;
     .dots {
-      background-color: red;
+      width: 100%;
+      justify-content: center;
+      //FIXME
+      // border: 2px solid red;
+      // left: 50%;
+      // transform: translateX(-50%);
       position: absolute;
-      bottom: 20px;
-      left: 0;
-      right: 0;
+      bottom: 4rem;
+      white-space: nowrap;
+
+      // left: 0;
     }
-  
+  }
 }
