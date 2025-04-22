@@ -35,7 +35,7 @@ export default function Slides(props: SlidesDataModel) {
     const interval = setInterval(() => {
       // sliderInstance.current &&
       //   !props.isTested &&
-        sliderInstance!.current!.next();
+      sliderInstance!.current!.next();
     }, 3000);
 
     return () => {
@@ -74,9 +74,29 @@ export default function Slides(props: SlidesDataModel) {
             <NextButton onClick={goNext} />
           </>
         )}
+        {loaded && sliderInstance.current && (
+          <div className={styles.dots}>
+            {[
+              ...Array(
+                sliderInstance.current.track.details.slides
+                  .length
+              ).keys(),
+            ].map((idx) => (
+              <button
+                key={idx}
+                onClick={() =>
+                  sliderInstance.current?.moveToIdx(idx)
+                }
+                className={`${styles.dot} ${
+                  currentSlide === idx ? styles.active : ''
+                }`}
+              />
+            ))}
+          </div>
+        )}
       </div>
 
-      {loaded && sliderInstance.current && (
+      {/* {loaded && sliderInstance.current && (
         <div className={styles.dots}>
           {[
             ...Array(
@@ -94,7 +114,7 @@ export default function Slides(props: SlidesDataModel) {
             />
           ))}
         </div>
-      )}
+      )} */}
 
       <p>{props.description}</p>
     </section>
