@@ -93,6 +93,9 @@ deps update;
 <li><b>v: 0.3.3.6t / d: 22.04.25</b> 
 deps update; slider and dots set - testing; add loading skeleton;
 </li>
+<li><b>v: 0.3.3.6t / d: 22.04.25</b> 
+deps update;
+</li>
 </ul>
 <hr>
 <h3> 3. Known issues/to go</h3>
