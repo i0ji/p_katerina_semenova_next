@@ -84,9 +84,20 @@ deps update; pure-slider testinZg; replace uuid w/ nanoid;
 <li><b>v: 0.3.3.5ta / d: 04.04.25</b> 
 Style and positioning of bullets/description fix; deps update;
 </li>
-<li><b>v: 0.3.3.6 / d: 08.04.25</b> 
-Return to slcik; start dark theme; deps^;
-Skeleton loading refactor;
+<li><b>v: 0.3.3.5t / d: 16.04.25</b> 
+deps update;
+</li>
+<li><b>v: 0.3.3.6 / d: 21.04.25</b> 
+deps update;
+</li>
+<li><b>v: 0.3.3.6t / d: 22.04.25</b> 
+deps update; slider and dots set - testing; add loading skeleton;
+</li>
+<li><b>v: 0.3.3.6t / d: 08.05.25</b> 
+deps update;
+</li>
+<li><b>v: 0.3.4 / d: 16.05.25</b> 
+customizing commitizen
 </li>
 </ul>
 <hr>
@@ -97,7 +108,7 @@ Skeleton loading refactor;
 <b>UPD: moved slick styles to component folder and get rid of unused classes</b><br>
 <del>[X] Yandex.Analytics - UPD: have an integration issue; For now do not know where to put in in the dev version; I just put the script into the final bundle;</del><br>
 <b>UPD: use lib to add Metrika;</b><br>
-[&nbsp;&nbsp;] Non typed YM script<br>
+[&nbsp;&nbsp;] Non typed YM script;<br>
 [&nbsp;&nbsp;] Implement DB with phpAdminPanel - to go;<br>
 [&nbsp;&nbsp;] Skeleton loading - to go again;
 <hr>
