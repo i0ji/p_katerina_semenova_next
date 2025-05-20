@@ -18,10 +18,10 @@ export default function Slides(props: SlidesDataModel) {
   const [loaded, setLoaded] = useState(false);
 
   //CURRENT
-  const sliderContainerRef = useRef<HTMLDivElement>(null);
   const [sliderReady, setSliderReady] = useState(false);
   const [sliderHeight, setSliderHeight] = useState(0);
 
+  const sliderDomRef = useRef<HTMLElement | null>(null);
   const [sliderRef, sliderInstance] = useKeenSlider({
     loop: true,
     initial: 0,
@@ -30,12 +30,10 @@ export default function Slides(props: SlidesDataModel) {
     },
     created() {
       setLoaded(true);
-      //CURRENT
-      if (sliderContainerRef.current) {
-        const slideElement =
-          sliderContainerRef.current.querySelector(
-            '.keen-slider__slide'
-          );
+      if (sliderDomRef.current) {
+        const slideElement = sliderDomRef.current.querySelector(
+          '.keen-slider__slide'
+        );
         if (slideElement) {
           setSliderHeight(slideElement.clientHeight);
         }
@@ -48,11 +46,32 @@ export default function Slides(props: SlidesDataModel) {
       spacing: 0,
     },
   });
+  // const [sliderRef, sliderInstance] = useKeenSlider({
+  //   loop: true,
+  //   initial: 0,
+  //   slideChanged(slider) {
+  //     setCurrentSlide(slider.track.details.rel);
+  //   },
+  //   created() {
+  //     setLoaded(true);
+
+  //     const slideElement = sliderRef.current?.querySelector(
+  //       '.keen-slider__slide'
+  //     );
+  //     if (slideElement) {
+  //       setSliderHeight(slideElement.clientHeight);
+  //     }
+  //     setSliderReady(true);
+  //   },
+  //   mode: 'free-snap',
+  //   slides: {
+  //     perView: 1,
+  //     spacing: 0,
+  //   },
+  // });
 
   useEffect(() => {
     const interval = setInterval(() => {
-      // sliderInstance.current &&
-      //   !props.isTested &&
       sliderInstance!.current!.next();
     }, 3000);
 
@@ -70,7 +89,9 @@ export default function Slides(props: SlidesDataModel) {
 
         {!sliderReady && (
           <Skeleton
-            height={sliderHeight > 0 ? sliderHeight : 500}
+            //OPTION
+            height={sliderHeight > 0 ? sliderHeight : 300}
+            // height={400}
             containerClassName={styles.skeletonContainer}
             style={{
               display: 'block',
