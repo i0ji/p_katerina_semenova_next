@@ -21,67 +21,32 @@ export default function Slides(props: SlidesDataModel) {
   const [sliderReady, setSliderReady] = useState(false);
   const [sliderHeight, setSliderHeight] = useState(0);
 
-  const sliderDomRef = useRef<HTMLElement | null>(null);
-  const [sliderRef, sliderInstance] = useKeenSlider({
-    loop: true,
-    initial: 0,
-    slideChanged(slider) {
-      setCurrentSlide(slider.track.details.rel);
-    },
-    created() {
-      setLoaded(true);
-      if (sliderDomRef.current) {
-        const slideElement = sliderDomRef.current.querySelector(
-          '.keen-slider__slide'
-        );
-        if (slideElement) {
-          setSliderHeight(slideElement.clientHeight);
-        }
-      }
-      setSliderReady(true);
-    },
-    mode: 'free-snap',
-    slides: {
-      perView: 1,
-      spacing: 0,
-    },
-  });
-  // const [sliderRef, sliderInstance] = useKeenSlider({
-  //   loop: true,
-  //   initial: 0,
-  //   slideChanged(slider) {
-  //     setCurrentSlide(slider.track.details.rel);
-  //   },
-  //   created() {
-  //     setLoaded(true);
-
-  //     const slideElement = sliderRef.current?.querySelector(
-  //       '.keen-slider__slide'
-  //     );
-  //     if (slideElement) {
-  //       setSliderHeight(slideElement.clientHeight);
-  //     }
-  //     setSliderReady(true);
-  //   },
-  //   mode: 'free-snap',
-  //   slides: {
-  //     perView: 1,
-  //     spacing: 0,
-  //   },
-  // });
+  const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>(
+    {
+      initial: 0,
+      slideChanged(slider) {
+        setCurrentSlide(slider.track.details.rel);
+      },
+      created() {
+        setLoaded(true);
+        setSliderReady(true);
+      },
+      loop: true,
+    }
+  );
 
   useEffect(() => {
     const interval = setInterval(() => {
-      sliderInstance!.current!.next();
+      instanceRef!.current!.next();
     }, 3000);
 
     return () => {
       clearInterval(interval);
     };
-  }, [sliderInstance, props.isTested]);
+  }, [instanceRef, props.isTested]);
 
-  const goNext = () => sliderInstance.current?.next();
-  const goPrev = () => sliderInstance.current?.prev();
+  const goNext = () => instanceRef.current?.next();
+  const goPrev = () => instanceRef.current?.prev();
 
   return (
     <section className={styles.slides}>
@@ -90,7 +55,6 @@ export default function Slides(props: SlidesDataModel) {
           <Skeleton
             //OPTION
             height={sliderHeight > 0 ? sliderHeight : 300}
-            // height={400}
             containerClassName={styles.skeletonContainer}
             style={{
               display: 'block',
@@ -125,24 +89,23 @@ export default function Slides(props: SlidesDataModel) {
           ))}
         </div>
 
-        {loaded && sliderInstance.current && (
+        {loaded && instanceRef.current && (
           <>
             <PrevButton onClick={goPrev} />
             <NextButton onClick={goNext} />
           </>
         )}
-        {loaded && sliderInstance.current && (
+        {loaded && instanceRef.current && (
           <div className={styles.dots}>
             {[
               ...Array(
-                sliderInstance.current.track.details.slides
-                  .length
+                instanceRef.current.track.details.slides.length
               ).keys(),
             ].map((idx) => (
               <button
                 key={idx}
                 onClick={() =>
-                  sliderInstance.current?.moveToIdx(idx)
+                  instanceRef.current?.moveToIdx(idx)
                 }
                 className={`${styles.dot} ${
                   currentSlide === idx ? styles.active : ''
