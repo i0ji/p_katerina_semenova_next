@@ -12,7 +12,6 @@
     width: 100%;
     margin-bottom: 1rem;
 
-    // Если нужно закругленные углы
     span {
       border-radius: 4px;
     }
@@ -84,3 +83,29 @@
     }
   }
 }
+
+// @media (max-width: 800px) {
+//   .slides {
+//     div {
+//       span:has(br) {
+//         max-height: 550px;
+//       }
+//     }
+//   }
+// }
+
+// @media (max-width: 500px) {
+//   .slides > div > span > span {
+//     height: 500px;
+//   }
+// }
+
+// @media (max-width: 400px) {
+//   // .slides > div > span:has(br) {
+//   //   border: 5px solid yellow;
+//   // }
+
+//   .wrapper {
+//     max-height: 50%;
+//   }
+// }
