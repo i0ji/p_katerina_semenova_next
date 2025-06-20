@@ -99,6 +99,9 @@ deps update;
 <li><b>v: 0.3.4 / d: 16.05.25</b> 
 customizing commitizen
 </li>
+<li><b>v: 0.3.4 / d: 20.06.25</b> 
+deps update;
+</li>
 </ul>
 <hr>
 <h3> 3. Known issues/to go</h3>
