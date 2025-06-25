@@ -1,7 +1,6 @@
 import { Header, Slides, Footer } from '@/components/index';
 import { SlideData } from 'public';
 import { nanoid } from 'nanoid';
-import packageJson from '../../package.json';
 
 export default function Home() {
   //CONSOLE

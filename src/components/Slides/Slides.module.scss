@@ -1,66 +1,67 @@
 @use '@/styles/mixin' as *;
 
 .slides {
-  position: relative;
+  margin-bottom: 30px;
 
-  &__wrapper {
+  .keen-slider__slide {
+    min-width: 100% !important;
+    max-width: 100% !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
     position: relative;
-    height: 100%;
-  }
-
-  .skeletonContainer {
-    width: 100%;
-    margin-bottom: 1rem;
-
-    span {
-      border-radius: 4px;
-    }
-  }
-
-  .keen-slider {
-    position: relative;
-
-    &__slide {
-      position: relative;
-    }
   }
 
   .slide {
+    position: relative;
+
     &__image {
-      max-width: 100%;
-      height: 100%;
-      width: auto;
+      display: block;
+
+      width: 100%;
+      height: auto;
+      object-fit: contain;
 
       border-radius: 5px;
     }
   }
+  .slide__wrapper {
+    position: relative;
 
-  .dots {
-    @include flex(null, flex-end, null);
+    .dots {
+      position: absolute;
+      right: 0;
 
-    position: absolute;
-    bottom: -2.5rem;
-    right: 0;
+      display: flex;
+      justify-content: center;
 
-    padding: 10px 0;
-    gap: 8px;
-  }
+      margin-top: 22px;
+      gap: 8px;
 
-  .dot {
-    width: 10px;
-    height: 10px;
+      // //TEST
+      // border: 1px solid red;
 
-    border-radius: 50%;
-    border: none;
+      .dot {
+        width: 12px;
+        height: 12px;
 
-    background-color: rgba(0, 0, 0, 0.2);
+        background-color: #7a7a7a;
 
-    transition: background-color 0.3s ease;
+        border-radius: 50%;
+        border: none;
 
-    cursor: pointer;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
 
-    &.active {
-      background-color: rgba(0, 0, 0, 0.8);
+      .dot:hover {
+        background-color: #999;
+      }
+
+      .active {
+        background-color: rgb(20, 20, 20);
+      }
     }
   }
 
@@ -69,43 +70,43 @@
   }
 }
 
-@media (max-width: 840px) {
+@media (max-width: 900px) {
   .slides {
-    .dots {
-      justify-content: center;
-      position: absolute;
-
-      width: 100%;
-
-      bottom: 1rem;
-
-      white-space: nowrap;
+    .slide__wrapper {
+      .dots {
+        margin: 0;
+        left: 50%;
+        bottom: 5%;
+        transform: translateX(-50%);
+      }
     }
   }
 }
 
-// @media (max-width: 800px) {
+// @media (max-width: 450px) {
 //   .slides {
-//     div {
-//       span:has(br) {
-//         max-height: 550px;
+//     .slide__wrapper {
+//       .dots {
+//         left: 50%;
+//         transform: translateX(-50%);
 //       }
 //     }
 //   }
 // }
 
-// @media (max-width: 500px) {
-//   .slides > div > span > span {
-//     height: 500px;
-//   }
-// }
-
-// @media (max-width: 400px) {
-//   // .slides > div > span:has(br) {
-//   //   border: 5px solid yellow;
-//   // }
-
-//   .wrapper {
-//     max-height: 50%;
-//   }
-// }
+@media (max-width: 450px) {
+  .slides {
+    .slide__wrapper {
+      .dots {
+        flex-direction: column;
+        justify-content: flex-start;
+        margin: 0;
+        bottom: unset;
+        left: unset;
+        right: 5%;
+        transform: translateY(-50%);
+        top: 50%;
+      }
+    }
+  }
+}

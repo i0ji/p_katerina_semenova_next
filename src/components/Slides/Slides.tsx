@@ -1,84 +1,139 @@
 'use client';
 
-import { useRef, useState, useEffect } from 'react';
-
-import Skeleton from 'react-loading-skeleton';
-import Image from 'next/image';
-import Slider from 'react-slick';
-
-import './Slick.scss';
 import styles from './Slides.module.scss';
 
-export default function Slides(props: SlidesDataModel) {
-  const sliderRef = useRef<Slider>(null);
+import { useRef, useState, useEffect } from 'react';
 
-  const [isLoaded, setIsLoaded] = useState(false);
+import { NextButton, PrevButton } from '../Button/Button';
+import { useKeenSlider } from 'keen-slider/react';
+import { nanoid } from 'nanoid';
+import 'react-loading-skeleton/dist/skeleton.css';
+import 'keen-slider/keen-slider.min.css';
+import Skeleton from 'react-loading-skeleton';
+import Image from 'next/image';
+
+const aspectRatio = 1300 / 2000;
+
+export default function Slides(props) {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [loaded, setLoaded] = useState(false);
+  const [imagesLoaded, setImagesLoaded] = useState(
+    Array(props.slides.length).fill(false)
+  );
+
+  //CURRENT SKELETO
+  const handleImageLoad = (idx: number) => {
+    setImagesLoaded((prev) => {
+      const next = [...prev];
+      next[idx] = true;
+      return next;
+    });
+  };
+
+  const allLoaded = imagesLoaded.every(Boolean);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [width, setWidth] = useState(0);
+
+  //CURRENT SKELETON
 
   useEffect(() => {
-    if (typeof props.slides[0].img === 'string') {
-      const img = new globalThis.Image();
-      img.src = props.slides[0].img;
-      img.onload = () => setIsLoaded(true);
+    if (imagesLoaded.every(Boolean)) {
+      setLoaded(true);
     }
-    return () => {};
-  }, [props.slides]);
+  }, [imagesLoaded]);
 
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 300,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    waitForAnimate: true,
-    autoplay: true,
-    autoplaySpeed: 4000,
-    pauseOnHover: true,
-    arrows: false,
-    afterChange: () => {
-      const activeElement = document.activeElement as HTMLElement;
-      if (activeElement) {
-        activeElement.blur();
+  const [sliderRef, slider] = useKeenSlider({
+    loop: true,
+    slideChanged(s) {
+      setCurrentSlide(s.track.details.rel);
+    },
+  });
+
+  useEffect(() => {
+    function updateWidth() {
+      if (containerRef.current) {
+        setWidth(containerRef.current.offsetWidth);
+      } else {
+        setWidth(window.innerWidth);
       }
     }
-  };
+
+    updateWidth();
+    window.addEventListener('resize', updateWidth);
+    return () =>
+      window.removeEventListener('resize', updateWidth);
+  }, []);
+
+  const height = width * aspectRatio;
+
+  useEffect(() => {
+    if (!slider) return;
+    const interval = setInterval(() => {
+      slider.current!.next();
+    }, 10000);
+
+    return () => clearInterval(interval);
+  }, [slider]);
 
   return (
     <section className={styles.slides}>
-      <Slider ref={sliderRef} {...settings}>
-        {props.slides.map((slide) => (
-          <div key={slide.id} className={styles.slide}>
-            {isLoaded ? (
+      {!loaded && (
+        <Skeleton
+          height={height}
+          width="100%"
+          borderRadius={8}
+          baseColor="#ddd"
+          highlightColor="#eee"
+          style={{ marginBottom: 16 }}
+        />
+      )}
+
+      <div className={styles.slide__wrapper}>
+        <div
+          ref={sliderRef}
+          className={`keen-slider`}
+          style={{
+            opacity: allLoaded ? 1 : 0,
+            transition: 'opacity 0.3s',
+          }}
+        >
+          {props.slides.map((slide: SlideModel, idx: number) => (
+            <div
+              key={slide.id}
+              className={`keen-slider__slide ${styles.slide}`}
+            >
               <Image
-                id="image"
                 src={slide.img}
                 alt={props.description}
-                className={styles.slide__image}
-                width={1600}
+                width={1800}
                 height={900}
                 priority
+                className={styles.slide__image}
+                onLoad={() => handleImageLoad(idx)}
               />
-            ) : (
-              <Skeleton
-                height={900}
-                width={'100%'}
-                style={{ borderRadius: 5 }}
-              />
-            )}
-            {isLoaded && (
-              <>
-                <button
-                  className={styles.slide__leftArrow}
-                  onClick={() => sliderRef.current?.slickPrev()}
-                />
-                <button
-                  className={styles.slide__rightArrow}
-                  onClick={() => sliderRef.current?.slickNext()}
-                />
-              </>
-            )}
-          </div>
-        ))}
-      </Slider>
+            </div>
+          ))}
+        </div>
+
+        <div className={styles.controls}>
+          <PrevButton onClick={() => slider?.current?.prev()} />
+          <NextButton onClick={() => slider?.current?.next()} />
+        </div>
+
+        <div className={styles.dots}>
+          {props.slides.map((_, idx) => (
+            <button
+              key={nanoid()}
+              onClick={() => slider?.current?.moveToIdx(idx)}
+              className={`${styles.dot} ${
+                currentSlide === idx ? styles.active : ''
+              }`}
+              aria-label={`Перейти к слайду ${idx + 1}`}
+            />
+          ))}
+        </div>
+      </div>
+
       <p>{props.description}</p>
     </section>
   );
