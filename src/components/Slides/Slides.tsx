@@ -2,14 +2,17 @@
 
 import styles from './Slides.module.scss';
 
-import React, { useState, useEffect } from 'react';
+import { useRef, useState, useEffect } from 'react';
 
 import { NextButton, PrevButton } from '../Button/Button';
 import { useKeenSlider } from 'keen-slider/react';
 import { nanoid } from 'nanoid';
+import 'react-loading-skeleton/dist/skeleton.css';
 import 'keen-slider/keen-slider.min.css';
 import Skeleton from 'react-loading-skeleton';
 import Image from 'next/image';
+
+const aspectRatio = 1300 / 2000;
 
 export default function Slides(props) {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -19,6 +22,7 @@ export default function Slides(props) {
   );
 
   //CURRENT SKELETON
+  const [windowWidth, setWindowWidth] = useState(0);
 
   const handleImageLoad = (idx: number) => {
     setImagesLoaded((prev) => {
@@ -29,6 +33,8 @@ export default function Slides(props) {
   };
 
   const allLoaded = imagesLoaded.every(Boolean);
+  const containerRef = useRef(null);
+  const [width, setWidth] = useState(0);
 
   //CURRENT SKELETON
 
@@ -46,6 +52,23 @@ export default function Slides(props) {
   });
 
   useEffect(() => {
+    function updateWidth() {
+      if (containerRef.current) {
+        setWidth(containerRef.current.offsetWidth);
+      } else {
+        setWidth(window.innerWidth);
+      }
+    }
+
+    updateWidth();
+    window.addEventListener('resize', updateWidth);
+    return () =>
+      window.removeEventListener('resize', updateWidth);
+  }, []);
+
+  const height = width * aspectRatio;
+
+  useEffect(() => {
     if (!slider) return;
     const interval = setInterval(() => {
       slider.current!.next();
@@ -56,13 +79,14 @@ export default function Slides(props) {
 
   return (
     <section className={styles.slides}>
-      {!loaded && (
+      {!allLoaded && (
         <Skeleton
-          height={500}
-          containerClassName={styles.skeletonContainer}
-          style={{ width: '100%', marginBottom: '1rem' }}
-          baseColor="#f0f0f0"
-          highlightColor="#e0e0e0"
+          height={height}
+          width="100%"
+          borderRadius={8}
+          baseColor="#ddd"
+          highlightColor="#eee"
+          style={{ marginBottom: 16 }}
         />
       )}
 
@@ -70,11 +94,11 @@ export default function Slides(props) {
         ref={sliderRef}
         className={`keen-slider ${styles.keenSlider}`}
         style={{
-          opacity: loaded ? 1 : 0,
+          opacity: allLoaded ? 1 : 0,
           transition: 'opacity 0.3s',
         }}
       >
-        {props.slides.map((slide, idx) => (
+        {props.slides.map((slide: SlideModel, idx: number) => (
           <div
             key={slide.id}
             className={`keen-slider__slide ${styles.slide}`}
@@ -82,16 +106,17 @@ export default function Slides(props) {
             <Image
               src={slide.img}
               alt={props.description}
-              width={2000}
+              width={1800}
               height={900}
               layout="responsive"
               priority
               className={styles.slide__image}
-              onLoadingComplete={() => handleImageLoad(idx)}
+              onLoad={() => handleImageLoad(idx)}
             />
           </div>
         ))}
       </div>
+
       {/* 
       <div className={styles.controls}>
         <PrevButton onClick={() => slider?.current?.prev()} />
