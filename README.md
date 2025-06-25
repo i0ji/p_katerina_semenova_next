@@ -99,9 +99,8 @@ deps update;
 <li><b>v: 0.3.4 / d: 16.05.25</b> 
 customizing commitizen
 </li>
-<li><b>v: 0.3.4 / d: 20.05.25</b> 
-customizing commitizen; chore; prebuild preparations
-
+<li><b>v: 0.3.4 / d: 25.05.25</b> 
+deps up; maintenance; predeploy
 </li>
 </ul>
 <hr>

@@ -1,11 +1,12 @@
 .button__prev,
 .button__next {
   position: absolute;
+  // bottom: -50%;
   top: 0;
   z-index: 1;
 
-  width: 20%;
-  height: calc(100% - 6px);
+  width: 35%;
+  height: 99.5%;
   padding: 0;
   margin: 0;
 
@@ -15,7 +16,10 @@
   background-color: transparent;
 
   cursor: pointer;
-  transition: 1s all ease;
+  transition: 2s all ease;
+  // transform: translateY(-50%);
+
+  // border: 2px solid red;
 }
 
 .button__next:active .button__prev:active {

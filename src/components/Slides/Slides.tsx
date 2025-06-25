@@ -1,119 +1,84 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import Image from 'next/image';
-import { nanoid } from 'nanoid';
+import { useRef, useState, useEffect } from 'react';
 
-import styles from './Slides.module.scss';
-import { NextButton, PrevButton } from '@/components/index';
-
-import { useKeenSlider } from 'keen-slider/react';
-import 'keen-slider/keen-slider.min.css';
-//CURRENT
 import Skeleton from 'react-loading-skeleton';
-import 'react-loading-skeleton/dist/skeleton.css';
+import Image from 'next/image';
+import Slider from 'react-slick';
+
+import './Slick.scss';
+import styles from './Slides.module.scss';
 
 export default function Slides(props: SlidesDataModel) {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [loaded, setLoaded] = useState(false);
+  const sliderRef = useRef<Slider>(null);
 
-  //CURRENT
-  const [sliderReady, setSliderReady] = useState(false);
-
-  const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>(
-    {
-      initial: 0,
-      slideChanged(slider) {
-        setCurrentSlide(slider.track.details.rel);
-      },
-      created() {
-        setLoaded(true);
-        setSliderReady(true);
-      },
-      loop: true,
-    }
-  );
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      instanceRef!.current!.next();
-    }, 3000);
+    if (typeof props.slides[0].img === 'string') {
+      const img = new globalThis.Image();
+      img.src = props.slides[0].img;
+      img.onload = () => setIsLoaded(true);
+    }
+    return () => {};
+  }, [props.slides]);
 
-    return () => {
-      clearInterval(interval);
-    };
-  }, [instanceRef, props.isTested]);
-
-  const goNext = () => instanceRef.current?.next();
-  const goPrev = () => instanceRef.current?.prev();
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 300,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    waitForAnimate: true,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    pauseOnHover: true,
+    arrows: false,
+    afterChange: () => {
+      const activeElement = document.activeElement as HTMLElement;
+      if (activeElement) {
+        activeElement.blur();
+      }
+    }
+  };
 
   return (
     <section className={styles.slides}>
-      <div className={styles.slides__wrapper}>
-        {!sliderReady && (
-          <Skeleton
-            //OPTION
-            height={400}
-            containerClassName={styles.skeletonContainer}
-            style={{
-              display: 'block',
-              width: '100%',
-            }}
-            baseColor="#f0f0f0"
-            highlightColor="#e0e0e0"
-          />
-        )}
-        <div
-          className="keen-slider"
-          ref={sliderRef}
-          style={{
-            visibility: sliderReady ? 'visible' : 'hidden',
-          }}
-        >
-          {props.slides.map((slide, index) => (
-            <div key={slide.id} className="keen-slider__slide">
-              <div inert={true} key={nanoid()}>
-                <Image
-                  src={slide.img}
-                  alt={props.description}
-                  className={styles.slide__image}
-                  width={2000}
-                  height={900}
-                  priority={index === 0}
-                  loading={index <= 1 ? 'eager' : 'lazy'}
-                  quality={85}
-                />
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {loaded && instanceRef.current && (
-          <>
-            <PrevButton onClick={goPrev} />
-            <NextButton onClick={goNext} />
-          </>
-        )}
-        {loaded && instanceRef.current && (
-          <div className={styles.dots}>
-            {[
-              ...Array(
-                instanceRef.current.track.details.slides.length
-              ).keys(),
-            ].map((idx) => (
-              <button
-                key={idx}
-                onClick={() =>
-                  instanceRef.current?.moveToIdx(idx)
-                }
-                className={`${styles.dot} ${
-                  currentSlide === idx ? styles.active : ''
-                }`}
+      <Slider ref={sliderRef} {...settings}>
+        {props.slides.map((slide) => (
+          <div key={slide.id} className={styles.slide}>
+            {isLoaded ? (
+              <Image
+                id="image"
+                src={slide.img}
+                alt={props.description}
+                className={styles.slide__image}
+                width={1600}
+                height={900}
+                priority
               />
-            ))}
+            ) : (
+              <Skeleton
+                height={900}
+                width={'100%'}
+                style={{ borderRadius: 5 }}
+              />
+            )}
+            {isLoaded && (
+              <>
+                <button
+                  className={styles.slide__leftArrow}
+                  onClick={() => sliderRef.current?.slickPrev()}
+                />
+                <button
+                  className={styles.slide__rightArrow}
+                  onClick={() => sliderRef.current?.slickNext()}
+                />
+              </>
+            )}
           </div>
-        )}
-      </div>
+        ))}
+      </Slider>
       <p>{props.description}</p>
     </section>
   );

@@ -5,7 +5,7 @@ import packageJson from '../../package.json';
 
 export default function Home() {
   //CONSOLE
-  console.log(`${packageJson.version} / 20.05.25`);
+  console.log('v: 0.3.5 / 25.05.25');
 
   //OPTION
   //FIXME
