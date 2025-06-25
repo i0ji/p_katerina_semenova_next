@@ -117,10 +117,10 @@ export default function Slides(props) {
           ))}
         </div>
 
-        {/* <div className={styles.controls}>
-        <PrevButton onClick={() => slider?.current?.prev()} />
-        <NextButton onClick={() => slider?.current?.next()} />
-      </div> */}
+        <div className={styles.controls}>
+          <PrevButton onClick={() => slider?.current?.prev()} />
+          <NextButton onClick={() => slider?.current?.next()} />
+        </div>
 
         <div className={styles.dots}>
           {props.slides.map((_, idx) => (
