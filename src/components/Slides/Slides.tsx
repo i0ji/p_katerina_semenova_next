@@ -90,49 +90,51 @@ export default function Slides(props) {
         />
       )}
 
-      <div
-        ref={sliderRef}
-        className={`keen-slider ${styles.keenSlider}`}
-        style={{
-          opacity: allLoaded ? 1 : 0,
-          transition: 'opacity 0.3s',
-        }}
-      >
-        {props.slides.map((slide: SlideModel, idx: number) => (
-          <div
-            key={slide.id}
-            className={`keen-slider__slide ${styles.slide}`}
-          >
-            <Image
-              src={slide.img}
-              alt={props.description}
-              width={1800}
-              height={900}
-              layout="responsive"
-              priority
-              className={styles.slide__image}
-              onLoad={() => handleImageLoad(idx)}
-            />
-          </div>
-        ))}
-      </div>
+      <div className={styles.slide__wrapper}>
+        <div
+          ref={sliderRef}
+          className={`keen-slider`}
+          style={{
+            opacity: allLoaded ? 1 : 0,
+            transition: 'opacity 0.3s',
+          }}
+        >
+          {props.slides.map((slide: SlideModel, idx: number) => (
+            <div
+              key={slide.id}
+              className={`keen-slider__slide ${styles.slide}`}
+            >
+              <Image
+                src={slide.img}
+                alt={props.description}
+                width={1800}
+                height={900}
+                priority
+                className={styles.slide__image}
+                onLoad={() => handleImageLoad(idx)}
+              />
+            </div>
+          ))}
+        </div>
 
-      {/* 
-      <div className={styles.controls}>
+        {/* <div className={styles.controls}>
         <PrevButton onClick={() => slider?.current?.prev()} />
         <NextButton onClick={() => slider?.current?.next()} />
       </div> */}
 
-      {/* <div className={styles.dots}>
-        {props.slides.map((_, idx) => (
-          <button
-            key={nanoid()}
-            onClick={() => slider?.current?.moveToIdx(idx)}
-            className={`${styles.dot} ${currentSlide === idx ? styles.active : ''}`}
-            aria-label={`Перейти к слайду ${idx + 1}`}
-          />
-        ))}
-      </div> */}
+        <div className={styles.dots}>
+          {props.slides.map((_, idx) => (
+            <button
+              key={nanoid()}
+              onClick={() => slider?.current?.moveToIdx(idx)}
+              className={`${styles.dot} ${
+                currentSlide === idx ? styles.active : ''
+              }`}
+              aria-label={`Перейти к слайду ${idx + 1}`}
+            />
+          ))}
+        </div>
+      </div>
 
       <p>{props.description}</p>
     </section>
