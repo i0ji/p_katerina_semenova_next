@@ -1,7 +1,6 @@
 "use strict";
 
 module.exports = {
-  // Добавим описание на русском языке ко всем типам
   types: [
     {
       value: "build",
@@ -22,32 +21,20 @@ module.exports = {
         "REFACTOR"
     },
     { value: "revert", name: "REVERT" },
-    {
-      value: "style",
-      name:
-        "STYLE"
-    },
+    // {
+    //   value: "style",
+    //   name:
+    //     "STYLE"
+    // },
     { value: "test", name: "TEST" }
   ],
 
-  // Область. Она характеризует фрагмент кода, которую затронули изменения
   scopes: [
     { name: "COMPONENTS" },
     { name: "LOGIC" },
     { name: "INTERFACE/APPEARANCE" },
     { name: "SERVICES" },
   ],
-
-  // Возможность задать спец ОБЛАСТЬ для определенного типа коммита (пример для 'fix')
-  /*
-  scopeOverrides: {
-    fix: [
-      {name: 'style'},
-      {name: 'e2eTest'},
-      {name: 'unitTest'}
-    ]
-  },
-  */
 
   messages: {
     type: "Changes",
@@ -58,7 +45,7 @@ module.exports = {
       'Full description. Use "|" for new string:\n',
     breaking: "Breaking changes:\n",
     footer:
-      "Meta:\n",
+      "Version:\n",
     confirmCommit: "Is it correct:"
   },
 
@@ -69,7 +56,7 @@ module.exports = {
   allowBreakingChanges: false,
 
   // Префикс для нижнего колонтитула
-  footerPrefix: "Meta:",
+  footerPrefix: "Version:",
 
   // limit subject length
   subjectLimit: 72
