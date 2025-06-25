@@ -1,21 +1,36 @@
 import { Header, Slides, Footer } from '@/components/index';
 import { SlideData } from 'public';
-import { v4 as uuidv4 } from 'uuid';
+import { nanoid } from 'nanoid';
 
 export default function Home() {
   //CONSOLE
-  // console.log('v: 0.3.4/20.02.25');
+  console.log('v: 0.3.5 / 25.05.25');
+
+  //OPTION
+  //FIXME
+  const isTested = false;
 
   return (
     <>
       <Header />
-      {SlideData.map((slides: SlideModelNamespace.SlidesDataModel) => (
+
+      {isTested ? (
         <Slides
-          key={uuidv4()}
-          slides={slides.slides}
-          description={slides.description}
+          key={nanoid()}
+          slides={SlideData[0].slides}
+          description={SlideData[0].description}
+          isTested={isTested}
         />
-      ))}
+      ) : (
+        SlideData.map((slides: SlidesDataModel) => (
+          <Slides
+            key={nanoid()}
+            slides={slides.slides}
+            description={slides.description}
+            isTested={isTested}
+          />
+        ))
+      )}
       <Footer />
     </>
   );

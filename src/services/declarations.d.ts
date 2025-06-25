@@ -1,15 +1,11 @@
-import { StaticImageData } from 'next/image';
+interface SlideModel {
+  id: number;
+  img: string;
+}
 
-declare global {
-  namespace SlideModelNamespace {
-    interface SlideModel {
-      id: number;
-      img?: string;
-    }
-
-    interface SlidesDataModel {
-      slides: Array<SlideModel>;
-      description: string;
-    }
-  }
+interface SlidesDataModel {
+  slides: Array<SlideModel>;
+  description: string;
+  //OPTION FIXME LATER
+  isTested?: boolean;
 }
