@@ -14,6 +14,12 @@ import { NextButton, PrevButton } from '../Button/Button';
 export default function Slides(props: SlidesDataModel) {
   const sliderRef = useRef<Slider>(null);
 
+  //CURRENT
+  // const [isLoading, setIsLoading] = useState(true);
+  // const [sliderHeight, setSliderHeight] = useState(0);
+  // const containerRef = useRef<HTMLDivElement>(null);
+
+  //CURRENT
   const settings = {
     dots: true,
     infinite: true,
@@ -53,6 +59,7 @@ export default function Slides(props: SlidesDataModel) {
             </div>
           ))}
         </Slider>
+
         <PrevButton
           onClick={() => sliderRef.current?.slickPrev()}
         />

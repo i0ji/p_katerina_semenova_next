@@ -4,7 +4,7 @@ import { nanoid } from 'nanoid';
 
 export default function Home() {
   //CONSOLE
-  console.log('v: 0.3.4 /08.04.25');
+  console.log('v: 0.3.5 / 25.05.25');
 
   //OPTION
   //FIXME
