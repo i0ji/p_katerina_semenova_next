@@ -8,13 +8,9 @@ module.exports = {
     },
     { value: 'CI', name: 'CI/CD/SCRIPTS' },
     { value: 'DOCS', name: 'DOCUMENTS' },
-    { value: 'FEATURE', name: 'FEATURES' },
+    { value: 'FEAT', name: 'FEATURES' },
     { value: 'FIX', name: 'FIX BUGS/ISSUES' },
     { value: 'GIT', name: 'GIT TASKS' },
-    {
-      value: 'CHORE',
-      name: 'CHORE',
-    },
     {
       value: 'REFACTOR',
       name: 'REFACTOR',
@@ -32,6 +28,7 @@ module.exports = {
     { name: 'LOGIC' },
     { name: 'INTERFACE/APPEARANCE' },
     { name: 'SERVICES' },
+    { name: 'CHORE/MAINTENANCE' },
   ],
 
   messages: {
@@ -41,15 +38,19 @@ module.exports = {
     subject: 'Short description:\n',
     body: 'Full description. Use "|" for new string:\n',
     breaking: 'Breaking changes:\n',
-    footer: 'Meta:\n',
+    footer: 'Version:\n',
     confirmCommit: 'Is it correct:',
   },
 
+  // Разрешим собственную ОБЛАСТЬ
   allowCustomScopes: true,
 
+  // Запрет на Breaking Changes
   allowBreakingChanges: false,
 
-  footerPrefix: 'Meta:',
+  // Префикс для нижнего колонтитула
+  footerPrefix: 'Version:',
 
+  // limit subject length
   subjectLimit: 72,
 };

@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="650d69c6-1edb-48fa-8024-401b3fb0f511" name="Changes" comment="" />
+=======
+    <list default="true" id="36cc0480-189e-4942-a3ef-c731091042b8" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
+>>>>>>> develop
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,7 +34,11 @@
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
+<<<<<<< HEAD
   <component name="ProjectId" id="2uniwd9qZDyARqYo4kpmMzqUmnd" />
+=======
+  <component name="ProjectId" id="2uX6Czu87OYIpbrsodQPtikgkeQ" />
+>>>>>>> develop
   <component name="ProjectViewState">
     <option name="autoscrollToSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -36,6 +46,7 @@
     <option name="sortByType" value="true" />
     <option name="sortKey" value="BY_TYPE" />
   </component>
+<<<<<<< HEAD
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -49,6 +60,23 @@
     "nodejs_package_manager_path": "npm"
   }
 }]]></component>
+=======
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/adm.ivan.udodenko/Documents/scripts/05.PROJECTS/p_katerina_semenova_next&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;pnpm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.sync&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\adm.ivan.udodenko\\Documents\\scripts\\05.PROJECTS\\p_katerina_semenova_next\\node_modules\\typescript\\lib&quot;
+  }
+}</component>
+>>>>>>> develop
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -59,6 +87,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
+<<<<<<< HEAD
       <changelist id="650d69c6-1edb-48fa-8024-401b3fb0f511" name="Changes" comment="" />
       <created>1742890985045</created>
       <option name="number" value="Default" />
@@ -74,6 +103,15 @@
       <workItem from="1748460749370" duration="68000" />
       <workItem from="1749030694426" duration="51000" />
       <workItem from="1750791710111" duration="54000" />
+=======
+      <changelist id="36cc0480-189e-4942-a3ef-c731091042b8" name="Changes" comment="" />
+      <created>1742382448925</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1742382448925</updated>
+      <workItem from="1742382450249" duration="523000" />
+      <workItem from="1742535955872" duration="3000" />
+>>>>>>> develop
     </task>
     <servers />
   </component>

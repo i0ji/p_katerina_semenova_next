@@ -1,9 +1,11 @@
 interface SlideModel {
-    id: number;
-    img: string;
+  id: number;
+  img: string;
 }
 
 interface SlidesDataModel {
-    slides: Array<SlideModel>;
-    description: string;
+  slides: Array<SlideModel>;
+  description: string;
+  //OPTION FIXME LATER
+  isTested?: boolean;
 }
