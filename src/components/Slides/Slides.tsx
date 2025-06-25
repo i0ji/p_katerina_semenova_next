@@ -20,10 +20,6 @@ export default function Slides(props) {
   const [imagesLoaded, setImagesLoaded] = useState(
     Array(props.slides.length).fill(false)
   );
-
-  //CURRENT SKELETON
-  const [windowWidth, setWindowWidth] = useState(0);
-
   const handleImageLoad = (idx: number) => {
     setImagesLoaded((prev) => {
       const next = [...prev];
@@ -33,10 +29,8 @@ export default function Slides(props) {
   };
 
   const allLoaded = imagesLoaded.every(Boolean);
-  const containerRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState(0);
-
-  //CURRENT SKELETON
 
   useEffect(() => {
     if (imagesLoaded.every(Boolean)) {
@@ -79,7 +73,7 @@ export default function Slides(props) {
 
   return (
     <section className={styles.slides}>
-      {!allLoaded && (
+      {!loaded && (
         <Skeleton
           height={height}
           width="100%"

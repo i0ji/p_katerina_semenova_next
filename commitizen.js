@@ -1,52 +1,45 @@
-"use strict";
+'use strict';
 
 module.exports = {
   types: [
     {
-      value: "build",
-      name: "BUILD"
+      value: 'BUILD',
+      name: 'BUILD',
     },
-    { value: "ci", name: "CI/CD/SCRIPTS" },
-    { value: "docs", name: "DOCUMENTS" },
-    { value: "feat", name: "FEATURES" },
-    { value: "fix", name: "FIX BUGS/ISSUES" },
-    { value: "git", name: "GIT TASKS" },
+    { value: 'CI', name: 'CI/CD/SCRIPTS' },
+    { value: 'DOCS', name: 'DOCUMENTS' },
+    { value: 'FEAT', name: 'FEATURES' },
+    { value: 'FIX', name: 'FIX BUGS/ISSUES' },
+    { value: 'GIT', name: 'GIT TASKS' },
     {
-      value: "chore",
-      name: "CHORE"
+      value: 'REFACTOR',
+      name: 'REFACTOR',
     },
+    { value: 'REVERT', name: 'REVERT' },
     {
-      value: "refactor",
-      name:
-        "REFACTOR"
+      value: 'STYLE',
+      name: 'STYLE',
     },
-    { value: "revert", name: "REVERT" },
-    // {
-    //   value: "style",
-    //   name:
-    //     "STYLE"
-    // },
-    { value: "test", name: "TEST" }
+    { value: 'TEST', name: 'TEST' },
   ],
 
   scopes: [
-    { name: "COMPONENTS" },
-    { name: "LOGIC" },
-    { name: "INTERFACE/APPEARANCE" },
-    { name: "SERVICES" },
+    { name: 'COMPONENTS' },
+    { name: 'LOGIC' },
+    { name: 'INTERFACE/APPEARANCE' },
+    { name: 'SERVICES' },
+    { name: 'CHORE/MAINTENANCE' },
   ],
 
   messages: {
-    type: "Changes",
-    scope: "\nScope:",
-    customScope: "Specific scope",
-    subject: "Short description:\n",
-    body:
-      'Full description. Use "|" for new string:\n',
-    breaking: "Breaking changes:\n",
-    footer:
-      "Version:\n",
-    confirmCommit: "Is it correct:"
+    type: 'Changes',
+    scope: '\nScope:',
+    customScope: 'Specific scope',
+    subject: 'Short description:\n',
+    body: 'Full description. Use "|" for new string:\n',
+    breaking: 'Breaking changes:\n',
+    footer: 'Version:\n',
+    confirmCommit: 'Is it correct:',
   },
 
   // Разрешим собственную ОБЛАСТЬ
@@ -56,8 +49,8 @@ module.exports = {
   allowBreakingChanges: false,
 
   // Префикс для нижнего колонтитула
-  footerPrefix: "Version:",
+  footerPrefix: 'Version:',
 
   // limit subject length
-  subjectLimit: 72
+  subjectLimit: 72,
 };
