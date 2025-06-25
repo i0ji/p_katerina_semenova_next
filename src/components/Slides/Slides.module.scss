@@ -2,11 +2,13 @@
   margin-bottom: 30px;
 
   .keen-slider__slide {
-    min-width: 100% !important;
-    max-width: 100% !important;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    min-width: 100% !important;
+    max-width: 100% !important;
+
     overflow: hidden;
     position: relative;
   }
@@ -26,6 +28,7 @@
       pointer-events: auto;
     }
   }
+
   .slide__wrapper {
     position: relative;
 
