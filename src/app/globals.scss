@@ -13,7 +13,7 @@
 }
 
 html {
-  @include flex(center, '');
+  @include flex(null, center, null);
   scroll-behavior: smooth;
 }
 
@@ -22,6 +22,11 @@ a:link,
 a:visited {
   text-decoration: none;
   color: black;
+}
+
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
 }
 
 a:hover {
@@ -34,6 +39,10 @@ body {
   max-width: 1840px;
   margin: 0 auto;
   background-color: transparent;
+
+  section {
+    margin-bottom: 30px;
+  }
 }
 
 @media (max-width: 1199px) {

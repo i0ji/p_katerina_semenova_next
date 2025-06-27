@@ -1,10 +1,18 @@
 {
   "name": "semenova_next",
-  "version": "0.3.0",
+  "version": "0.3.5",
   "private": true,
   "repository": {
     "type": "git",
     "directory": "https://github.com/i0ji/p_katerina_semenova_next.git"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-customizable"
+    },
+    "cz-customizable": {
+      "config": "commitizen.js"
+    }
   },
   "scripts": {
     "dev": "next dev --turbopack",
@@ -13,22 +21,29 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "15.1.0",
-    "react": "19.0.0",
-    "react-dom": "19.0.0"
+    "next": "15.3.4",
+    "react": "19.1.0",
+    "react-dom": "19.1.0"
   },
+  "ignore": [
+    "/temp/"
+  ],
   "devDependencies": {
-    "@types/node": "^22.10.2",
-    "@types/react": "^19.0.1",
-    "@types/react-dom": "^19.0.2",
+    "@types/node": "^24.0.4",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
     "@types/react-slick": "^0.23.13",
-    "eslint": "^9.16.0",
-    "eslint-config-next": "15.1.0",
-    "gh-pages": "^6.2.0",
-    "react-slick": "^0.30.2",
-    "sass": "^1.83.0",
-    "sass-loader": "^16.0.4",
-    "slick-carousel": "^1.8.1",
-    "typescript": "^5.7.2"
+    "cz-customizable": "^7.4.0",
+    "eslint": "^9.29.0",
+    "eslint-config-next": "15.3.4",
+    "file-loader": "^6.2.0",
+    "gh-pages": "^6.3.0",
+    "keen-slider": "^6.8.6",
+    "nanoid": "^5.1.5",
+    "react-loading-skeleton": "^3.5.0",
+    "react-yandex-metrika": "^2.6.0",
+    "sass": "^1.89.2",
+    "sass-loader": "^16.0.5",
+    "typescript": "^5.8.3"
   }
 }

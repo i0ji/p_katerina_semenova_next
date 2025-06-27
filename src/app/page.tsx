@@ -1,24 +1,49 @@
+'use client'
+
+import { useEffect, useState } from 'react';
 import { Header, Slides, Footer } from '@/components/index';
-import { SlideData } from 'public';
-import { SlidesDataModel } from '@/services/declarations';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+// import { SlideData } from 'public';
+import { nanoid } from 'nanoid';
+import { fetchAnniversarySlides } from '@/services';
 
 export default function Home() {
-  console.log('v: 0.3.0');
-  console.log('font/favico path issues');
+  const [slides, setSlides] = useState<SlideModel[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    fetchAnniversarySlides()
+      .then((data) => {
+        setSlides(data);
+      })
+      .catch((err) => {
+        setError(err.message);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) {
+    return <div>Загрузка слайдов...</div>;
+  }
+
+  if (error) {
+    return <div>Ошибка: {error}</div>;
+  }
 
   return (
     <>
       <Header />
-      {SlideData.map((slides: SlidesDataModel) => (
+
+
         <Slides
-          key={slides.id}
-          slides={slides.slides}
-          description={slides.description}
-          lastSlide={slides.lastSlide}
+          key={nanoid()}
+          slides={slides}
+          description={'тратата'}
+
         />
-      ))}
+      
       <Footer />
     </>
   );

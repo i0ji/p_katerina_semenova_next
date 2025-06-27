@@ -13,6 +13,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "noImplicitAny": false,
     "plugins": [
       {
         "name": "next"
@@ -22,14 +23,16 @@
     "paths": {
       "@/*": ["./src/*"],
       "public": ["./public/"],
-      "components": ["./src/app/components/"],
-    }
+      "components": ["./src/app/components/"]
+    },
+    "typeRoots": ["./src/services"]
   },
   "include": [
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
     "next-env.d.ts",
+    "services/**/*.d.ts",
     "build/types/**/*.ts"
   ],
   "exclude": ["node_modules"]
