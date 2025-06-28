@@ -1,3 +1,13 @@
+export async function fetchProjects(): Promise<SlidesDataModel[]> {
+  const res = await fetch('/fetchData.php');
+
+  if (!res.ok) {
+    throw new Error(`Ошибка: ${res.status}`);
+  }
+
+  return await res.json();
+}
+
 export default function scrollToSide(direction: string) {
   if (typeof window === 'undefined') return;
   switch (direction) {

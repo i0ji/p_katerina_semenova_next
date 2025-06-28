@@ -3,16 +3,7 @@
 import { useEffect, useState } from 'react';
 import { Header, Slides, Footer } from '@/components/index';
 import { nanoid } from 'nanoid';
-
-interface SlideModel {
-  id: number;
-  img: string;
-}
-
-interface SlidesDataModel {
-  description: string;
-  slides: SlideModel[];
-}
+import { fetchProjects } from '@/services';
 
 export default function Home() {
   const [projects, setProjects] = useState<SlidesDataModel[]>(
@@ -21,15 +12,9 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  console.log('v:0.4.0')
-
   useEffect(() => {
-    fetch('/fetchData.php')
-      .then((res) => {
-        if (!res.ok) throw new Error(`Ошибка: ${res.status}`);
-        return res.json();
-      })
-      .then((data: SlidesDataModel[]) => setProjects(data))
+    fetchProjects()
+      .then(setProjects)
       .catch((err) => setError(err.message))
       .finally(() => setLoading(false));
   }, []);
