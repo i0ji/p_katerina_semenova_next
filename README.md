@@ -108,8 +108,8 @@ refactor slider/predeploy
 <li><b>v: 0.4 / d: 27.06.25</b> 
 Succesfully attempt DB connection; get local version with remote images fetching; next in line is to refuse static data;
 </li>
-<li><b>v: 0.4 / d: 28.06.25</b> 
-Refactor some services;
+<li><b>v: 0.4.1 / d: 28.06.25</b> 
+Refactor fetchData service and main page logic; prepare to refactor skeleton/lazy images;chore;
 </li>
 </ul>
 <hr>

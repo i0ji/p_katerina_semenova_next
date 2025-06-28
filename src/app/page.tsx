@@ -12,6 +12,8 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  console.log('0.4.1t');
+
   useEffect(() => {
     fetchProjects()
       .then(setProjects)
