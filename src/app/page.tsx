@@ -1,33 +1,29 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from 'store/hooks';
+import { fetchProjects } from 'store/projectAction';
 import { Header, Slides, Footer } from '@/components/index';
 import { nanoid } from 'nanoid';
-import { fetchProjects } from '@/services';
 
 export default function Home() {
-  const [projects, setProjects] = useState<SlidesDataModel[]>(
-    []
+  const dispatch = useAppDispatch();
+  const { projects, pending, error } = useAppSelector(
+    (state) => state.projects
   );
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  console.log('0.4.1t');
 
   useEffect(() => {
-    fetchProjects()
-      .then(setProjects)
-      .catch((err) => setError(err.message))
-      .finally(() => setLoading(false));
-  }, []);
+    dispatch(fetchProjects());
+  }, [dispatch]);
 
-  if (loading) return <div>Загрузка проектов...</div>;
+  if (pending) return <div>Загрузка проектов...</div>;
   if (error) return <div>Ошибка: {error}</div>;
+
+  console.log('0.4.2');
 
   return (
     <>
       <Header />
-
       {projects.map((project) => (
         <Slides
           key={nanoid()}
@@ -35,7 +31,6 @@ export default function Home() {
           description={project.description}
         />
       ))}
-
       <Footer />
     </>
   );

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Metrics from '@/services/metrics';
 import './globals.scss';
+import Providers from './provider';
 
 export const metadata: Metadata = {
   title: 'Katerina Semenova',
@@ -18,7 +19,9 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <Metrics />
-      <body>{children}</body>
+      <body>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }
