@@ -20,6 +20,8 @@ export default function Slides(props) {
   const [imagesLoaded, setImagesLoaded] = useState(
     Array(props.slides.length).fill(false)
   );
+
+  //CURRENT SKELETO
   const handleImageLoad = (idx: number) => {
     setImagesLoaded((prev) => {
       const next = [...prev];

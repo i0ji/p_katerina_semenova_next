@@ -1,36 +1,39 @@
+'use client';
+
+import { useEffect, useState } from 'react';
 import { Header, Slides, Footer } from '@/components/index';
-import { SlideData } from 'public';
 import { nanoid } from 'nanoid';
+import { fetchProjects } from '@/services';
 
 export default function Home() {
-  //CONSOLE
-  console.log('v: 0.3.5 / 25.05.25');
+  const [projects, setProjects] = useState<SlidesDataModel[]>(
+    []
+  );
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  //OPTION
-  //FIXME
-  const isTested = false;
+  useEffect(() => {
+    fetchProjects()
+      .then(setProjects)
+      .catch((err) => setError(err.message))
+      .finally(() => setLoading(false));
+  }, []);
+
+  if (loading) return <div>Загрузка проектов...</div>;
+  if (error) return <div>Ошибка: {error}</div>;
 
   return (
     <>
       <Header />
 
-      {isTested ? (
+      {projects.map((project) => (
         <Slides
           key={nanoid()}
-          slides={SlideData[0].slides}
-          description={SlideData[0].description}
-          isTested={isTested}
+          slides={project.slides}
+          description={project.description}
         />
-      ) : (
-        SlideData.map((slides: SlidesDataModel) => (
-          <Slides
-            key={nanoid()}
-            slides={slides.slides}
-            description={slides.description}
-            isTested={isTested}
-          />
-        ))
-      )}
+      ))}
+
       <Footer />
     </>
   );
