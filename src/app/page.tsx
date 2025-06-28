@@ -1,49 +1,52 @@
-'use client'
+'use client';
 
 import { useEffect, useState } from 'react';
 import { Header, Slides, Footer } from '@/components/index';
-// import { SlideData } from 'public';
 import { nanoid } from 'nanoid';
-import { fetchAnniversarySlides } from '@/services';
+
+interface SlideModel {
+  id: number;
+  img: string;
+}
+
+interface SlidesDataModel {
+  description: string;
+  slides: SlideModel[];
+}
 
 export default function Home() {
-  const [slides, setSlides] = useState<SlideModel[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [projects, setProjects] = useState<SlidesDataModel[]>(
+    []
+  );
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetchAnniversarySlides()
-      .then((data) => {
-        setSlides(data);
+    fetch('/fetchData.php')
+      .then((res) => {
+        if (!res.ok) throw new Error(`Ошибка: ${res.status}`);
+        return res.json();
       })
-      .catch((err) => {
-        setError(err.message);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+      .then((data: SlidesDataModel[]) => setProjects(data))
+      .catch((err) => setError(err.message))
+      .finally(() => setLoading(false));
   }, []);
 
-  if (loading) {
-    return <div>Загрузка слайдов...</div>;
-  }
-
-  if (error) {
-    return <div>Ошибка: {error}</div>;
-  }
+  if (loading) return <div>Загрузка проектов...</div>;
+  if (error) return <div>Ошибка: {error}</div>;
 
   return (
     <>
       <Header />
 
-
+      {projects.map((project, index) => (
         <Slides
           key={nanoid()}
-          slides={slides}
-          description={'тратата'}
-
+          slides={project.slides}
+          description={project.description}
         />
-      
+      ))}
+
       <Footer />
     </>
   );
