@@ -21,6 +21,8 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  console.log('v:0.4.0')
+
   useEffect(() => {
     fetch('/fetchData.php')
       .then((res) => {
@@ -39,7 +41,7 @@ export default function Home() {
     <>
       <Header />
 
-      {projects.map((project, index) => (
+      {projects.map((project) => (
         <Slides
           key={nanoid()}
           slides={project.slides}
