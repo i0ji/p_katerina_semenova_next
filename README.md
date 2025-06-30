@@ -112,7 +112,7 @@ Succesfully attempt DB connection; get local version with remote images fetching
 Refactor fetchData service and main page logic; prepare to refactor skeleton/lazy images;chore;
 </li>
 <li><b>v: 0.4.1 / d: 30.06.25</b> 
-Open 2 issues; fix keen-slider implementation;
+Set up commitlint/husky; Open 2 issues; fix keen-slider implementation;
 </li>
 </ul>
 <hr>
