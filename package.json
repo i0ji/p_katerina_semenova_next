@@ -11,9 +11,10 @@
       "path": "node_modules/cz-customizable"
     },
     "cz-customizable": {
-      "config": "commitizen.js"
+      "config": "./commitizen.cjs"
     }
   },
+  "type": "module",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
@@ -47,5 +48,11 @@
     "sass": "^1.89.2",
     "sass-loader": "^16.0.5",
     "typescript": "^5.8.3"
+  },
+  "pnpm": {
+    "overrides": {
+      "minimatch": "^9.0.5",
+      "brace-expansion": "^2.0.1"
+    }
   }
 }
