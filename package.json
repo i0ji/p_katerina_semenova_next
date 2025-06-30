@@ -11,7 +11,7 @@
       "path": "node_modules/cz-customizable"
     },
     "cz-customizable": {
-      "config": "commitizen.js"
+      "config": "./commitizen.js"
     }
   },
   
@@ -31,7 +31,7 @@
   ],
  "husky": {
     "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS -g '.commitlint.js'"
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS -g './commitlint.js'"
     }
   },
   "devDependencies": {
