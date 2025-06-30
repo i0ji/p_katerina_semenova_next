@@ -29,6 +29,7 @@
     "/temp/"
   ],
   "devDependencies": {
+    "@reduxjs/toolkit": "^2.8.2",
     "@types/node": "^24.0.7",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
@@ -41,6 +42,7 @@
     "keen-slider": "^6.8.6",
     "nanoid": "^5.1.5",
     "react-loading-skeleton": "^3.5.0",
+    "react-redux": "^9.2.0",
     "react-yandex-metrika": "^2.6.0",
     "sass": "^1.89.2",
     "sass-loader": "^16.0.5",
