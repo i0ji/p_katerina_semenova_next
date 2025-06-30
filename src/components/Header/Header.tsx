@@ -2,7 +2,7 @@
 
 import React from 'react';
 import styles from './Header.module.scss';
-import scrollToSide from '@/services/index';
+import scrollToSide from 'services/scroll';
 
 export default function Header() {
   return (

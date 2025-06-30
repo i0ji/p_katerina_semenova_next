@@ -111,6 +111,9 @@ Succesfully attempt DB connection; get local version with remote images fetching
 <li><b>v: 0.4.1 / d: 28.06.25</b> 
 Refactor fetchData service and main page logic; prepare to refactor skeleton/lazy images;chore;
 </li>
+<li><b>v: 0.4.1 / d: 30.06.25</b> 
+Open 2 issues; fix keen-slider implementation;
+</li>
 </ul>
 <hr>
 <h3> 3. Known issues/to go</h3>

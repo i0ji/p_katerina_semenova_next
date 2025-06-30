@@ -4,7 +4,11 @@ module.exports = {
   types: [
     {
       value: 'BUILD',
-      name: 'BUILD',
+      name: 'Builds, major/minor updates',
+    },
+        {
+      value: 'CHORE',
+      name: 'CHORE',
     },
     { value: 'CI', name: 'CI/CD/SCRIPTS' },
     { value: 'DOCS', name: 'DOCUMENTS' },
