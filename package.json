@@ -7,8 +7,11 @@
     "directory": "https://github.com/i0ji/p_katerina_semenova_next.git"
   },
   "config": {
-    "commitizen": {
+"commitizen": {
       "path": "node_modules/cz-customizable"
+    },
+    "cz-customizable": {
+      "config": "commitizen.js"
     }
   },
   "scripts": {
