@@ -73,7 +73,7 @@ export default function Footer() {
           </p>
           <p>
             <a href="https://t.me/KateSemenovaV">
-              KateSemenovaV
+              @KateSemenovaV
             </a>
           </p>
           <p>
