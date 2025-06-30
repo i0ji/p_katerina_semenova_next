@@ -7,7 +7,7 @@
     "directory": "https://github.com/i0ji/p_katerina_semenova_next.git"
   },
   "config": {
-"commitizen": {
+    "commitizen": {
       "path": "node_modules/cz-customizable"
     },
     "cz-customizable": {
@@ -29,9 +29,9 @@
   "ignore": [
     "/temp/"
   ],
-  "husky": {
+ "husky": {
     "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS -g './config/git/commitlint.js'"
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS -g '.commitlint.js'"
     }
   },
   "devDependencies": {
