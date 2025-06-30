@@ -2,20 +2,19 @@
 
 module.exports = {
   types: [
-    { value: 'BUILD', name: 'Build/major/minor update' },
-    { value: 'FEAT', name: 'Features' },
-    { value: 'CI', name: 'CI/CD' },
-    { value: 'DOCS', name: 'Docs' },
-    { value: 'FIX', name: 'Fix bugs & issues' },
-    { value: 'GIT', name: 'Git maintenance' },
+    { value: 'build', name: 'build: Build/major/minor update' },
+    { value: 'feat', name: 'feat: New feature' },
+    { value: 'fix', name: 'fix: Bug fix' },
+    { value: 'docs', name: 'docs: Documentation changes' },
+    { value: 'chore', name: 'chore: Maintenance tasks' },
+    { value: 'ci', name: 'ci: Continuous Integration' },
+    { value: 'refactor', name: 'refactor: Code refactoring' },
+    { value: 'perf', name: 'perf: Performance improvements' },
+    { value: 'test', name: 'test: Adding tests' },
+    { value: 'style', name: 'style: Code style changes (formatting, etc)' },
   ],
-  messages: {
-    type: 'Select the type:',
-    version: 'Version:',
-    subject: 'Short description:',
-    confirmCommit:
-      'Are you sure you want to proceed with the commit above?',
-  },
-  formatMessage: ({ type, version, subject }) =>
-    `${type}; v:${version}; ${subject}`,
+  allowCustomScopes: true,
+  allowBreakingChanges: ['feat', 'fix'],
+  footerPrefix: 'ISSUES CLOSED:',
+  subjectLimit: 72,
 };
