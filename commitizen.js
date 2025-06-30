@@ -1,5 +1,6 @@
-export default {
-  // Добавим описание на русском языке ко всем типам
+'use strict';
+
+module.exports = {
   types: [
     {
       value: "build",
