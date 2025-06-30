@@ -22,11 +22,6 @@
     "lint": "next lint",
     "prepare": "husky"
   },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS -g './commitlint.js'"
-    }
-  },
   "dependencies": {
     "next": "15.3.4",
     "react": "19.1.0",
