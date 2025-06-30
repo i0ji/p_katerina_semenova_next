@@ -21,6 +21,11 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS -g './commitlint.js'"
+    }
+  },
   "dependencies": {
     "next": "15.3.4",
     "react": "19.1.0",
@@ -30,6 +35,7 @@
     "/temp/"
   ],
   "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
     "@reduxjs/toolkit": "^2.8.2",
     "@types/node": "^24.0.7",
     "@types/react": "^19.1.8",
@@ -40,6 +46,7 @@
     "eslint-config-next": "15.3.4",
     "file-loader": "^6.2.0",
     "gh-pages": "^6.3.0",
+    "husky": "^9.1.7",
     "keen-slider": "^6.8.6",
     "nanoid": "^5.1.5",
     "react-loading-skeleton": "^3.5.0",
