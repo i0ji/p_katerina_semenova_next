@@ -35,7 +35,8 @@
     ".next/types/**/*.ts",
     "next-env.d.ts",
     "services/**/*.d.ts",
-    "build/types/**/*.ts"
+    "build/types/**/*.ts",
+    "commitlint.config.cjs"
   ],
   "exclude": ["node_modules"]
 }

@@ -22,11 +22,6 @@
     "lint": "next lint",
     "prepare": "husky"
   },
-   "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS -g './commitlint.cjs'"
-    }
-  },
   "dependencies": {
     "next": "15.3.4",
     "react": "19.1.0",
@@ -37,11 +32,12 @@
   ],
   "devDependencies": {
     "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@commitlint/types": "^19.8.1",
     "@reduxjs/toolkit": "^2.8.2",
-    "@types/node": "^24.0.7",
+    "@types/node": "^24.0.8",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
-    "@types/react-slick": "^0.23.13",
     "cz-customizable": "^7.4.0",
     "eslint": "^9.30.0",
     "eslint-config-next": "15.3.4",
@@ -61,6 +57,11 @@
     "overrides": {
       "minimatch": "^9.0.5",
       "brace-expansion": "^2.0.1"
-    }
+    },
+    "ignoredBuiltDependencies": [
+      "@parcel/watcher",
+      "sharp",
+      "unrs-resolver"
+    ]
   }
 }
