@@ -118,6 +118,7 @@ Set up commitlint/husky; Open 2 issues; fix keen-slider implementation;
 Commitlint/husky/commitizen set up; 
 Forward for issue[#2](https://github.com/i0ji/p_katerina_semenova_next/issues/2); 
 Testing <Skeleton/> and loading;
+Add concrete aspect ratio to correct implementation of <Image> and <Skeleton> size;
 </li>
 </ul>
 <hr>
