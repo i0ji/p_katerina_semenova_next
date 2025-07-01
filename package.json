@@ -11,7 +11,7 @@
       "path": "node_modules/cz-customizable"
     },
     "cz-customizable": {
-      "config": "./commitizen.cjs"
+      "config": "./commitizen.config.cjs"
     }
   },
   "type": "module",
