@@ -102,6 +102,23 @@ customizing commitizen
 <li><b>v: 0.3.4 / d: 20.06.25</b> 
 deps update;
 </li>
+<li><b>v: 0.3.5 / d: 25.06.25</b> 
+refactor slider/predeploy
+</li>
+<li><b>v: 0.4 / d: 27.06.25</b> 
+Succesfully attempt DB connection; get local version with remote images fetching; next in line is to refuse static data;
+</li>
+<li><b>v: 0.4.1 / d: 28.06.25</b> 
+Refactor fetchData service and main page logic; prepare to refactor skeleton/lazy images;chore;
+</li>
+<li><b>v: 0.4.1 / d: 30.06.25</b> 
+Set up commitlint/husky; Open 2 issues; fix keen-slider implementation;
+</li>
+<li><b>v: 0.4.2 / d: 01.07.25</b> 
+Commitlint/husky/commitizen set up; 
+Forward for issue[#2](https://github.com/i0ji/p_katerina_semenova_next/issues/2); 
+Testing <Skeleton/> and loading;
+</li>
 </ul>
 <hr>
 <h3> 3. Known issues/to go</h3>
