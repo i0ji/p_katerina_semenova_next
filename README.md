@@ -114,6 +114,10 @@ Refactor fetchData service and main page logic; prepare to refactor skeleton/laz
 <li><b>v: 0.4.1 / d: 30.06.25</b> 
 Set up commitlint/husky; Open 2 issues; fix keen-slider implementation;
 </li>
+<li><b>v: 0.4.2 / d: 01.07.25</b> 
+Commitlint/husky/commitizen set up; 
+Forward for issue[#2](https://github.com/i0ji/p_katerina_semenova_next/issues/2);
+</li>
 </ul>
 <hr>
 <h3> 3. Known issues/to go</h3>
