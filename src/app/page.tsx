@@ -3,7 +3,12 @@
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from 'store/hooks';
 import { fetchProjects } from 'store/projectAction';
-import { Header, Slides, Footer } from '@/components/index';
+import {
+  Header,
+  Slides,
+  Footer,
+  Loader,
+} from '@/components/index';
 import { nanoid } from 'nanoid';
 
 export default function Home() {
@@ -16,22 +21,24 @@ export default function Home() {
     dispatch(fetchProjects());
   }, [dispatch]);
 
-  if (pending) return <div>Загрузка проектов...</div>;
+  if (pending) return <Loader />;
   if (error) return <div>Ошибка: {error}</div>;
-
-  console.log('0.4.2');
 
   return (
     <>
-      <Header />
-      {projects.map((project) => (
-        <Slides
-          key={nanoid()}
-          slides={project.slides}
-          description={project.description}
-        />
-      ))}
-      <Footer />
+      {!pending && (
+        <>
+          <Header />
+          {projects.map((project) => (
+            <Slides
+              key={nanoid()}
+              slides={project.slides}
+              description={project.description}
+            />
+          ))}
+          <Footer />
+        </>
+      )}
     </>
   );
 }

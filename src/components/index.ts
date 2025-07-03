@@ -6,6 +6,7 @@ import {
   NextButton,
   PrevButton,
 } from 'components/Button/Button';
+import Loader from './Loader/Loader';
 
 export {
   Slides,
@@ -14,4 +15,5 @@ export {
   NextButton,
   PrevButton,
   SlideImage,
+  Loader
 };
