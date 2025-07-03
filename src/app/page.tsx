@@ -1,19 +1,22 @@
 'use client';
 
 import { useEffect } from 'react';
+
 import { useAppDispatch, useAppSelector } from 'store/hooks';
 import { fetchProjects } from 'store/projectAction';
+
 import {
   Header,
   Slides,
   Footer,
   Loader,
 } from '@/components/index';
+
 import { nanoid } from 'nanoid';
 
 export default function Home() {
   const dispatch = useAppDispatch();
-  const { projects, pending, error } = useAppSelector(
+  const { projects, pending, error, loaded } = useAppSelector(
     (state) => state.projects
   );
 
@@ -21,7 +24,7 @@ export default function Home() {
     dispatch(fetchProjects());
   }, [dispatch]);
 
-  if (pending) return <Loader />;
+  if (!loaded) return <Loader />;
   if (error) return <div>Ошибка: {error}</div>;
 
   return (

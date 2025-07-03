@@ -16,7 +16,6 @@ export const fetchProjects =
       const data: SlidesDataModel[] = await res.json();
       dispatch(fetchProjectsSuccess(data));
     } catch (error: unknown) {
-      // Проверяем, что error — объект с message
       let message = 'Неизвестная ошибка';
       if (error instanceof Error) {
         message = error.message;

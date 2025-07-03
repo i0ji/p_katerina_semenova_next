@@ -1,9 +1,11 @@
-import { useInView } from 'react-intersection-observer';
+import styles from './SlideImage.module.scss';
+import 'react-loading-skeleton/dist/skeleton.css';
+
 import { useState } from 'react';
+import { useInView } from 'react-intersection-observer';
+
 import Skeleton from 'react-loading-skeleton';
 import Image from 'next/image';
-import 'react-loading-skeleton/dist/skeleton.css';
-import styles from './SlideImage.module.scss';
 
 export function SlideImage({
   src,
