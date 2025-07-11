@@ -14,6 +14,7 @@ import { nanoid } from 'nanoid';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import 'keen-slider/keen-slider.min.css';
+import Tooltip from '../Tooltip/Tooltip';
 
 export default function Slides(props) {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -37,10 +38,7 @@ export default function Slides(props) {
   return (
     <section className={styles.slides}>
       <div className={styles.slide__wrapper}>
-        <div
-          ref={sliderRef}
-          className={`keen-slider`}
-        >
+        <div ref={sliderRef} className={`keen-slider`}>
           {props.slides.map((slide: SlideModel) => (
             <div
               key={slide.id}
@@ -69,14 +67,19 @@ export default function Slides(props) {
 
             <div className={styles.dots}>
               {props.slides.map((_, idx: number) => (
-                <button
-                  key={nanoid()}
-                  onClick={() => slider?.current?.moveToIdx(idx)}
-                  className={`${styles.dot} ${
-                    currentSlide === idx ? styles.active : ''
-                  }`}
-                  aria-label={`Перейти к слайду ${idx + 1}`}
-                />
+                <>
+                  <button
+                    key={nanoid()}
+                    onClick={() =>
+                      slider?.current?.moveToIdx(idx)
+                    }
+                    className={`${styles.dot} ${
+                      currentSlide === idx ? styles.active : ''
+                    }`}
+                    popoverTarget={'info'}
+                  />
+                  <Tooltip description={`Перейти к слайду ${idx + 1}`}/>
+                </>
               ))}
             </div>
           </>
