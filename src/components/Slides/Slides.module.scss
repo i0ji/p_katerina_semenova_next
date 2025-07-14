@@ -44,27 +44,32 @@
       margin-top: 24px;
       gap: 8px;
 
-      .dot {
-        width: 10px;
-        height: 10px;
+      .dots_wrapper {
+        position: relative;
+        display: inline-block;
 
-        background-color: #7a7a7a;
+        .dot {
+          width: 10px;
+          height: 10px;
 
-        border-radius: 50%;
-        border: none;
+          background-color: #7a7a7a;
 
-        cursor: pointer;
-        transition: background-color 0.3s ease;
+          border-radius: 50%;
+          border: none;
 
-        anchor-name: dot;
-      }
+          cursor: pointer;
+          transition: background-color 0.3s ease;
 
-      .dot:hover {
-        background-color: #999;
-      }
+          anchor-name: dot;
+        }
 
-      .active {
-        background-color: rgb(20, 20, 20);
+        .dot:hover {
+          background-color: #999;
+        }
+
+        .active {
+          background-color: rgb(20, 20, 20);
+        }
       }
     }
   }
