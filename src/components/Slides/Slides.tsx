@@ -62,12 +62,12 @@ export default function Slides(props) {
             <div className={styles.dots}>
               {props.slides.map((_, idx: number) => (
                 <div
+                  key={nanoid()}
                   className={styles.dots_wrapper}
                   onMouseEnter={() => setHover(idx)}
                   onMouseLeave={() => setHover(null)}
                 >
                   <button
-                    key={nanoid()}
                     onClick={() => slider?.current?.moveToIdx(idx)}
                     className={`${styles.dot} ${
                       currentSlide === idx ? styles.active : ''

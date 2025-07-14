@@ -123,6 +123,9 @@ Add concrete aspect ratio to correct implementation of <Image> and <Skeleton> si
 <li><b>v: 0.4.3.2 / d: 03.07.25</b> 
 deps update; close issue#6; change preloading condition;
 </li>
+<li><b>v: 0.4.3.2t / d: 14.07.25</b> 
+deps update; deploy for tests;
+</li>
 </ul>
 <hr>
 <h3> 3. Known issues/to go</h3>
