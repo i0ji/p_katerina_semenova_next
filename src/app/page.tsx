@@ -5,12 +5,7 @@ import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from 'store/hooks';
 import { fetchProjects } from 'store/projectAction';
 
-import {
-  Header,
-  Slides,
-  Footer,
-  Loader,
-} from '@/components/index';
+import { Header, Slides, Footer, Loader } from '@/components/index';
 
 import { nanoid } from 'nanoid';
 

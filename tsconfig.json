@@ -37,6 +37,6 @@
     "services/**/*.d.ts",
     "build/types/**/*.ts",
     "commitlint.config.cjs"
-  ],
+, "src/components/Slides/Slides.tsx_copy"  ],
   "exclude": ["node_modules"]
 }

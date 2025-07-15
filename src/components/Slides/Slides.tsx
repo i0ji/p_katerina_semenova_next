@@ -4,20 +4,19 @@ import styles from './Slides.module.scss';
 
 import { useState, useEffect } from 'react';
 
-import {
-  NextButton,
-  PrevButton,
-  SlideImage,
-} from 'components/index';
+import { NextButton, PrevButton, SlideImage } from 'components/index';
 import { useKeenSlider } from 'keen-slider/react';
+
 import { nanoid } from 'nanoid';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import 'keen-slider/keen-slider.min.css';
+import Tooltip from '../Tooltip/Tooltip';
 
 export default function Slides(props) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isMounted, setIsMounted] = useState(false);
+  const [hover, setHover] = useState<number | null>(null);
   const [sliderRef, slider] = useKeenSlider({
     loop: true,
     slideChanged(s) {
@@ -37,10 +36,7 @@ export default function Slides(props) {
   return (
     <section className={styles.slides}>
       <div className={styles.slide__wrapper}>
-        <div
-          ref={sliderRef}
-          className={`keen-slider`}
-        >
+        <div ref={sliderRef} className={`keen-slider`}>
           {props.slides.map((slide: SlideModel) => (
             <div
               key={slide.id}
@@ -59,24 +55,30 @@ export default function Slides(props) {
         {isMounted && (
           <>
             <div className={styles.controls}>
-              <PrevButton
-                onClick={() => slider?.current?.prev()}
-              />
-              <NextButton
-                onClick={() => slider?.current?.next()}
-              />
+              <PrevButton onClick={() => slider?.current?.prev()} />
+              <NextButton onClick={() => slider?.current?.next()} />
             </div>
 
             <div className={styles.dots}>
               {props.slides.map((_, idx: number) => (
-                <button
+                <div
                   key={nanoid()}
-                  onClick={() => slider?.current?.moveToIdx(idx)}
-                  className={`${styles.dot} ${
-                    currentSlide === idx ? styles.active : ''
-                  }`}
-                  aria-label={`Перейти к слайду ${idx + 1}`}
-                />
+                  className={styles.dots_wrapper}
+                  onMouseEnter={() => setHover(idx)}
+                  onMouseLeave={() => setHover(null)}
+                >
+                  <button
+                    onClick={() => slider?.current?.moveToIdx(idx)}
+                    className={`${styles.dot} ${
+                      currentSlide === idx ? styles.active : ''
+                    }`}
+                    popoverTarget={'info'}
+                  />
+
+                  {hover === idx && (
+                    <Tooltip description={`К слайду ${idx + 1}`} />
+                  )}
+                </div>
               ))}
             </div>
           </>
