@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 
 import { useAppDispatch, useAppSelector } from 'store/hooks';
-import { fetchProjects } from 'store/projectAction';
+import { fetchProjects } from '@/services/fetchData';
 
 import { Header, Slides, Footer, Loader } from '@/components/index';
 

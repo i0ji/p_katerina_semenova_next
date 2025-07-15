@@ -1,41 +1,40 @@
+import { AppDispatch } from 'store/store';
 import {
   fetchProjectsStart,
-  fetchProjectsFailure,
   fetchProjectsSuccess,
+  fetchProjectsFailure,
 } from 'store/projectSlice';
 
-export const fetchProjects =
-  (projectName: string) => async (dispatch) => {
-    try {
-      console.log('Начинаю fetchProjects', projectName);
-      dispatch(fetchProjectsStart());
+export const fetchProjects = () => async (dispatch: AppDispatch) => {
+  dispatch(fetchProjectsStart());
 
-      const response = await fetch(
-        `https://katerinasemenova.ru/fetchData.php?project=${encodeURIComponent(
-          projectName
-        )}`
-      );
+  const projectNames = [
+    'AnniversarySlides',
+    'NagaStyleSlides',
+    'NoraQuizSlides',
+    'NoraStyleSlides',
+    'PatternSlides',
+    'SeagullSlides',
+    'TsumSlides',
+  ];
+  try {
+    const responses = await Promise.all(
+      projectNames.map((name) =>
+        fetch(`http://31.31.196.245/fetchData.php?project=${name}`)
+      )
+    );
 
-      if (!response.ok) {
-        throw new Error(`Ошибка сети: ${response.status}`);
-      }
+    const data = await Promise.all(
+      responses.map(async (res) => {
+        if (!res.ok) {
+          throw new Error(`Ошибка запроса: ${res.status}`);
+        }
+        return await res.json();
+      })
+    );
 
-      const data = await response.json();
-      console.log('Данные с API:', data);
-
-      if (
-        typeof data !== 'object' ||
-        !('slides' in data) ||
-        !Array.isArray(data.slides) ||
-        typeof data.description !== 'string'
-      ) {
-        throw new Error('Некорректный формат данных');
-      }
-
-      dispatch(fetchProjectsSuccess([data]));
-      console.log('Данные отправлены в store');
-    } catch (error) {
-      dispatch(fetchProjectsFailure((error as Error).message));
-      console.error('Ошибка загрузки данных:', error);
-    }
-  };
+    dispatch(fetchProjectsSuccess(data));
+  } catch (error: any) {
+    dispatch(fetchProjectsFailure(error.message));
+  }
+};

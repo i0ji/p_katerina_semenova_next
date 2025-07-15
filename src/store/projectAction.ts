@@ -1,25 +1,29 @@
-import { AppDispatch } from './store';
-import {
-  fetchProjectsStart,
-  fetchProjectsSuccess,
-  fetchProjectsFailure,
-} from './projectSlice';
+// import { createAsyncThunk } from '@reduxjs/toolkit';
 
-export const fetchProjects =
-  () => async (dispatch: AppDispatch) => {
-    try {
-      dispatch(fetchProjectsStart());
-      const res = await fetch(
-        'https://katerinasemenova.ru/fetchData.php'
-      );
-      if (!res.ok) throw new Error(`Ошибка: ${res.status}`);
-      const data: SlidesDataModel[] = await res.json();
-      dispatch(fetchProjectsSuccess(data));
-    } catch (error: unknown) {
-      let message = 'Неизвестная ошибка';
-      if (error instanceof Error) {
-        message = error.message;
-      }
-      dispatch(fetchProjectsFailure(message));
-    }
-  };
+// export const fetchProjects = createAsyncThunk(
+//   'projects/fetchProjects',
+//   async (_, { rejectWithValue }) => {
+//     try {
+//       const projectNames = ['project1', 'project2'];
+
+//       const responses = await Promise.all(
+//         projectNames.map((name) =>
+//           fetch(`http://31.31.196.245/fetchData.php?project=${name}`)
+//         )
+//       );
+
+//       const data = await Promise.all(
+//         responses.map(async (res) => {
+//           if (!res.ok) {
+//             throw new Error(`Ошибка запроса: ${res.status}`);
+//           }
+//           return await res.json();
+//         })
+//       );
+
+//       return data;
+//     } catch (error: any) {
+//       return rejectWithValue(error.message);
+//     }
+//   }
+// );

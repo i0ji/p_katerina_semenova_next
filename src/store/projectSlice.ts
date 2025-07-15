@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 const initialState: ProjectsState = {
-  projects: [],
+  projects: [] as SlidesDataModel[],
   error: null,
   pending: false,
   loaded: false,
