@@ -1,0 +1,34 @@
+@use '@/styles/colors.scss' as *;
+
+.tooltip_mount {
+  position: absolute;
+  bottom: 120%;
+
+  transform: translateX(-75%);
+
+  background-color: $brand_gray;
+  margin-left: 26px;
+  border-radius: 10px;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  font-size: 0.75rem;
+
+  pointer-events: none;
+  transition: all 0.5s ease;
+  z-index: 10;
+}
+
+.tooltip_mount::after {
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  content: '';
+  height: 0;
+  margin: 0 0 0 -6px;
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
+  border-top: 6px solid $brand_gray;
+  line-height: 0;
+}

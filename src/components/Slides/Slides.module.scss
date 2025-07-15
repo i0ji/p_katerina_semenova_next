@@ -41,28 +41,35 @@
       display: flex;
       justify-content: center;
 
-      margin-top: 24px;
+      margin-top: 13px;
       gap: 8px;
 
-      .dot {
-        width: 10px;
-        height: 10px;
+      .dots_wrapper {
+        position: relative;
+        display: inline-block;
 
-        background-color: #7a7a7a;
+        .dot {
+          width: 10px;
+          height: 10px;
 
-        border-radius: 50%;
-        border: none;
+          background-color: #7a7a7a;
 
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-      }
+          border-radius: 50%;
+          border: none;
 
-      .dot:hover {
-        background-color: #999;
-      }
+          cursor: pointer;
+          transition: background-color 0.3s ease;
 
-      .active {
-        background-color: rgb(20, 20, 20);
+          anchor-name: dot;
+        }
+
+        .dot:hover {
+          background-color: #999;
+        }
+
+        .active {
+          background-color: rgb(20, 20, 20);
+        }
       }
     }
   }
