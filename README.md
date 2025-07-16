@@ -118,6 +118,16 @@ Set up commitlint/husky; Open 2 issues; fix keen-slider implementation;
 Commitlint/husky/commitizen set up; 
 Forward for issue[#2](https://github.com/i0ji/p_katerina_semenova_next/issues/2); 
 Testing <Skeleton/> and loading;
+Add concrete aspect ratio to correct implementation of <Image> and <Skeleton> size;
+</li>
+<li><b>v: 0.4.3.2 / d: 03.07.25</b> 
+deps update; close issue#6; change preloading condition;
+</li>
+<li><b>v: 0.4.3.2t / d: 14.07.25</b> 
+deps update; deploy for tests;
+</li>
+<li><b>v: 0.4.3.3 / d: 16.07.25</b> 
+deps update; fetch mock data when in dev env;
 </li>
 </ul>
 <hr>
