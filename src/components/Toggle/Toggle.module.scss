@@ -1,7 +1,15 @@
 @use '@/styles/themes' as *;
+@use '@/styles/mixin' as mixin;
 
 @each $theme-name in map-keys($themes) {
   .toggle {
+    @include mixin.flex(null, center, end);
+
+    height: 100%;
+
+    font-size: 11px;
+    line-height: 15px;
+
     input[type='checkbox'] {
       display: none;
     }
@@ -13,31 +21,29 @@
 
     input[type='checkbox'] + label::before {
       position: absolute;
-      top: 0px;
-      left: -65px;
+      top: -20px;
+      left: 11px;
 
       display: block;
 
-      height: 18px;
+      height: 20px;
       width: 45px;
 
       border: 1px solid theme-color($theme-name, button-color);
       border-radius: 9px;
-
-      background: repeating-radial-gradient();
 
       content: ' ';
     }
 
     input[type='checkbox'] + label::after {
       position: absolute;
-      top: -6px;
-      left: -75px;
+      top: -18px;
+      left: 39px;
 
       display: block;
 
-      height: 30px;
-      width: 30px;
+      height: 15px;
+      width: 15px;
 
       border: 1px solid theme-color($theme-name, border);
       border-radius: 50%;
@@ -49,7 +55,7 @@
     }
 
     input[type='checkbox']:checked + label::after {
-      left: -40px;
+      left: 13px;
       transition: all 0.3s ease-in;
     }
   }
