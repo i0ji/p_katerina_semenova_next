@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-const initialState: ProjectsState = {
+const initialState: ProjectsStateModel = {
   projects: [] as SlidesDataModel[],
   error: null,
   pending: false,

@@ -3,11 +3,16 @@
 import { useState, useEffect, useRef } from 'react';
 import styles from './Footer.module.scss';
 import scrollToSide from 'services/scroll';
+import { toggleTheme } from 'store/themeSlice';
+import { useAppDispatch, useAppSelector } from 'store/hooks';
 
 export default function Footer() {
   const [showButton, setShowButton] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const contactsRef = useRef(null);
+  //CURRENT
+  const themeMode = useAppSelector((state) => state.theme.mode);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     setIsMounted(true);
@@ -20,13 +25,26 @@ export default function Footer() {
     };
 
     window.addEventListener('scroll', handleScroll);
-    return () =>
-      window.removeEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  //CURRENT
+  useEffect(() => {
+    document.documentElement.classList.remove('theme-light', 'theme-dark');
+    document.documentElement.classList.add(`theme-${themeMode}`);
+  }, [themeMode]);
 
   if (!isMounted) {
     return null;
   }
+
+  //CURRENT DARK THEME TOGGLER
+  const handleToggleTheme = () => {
+    dispatch(toggleTheme());
+    // document.documentElement.classList.remove('theme-light', 'theme-dark');
+    // document.documentElement.classList.add(`theme-dark`);
+    // console.log(themeMode);
+  };
 
   return (
     <footer className={styles.footer}>
@@ -35,23 +53,21 @@ export default function Footer() {
       <div className={styles.footer__about}>
         <h4>Катерина</h4>
         <article>
-          Графический дизайнер с&nbsp;6-летним опытом.
-          На&nbsp;данный момент занимаюсь разработкой
-          и&nbsp;поддержкой фирменных стилей, навигации,
-          созданием key visual, POS&nbsp;-&nbsp;материалов,
-          полиграфической продукции для&nbsp;отелей,
-          бизнес-центров и&nbsp;торговых&nbsp;центров.
+          Графический дизайнер с&nbsp;6-летним опытом. На&nbsp;данный момент
+          занимаюсь разработкой и&nbsp;поддержкой фирменных стилей, навигации,
+          созданием key visual, POS&nbsp;-&nbsp;материалов, полиграфической
+          продукции для&nbsp;отелей, бизнес-центров
+          и&nbsp;торговых&nbsp;центров.
           <br />
           <br />
-          В 2017&nbsp;году получила высшее образование
-          в&nbsp;Национальном Институте Дизайна
-          по&nbsp;направлению «Графический дизайн».
+          В 2017&nbsp;году получила высшее образование в&nbsp;Национальном
+          Институте Дизайна по&nbsp;направлению «Графический дизайн».
           <br />
           <br />
-          Участвовала в&nbsp;улучшении функционала инструмента
-          Поиск для&nbsp;приложения Иви в&nbsp;процессе
-          прохождения годового курса «UX/UI: дизайн цифровых
-          продуктов». Ознакомиться с&nbsp;проектом можно на&nbsp;
+          Участвовала в&nbsp;улучшении функционала инструмента Поиск
+          для&nbsp;приложения Иви в&nbsp;процессе прохождения годового курса
+          «UX/UI: дизайн цифровых продуктов». Ознакомиться с&nbsp;проектом можно
+          на&nbsp;
           <a href="https://www.behance.net/gallery/182271937/Search-Online-cinema-IVI">
             Behance
           </a>
@@ -67,14 +83,10 @@ export default function Footer() {
             <a href="tel:+79055386075">8 905 538 60 75</a>
           </p>
           <p>
-            <a href="mailto:KaterinaSemenovaV@ya.ru">
-              KaterinaSemenovaV@ya.ru
-            </a>
+            <a href="mailto:KaterinaSemenovaV@ya.ru">KaterinaSemenovaV@ya.ru</a>
           </p>
           <p>
-            <a href="https://t.me/KateSemenovaV">
-              @KateSemenovaV
-            </a>
+            <a href="https://t.me/KateSemenovaV">@KateSemenovaV</a>
           </p>
           <p>
             <a href="https://www.behance.net/KateMojojo">
@@ -82,11 +94,10 @@ export default function Footer() {
             </a>
           </p>
         </div>
+        <button onClick={handleToggleTheme}>Switch theme</button>
         <button
           onClick={() => scrollToSide('top')}
-          className={`${styles.scroll_button} ${
-            showButton ? styles.show : ''
-          }`}
+          className={`${styles.scroll_button} ${showButton ? styles.show : ''}`}
         >
           ↑
         </button>

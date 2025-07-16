@@ -1,0 +1,18 @@
+$brand_gray: #51515180;
+
+$themes: (
+  light: (
+    background: #ffffff,
+    text-color: #000000,
+    link-color: black,
+  ),
+  dark: (
+    background: #121212,
+    text-color: #e0e0e0,
+    link-color: #bbbbbb,
+  ),
+);
+
+@function theme-color($theme-name, $key) {
+  @return map-get(map-get($themes, $theme-name), $key);
+}

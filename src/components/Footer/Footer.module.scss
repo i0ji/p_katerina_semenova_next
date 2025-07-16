@@ -1,5 +1,5 @@
 @use '@/styles/mixin' as *;
-@use '@/styles/colors' as *;
+@use '@/styles/themes' as *;
 
 .footer {
   @include flex(column, space-between, null);

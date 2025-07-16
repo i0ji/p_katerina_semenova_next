@@ -1,4 +1,4 @@
-@use '@/styles/index' as *;
+@use '@/styles/index' as styles;
 
 * {
   padding: 0;
@@ -13,7 +13,7 @@
 }
 
 html {
-  @include flex(null, center, null);
+  @include styles.flex(null, center, null);
   scroll-behavior: smooth;
 }
 
@@ -42,6 +42,21 @@ body {
 
   section {
     margin-bottom: 30px;
+  }
+}
+
+@each $theme-name in map-keys(styles.$themes) {
+  html.theme-#{$theme-name} {
+    body {
+      background-color: styles.theme-color($theme-name, background);
+      color: styles.theme-color($theme-name, text-color);
+    }
+
+    a,
+    a:link,
+    a:visited {
+      color: styles.theme-color($theme-name, link-color);
+    }
   }
 }
 

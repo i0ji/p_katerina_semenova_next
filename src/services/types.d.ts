@@ -8,9 +8,13 @@ interface SlidesDataModel {
   description: string;
 }
 
-interface ProjectsState {
+interface ProjectsStateModel {
   projects: SlidesDataModel[];
   error: string | null;
   pending: boolean;
   loaded: boolean;
+}
+
+interface ThemeModel {
+  mode: 'light' | 'dark';
 }

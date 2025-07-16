@@ -20,6 +20,7 @@ export const fetchProjects = () => async (dispatch: AppDispatch) => {
 
     //OPTION: PROD ENV
     const res = await fetch('https://katerinasemenova.ru/fetchData.php');
+    
     if (!res.ok) throw new Error(`Ошибка: ${res.status}`);
     const data: SlidesDataModel[] = await res.json();
     dispatch(fetchProjectsSuccess(data));

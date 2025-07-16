@@ -1,8 +1,8 @@
-@use '@/styles/colors.scss' as c;
-@use '@/styles/mixin.scss' as m;
+@use '@/styles/themes.scss' as *;
+@use '@/styles/mixin.scss' as *;
 
 .loader {
-  @include m.flex(null, center, center);
+  @include flex(null, center, center);
 
   position: fixed;
   top: 0;
@@ -10,6 +10,6 @@
   bottom: 0;
   left: 0;
 
-  background-color: c.$brand_gray;
+  background-color: $brand_gray;
   opacity: 0.5;
 }
