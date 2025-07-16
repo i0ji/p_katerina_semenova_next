@@ -1,18 +1,24 @@
+@use 'sass:map';
 $brand_gray: #51515180;
+$brand_light: #aeaeae;
 
 $themes: (
   light: (
     background: #ffffff,
-    text-color: #000000,
-    link-color: black,
+    text: #000000,
+    link: black,
+    button: $brand_gray,
+    border: $brand_gray,
   ),
   dark: (
-    background: #121212,
-    text-color: #e0e0e0,
-    link-color: #bbbbbb,
+    background: #212121,
+    text: $brand_light,
+    link: #bbbbbb,
+    button: $brand_light,
+    border: $brand_light,
   ),
 );
 
 @function theme-color($theme-name, $key) {
-  @return map-get(map-get($themes, $theme-name), $key);
+  @return map.get(map.get($themes, $theme-name), $key);
 }

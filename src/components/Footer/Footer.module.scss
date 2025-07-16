@@ -1,8 +1,8 @@
-@use '@/styles/mixin' as *;
-@use '@/styles/themes' as *;
+@use '@/styles/mixin' as mixin;
+@use '@/styles/themes' as themes;
 
 .footer {
-  @include flex(column, space-between, null);
+  @include mixin.flex(column, space-between, null);
 
   hr {
     width: 100%;
@@ -10,7 +10,7 @@
 
     margin: 0;
 
-    background-color: $brand_gray;
+    background-color: themes.$brand_gray;
   }
 
   h4 {
@@ -18,7 +18,7 @@
   }
 
   &__about {
-    @include flex(row, space-between, null);
+    @include mixin.flex(row, space-between, null);
 
     margin: 30px 0;
 
@@ -30,7 +30,7 @@
   }
 
   &__contacts {
-    @include flex(row, space-between, null);
+    @include mixin.flex(row, space-between, null);
     position: relative;
 
     margin: 30px 0;
@@ -41,44 +41,45 @@
 
     div {
       order: 2;
-
-      @include flex(column, null, null);
+      @include mixin.flex(column, null, null);
       width: 54%;
     }
 
-    .scroll_button {
-      order: 3;
+    @each $theme-name in map-keys(themes.$themes) {
+      .scroll_button {
+        order: 3;
 
-      position: absolute;
-      bottom: 0;
-      right: 0;
+        position: absolute;
+        bottom: 0;
+        right: 0;
 
-      width: 40px;
-      height: 40px;
+        width: 40px;
+        height: 40px;
 
-      background-color: transparent;
-      color: black;
+        background-color: transparent;
+        color: themes.theme-color($theme-name, link);
 
-      border: 1px solid transparent;
-      border-radius: 10%;
+        border: 1px solid transparent;
+        border-radius: 10%;
 
-      font-size: 1.5rem;
-      font-weight: bold;
-      cursor: pointer;
+        font-size: 1.5rem;
+        font-weight: bold;
+        cursor: pointer;
 
-      opacity: 0;
-      pointer-events: none;
-      transition: all 0.5s ease;
-    }
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.5s ease;
+      }
 
-    .scroll_button.show {
-      opacity: 1;
-      pointer-events: auto;
-    }
+      .scroll_button.show {
+        opacity: 1;
+        pointer-events: auto;
+      }
 
-    .scroll_button:hover {
-      filter: blur(0.5px);
-      opacity: 0.97;
+      .scroll_button:hover {
+        filter: blur(0.5px);
+        opacity: 0.97;
+      }
     }
   }
 }

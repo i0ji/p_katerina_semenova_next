@@ -1,36 +1,42 @@
-a {
-  position: relative;
-  display: inline-block;
+@use '@/styles/themes' as themes;
 
-  color: black;
+@each $theme-name in map-keys(themes.$themes) {
+  html.theme-#{$theme-name} {
+    a {
+      position: relative;
+      display: inline-block;
 
-  font-weight: normal;
+      color: themes.theme-color($theme-name, link);
 
-  cursor: pointer;
-  text-decoration: none;
-}
+      font-weight: normal;
 
-a:visited {
-  color: black;
-}
+      cursor: pointer;
+      text-decoration: none;
+    }
 
-a:after {
-  position: absolute;
-  display: block;
-  height: 2px;
-  width: 0;
-  left: 50%;
+    a:visited {
+      color: themes.theme-color($theme-name, link);
+    }
 
-  background-color: black;
+    a:after {
+      position: absolute;
+      display: block;
+      height: 2px;
+      width: 0;
+      left: 50%;
 
-  -webkit-transition: width 0.3s ease-in-out;
-  transition: width 0.3s ease-in-out;
-  transform: translateX(-50%);
+      background-color: themes.theme-color($theme-name, link);
 
-  content: '';
-}
+      -webkit-transition: width 0.3s ease-in-out;
+      transition: width 0.3s ease-in-out;
+      transform: translateX(-50%);
 
-a:hover:after,
-a:focus:after {
-  width: 100%;
+      content: '';
+    }
+
+    a:hover:after,
+    a:focus:after {
+      width: 100%;
+    }
+  }
 }

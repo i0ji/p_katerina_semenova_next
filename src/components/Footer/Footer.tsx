@@ -3,16 +3,12 @@
 import { useState, useEffect, useRef } from 'react';
 import styles from './Footer.module.scss';
 import scrollToSide from 'services/scroll';
-import { toggleTheme } from 'store/themeSlice';
-import { useAppDispatch, useAppSelector } from 'store/hooks';
+
 
 export default function Footer() {
   const [showButton, setShowButton] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const contactsRef = useRef(null);
-  //CURRENT
-  const themeMode = useAppSelector((state) => state.theme.mode);
-  const dispatch = useAppDispatch();
 
   useEffect(() => {
     setIsMounted(true);
@@ -28,23 +24,9 @@ export default function Footer() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  //CURRENT
-  useEffect(() => {
-    document.documentElement.classList.remove('theme-light', 'theme-dark');
-    document.documentElement.classList.add(`theme-${themeMode}`);
-  }, [themeMode]);
-
   if (!isMounted) {
     return null;
   }
-
-  //CURRENT DARK THEME TOGGLER
-  const handleToggleTheme = () => {
-    dispatch(toggleTheme());
-    // document.documentElement.classList.remove('theme-light', 'theme-dark');
-    // document.documentElement.classList.add(`theme-dark`);
-    // console.log(themeMode);
-  };
 
   return (
     <footer className={styles.footer}>
@@ -94,7 +76,7 @@ export default function Footer() {
             </a>
           </p>
         </div>
-        <button onClick={handleToggleTheme}>Switch theme</button>
+
         <button
           onClick={() => scrollToSide('top')}
           className={`${styles.scroll_button} ${showButton ? styles.show : ''}`}

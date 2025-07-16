@@ -1,0 +1,56 @@
+@use '@/styles/themes' as *;
+
+@each $theme-name in map-keys($themes) {
+  .toggle {
+    input[type='checkbox'] {
+      display: none;
+    }
+
+    label {
+      position: relative;
+      cursor: pointer;
+    }
+
+    input[type='checkbox'] + label::before {
+      position: absolute;
+      top: 0px;
+      left: -65px;
+
+      display: block;
+
+      height: 18px;
+      width: 45px;
+
+      border: 1px solid theme-color($theme-name, button-color);
+      border-radius: 9px;
+
+      background: repeating-radial-gradient();
+
+      content: ' ';
+    }
+
+    input[type='checkbox'] + label::after {
+      position: absolute;
+      top: -6px;
+      left: -75px;
+
+      display: block;
+
+      height: 30px;
+      width: 30px;
+
+      border: 1px solid theme-color($theme-name, border);
+      border-radius: 50%;
+
+      background: theme-color($theme-name, background);
+      transition: all 0.3s ease-in;
+
+      content: ' ';
+    }
+
+    input[type='checkbox']:checked + label::after {
+      left: -40px;
+      transition: all 0.3s ease-in;
+    }
+  }
+}

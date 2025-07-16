@@ -19,7 +19,8 @@ html {
 
 a,
 a:link,
-a:visited {
+a:visited,
+a:hover {
   text-decoration: none;
   color: black;
 }
@@ -27,10 +28,6 @@ a:visited {
 a,
 button {
   -webkit-tap-highlight-color: transparent;
-}
-
-a:hover {
-  text-decoration: none;
 }
 
 body {
@@ -49,13 +46,13 @@ body {
   html.theme-#{$theme-name} {
     body {
       background-color: styles.theme-color($theme-name, background);
-      color: styles.theme-color($theme-name, text-color);
+      color: styles.theme-color($theme-name, text);
     }
 
     a,
     a:link,
     a:visited {
-      color: styles.theme-color($theme-name, link-color);
+      color: styles.theme-color($theme-name, link);
     }
   }
 }
