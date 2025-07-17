@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import styles from './Footer.module.scss';
-import scrollToSide from '@/services/scrollToSide';
+import scrollToSide from 'services/scroll';
 
 export default function Footer() {
   const [showButton, setShowButton] = useState(false);
@@ -67,7 +67,7 @@ export default function Footer() {
             <a href="mailto:KaterinaSemenovaV@ya.ru">KaterinaSemenovaV@ya.ru</a>
           </p>
           <p>
-            <a href="https://t.me/KateSemenovaV">KateSemenovaV</a>
+            <a href="https://t.me/KateSemenovaV">@KateSemenovaV</a>
           </p>
           <p>
             <a href="https://www.behance.net/KateMojojo">
@@ -75,6 +75,7 @@ export default function Footer() {
             </a>
           </p>
         </div>
+
         <button
           onClick={() => scrollToSide('top')}
           className={`${styles.scroll_button} ${showButton ? styles.show : ''}`}

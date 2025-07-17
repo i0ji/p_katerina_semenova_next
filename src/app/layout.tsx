@@ -1,24 +1,28 @@
 import type { Metadata } from 'next';
 import Metrics from '@/services/metrics';
-import './globals.scss';
+
+import Providers from 'services/provider';
+import './global.scss';
 
 export const metadata: Metadata = {
   title: 'Katerina Semenova',
-  description: 'Graphic designer| Katerina Semenova | ',
+  description: 'Graphic designer | Katerina Semenova | ',
   icons: {
-    icon: '/favicon.ico'
-  }
+    icon: '/favicon.ico',
+  },
 };
 
 export default function RootLayout({
-  children
+  children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
     <html lang="ru">
       <Metrics />
-      <body>{children}</body>
+      <body>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }

@@ -1,8 +1,7 @@
 @use '@/styles/mixin' as *;
-@use '@/styles/colors' as *;
 
 .footer {
-  @include flex(space-between, column);
+  @include flex(column, space-between, null);
 
   hr {
     width: 100%;
@@ -10,7 +9,7 @@
 
     margin: 0;
 
-    background-color: $brand_gray;
+    background-color: #51515180;
   }
 
   h4 {
@@ -18,7 +17,7 @@
   }
 
   &__about {
-    @include flex(space-between, row);
+    @include flex(row, space-between, null);
 
     margin: 30px 0;
 
@@ -30,7 +29,7 @@
   }
 
   &__contacts {
-    @include flex(space-between, row);
+    @include flex(row, space-between, null);
     position: relative;
 
     margin: 30px 0;
@@ -41,8 +40,7 @@
 
     div {
       order: 2;
-
-      @include flex('', column);
+      @include flex(column, null, null);
       width: 54%;
     }
 
@@ -57,7 +55,7 @@
       height: 40px;
 
       background-color: transparent;
-      color: black;
+      color: var(--color-accent);
 
       border: 1px solid transparent;
       border-radius: 10%;

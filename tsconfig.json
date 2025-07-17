@@ -21,10 +21,13 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
-      "public": ["./public/"],
-      "components": ["./src/app/components/"]
-    }
+      "@/*": ["src/*"],
+      "public/*": ["public/"],
+      "components/*": ["src/components/*"],
+      "services/*": ["src/services/*"],
+      "store/*": ["src/store/*"]
+    },
+    "typeRoots": ["./src/services"]
   },
   "include": [
     "**/*.ts",
@@ -32,7 +35,8 @@
     ".next/types/**/*.ts",
     "next-env.d.ts",
     "services/**/*.d.ts",
-    "build/types/**/*.ts"
-  ],
+    "build/types/**/*.ts",
+    "commitlint.config.cjs"
+, "src/components/Slides/Slides.tsx_copy"  ],
   "exclude": ["node_modules"]
 }

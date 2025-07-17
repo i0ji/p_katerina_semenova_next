@@ -1,16 +1,26 @@
 {
   "name": "semenova_next",
-  "version": "0.4.3.3",
+  "version": "0.4.4t",
   "private": true,
   "repository": {
     "type": "git",
     "directory": "https://github.com/i0ji/p_katerina_semenova_next.git"
   },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-customizable"
+    },
+    "cz-customizable": {
+      "config": "./commitizen.config.cjs"
+    }
+  },
+  "type": "module",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prepare": "husky"
   },
   "dependencies": {
     "next": "15.4.1",
@@ -21,19 +31,38 @@
     "/temp/"
   ],
   "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@commitlint/types": "^19.8.1",
+    "@reduxjs/toolkit": "^2.8.2",
     "@types/node": "^24.0.14",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
+    "cz-customizable": "^7.4.0",
     "eslint": "^9.31.0",
     "eslint-config-next": "15.4.1",
     "file-loader": "^6.2.0",
     "gh-pages": "^6.3.0",
+    "husky": "^9.1.7",
+    "keen-slider": "^6.8.6",
+    "nanoid": "^5.1.5",
+    "react-intersection-observer": "^9.16.0",
     "react-loading-skeleton": "^3.5.0",
-    "react-slick": "^0.30.3",
+    "react-redux": "^9.2.0",
     "react-yandex-metrika": "^2.6.0",
     "sass": "^1.89.2",
     "sass-loader": "^16.0.5",
-    "slick-carousel": "^1.8.1",
     "typescript": "^5.8.3"
+  },
+  "pnpm": {
+    "overrides": {
+      "minimatch": "^9.0.5",
+      "brace-expansion": "^2.0.1"
+    },
+    "ignoredBuiltDependencies": [
+      "@parcel/watcher",
+      "sharp",
+      "unrs-resolver"
+    ]
   }
 }

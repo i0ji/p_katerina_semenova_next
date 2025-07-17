@@ -1,84 +1,91 @@
 'use client';
 
-import { useRef, useState, useEffect } from 'react';
-
-import Skeleton from 'react-loading-skeleton';
-import Image from 'next/image';
-import Slider from 'react-slick';
-
-import './Slick.scss';
 import styles from './Slides.module.scss';
 
-export default function Slides(props: SlideModelNamespace.SlidesDataModel) {
-  const sliderRef = useRef<Slider>(null);
+import { useState, useEffect } from 'react';
 
-  const [isLoaded, setIsLoaded] = useState(false);
+import { NextButton, PrevButton, SlideImage } from 'components/index';
+import Skeleton from 'react-loading-skeleton';
+import Tooltip from '../Tooltip/Tooltip';
+
+import { useKeenSlider } from 'keen-slider/react';
+import { nanoid } from 'nanoid';
+import 'react-loading-skeleton/dist/skeleton.css';
+import 'keen-slider/keen-slider.min.css';
+
+
+export default function Slides(props) {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isMounted, setIsMounted] = useState(false);
+  const [hover, setHover] = useState<number | null>(null);
+  const [sliderRef, slider] = useKeenSlider({
+    loop: true,
+    slideChanged(s) {
+      setCurrentSlide(s.track.details.rel);
+    },
+    created() {
+      setIsMounted(true);
+    },
+  });
 
   useEffect(() => {
-    if (typeof props.slides[0].img === 'string') {
-      const img = new globalThis.Image();
-      img.src = props.slides[0].img;
-      img.onload = () => setIsLoaded(true);
-    }
-    return () => {};
-  }, [props.slides]);
+    setIsMounted(true);
+  }, []);
 
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 300,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    waitForAnimate: true,
-    autoplay: true,
-    autoplaySpeed: 4000,
-    pauseOnHover: true,
-    arrows: false,
-    afterChange: () => {
-      const activeElement = document.activeElement as HTMLElement;
-      if (activeElement) {
-        activeElement.blur();
-      }
-    }
-  };
+  if (!isMounted) return <Skeleton height={400} />;
 
   return (
     <section className={styles.slides}>
-      <Slider ref={sliderRef} {...settings}>
-        {props.slides.map((slide) => (
-          <div key={slide.id} className={styles.slide}>
-            {isLoaded ? (
-              <Image
-                id="image"
+      <div className={styles.slide__wrapper}>
+        <div ref={sliderRef} className={`keen-slider`}>
+          {props.slides.map((slide: SlideModel) => (
+            <div
+              key={slide.id}
+              className={`keen-slider__slide ${styles.slide}`}
+            >
+              <SlideImage
                 src={slide.img}
                 alt={props.description}
+                width={1900}
+                height={900}
                 className={styles.slide__image}
-                width={1600}
-                height={900}
-                priority
               />
-            ) : (
-              <Skeleton
-                height={900}
-                width={'100%'}
-                style={{ borderRadius: 5 }}
-              />
-            )}
-            {isLoaded && (
-              <>
-                <button
-                  className={styles.slide__leftArrow}
-                  onClick={() => sliderRef.current?.slickPrev()}
-                />
-                <button
-                  className={styles.slide__rightArrow}
-                  onClick={() => sliderRef.current?.slickNext()}
-                />
-              </>
-            )}
-          </div>
-        ))}
-      </Slider>
+            </div>
+          ))}
+        </div>
+        {isMounted && (
+          <>
+            <div className={styles.controls}>
+              <PrevButton onClick={() => slider?.current?.prev()} />
+              <NextButton onClick={() => slider?.current?.next()} />
+            </div>
+
+            <div className={styles.dots}>
+              {props.slides.map((_, idx: number) => (
+                <div
+                  key={nanoid()}
+                  className={styles.dots_wrapper}
+                  onMouseEnter={() => setHover(idx)}
+                  onMouseLeave={() => setHover(null)}
+                >
+                  <button
+                    onClick={() => slider?.current?.moveToIdx(idx)}
+                    className={`${styles.dot} ${
+                      currentSlide === idx ? styles.active : ''
+                    }`}
+                    popoverTarget={'info'}
+                  />
+
+                  {hover === idx && (
+                    <Tooltip description={`К слайду ${idx + 1}`} />
+                  )}
+                </div>
+              ))}
+            </div>
+          </>
+        )}
+      </div>
+
       <p>{props.description}</p>
     </section>
   );
