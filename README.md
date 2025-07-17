@@ -128,6 +128,7 @@ deps update; deploy for tests;
 </li>
 <li><b>v: 0.4.3.3 / d: 16.07.25</b> 
 deps update; fetch mock data when in dev env;
+add dark theme and theme state toggler;
 </li>
 </ul>
 <hr>
