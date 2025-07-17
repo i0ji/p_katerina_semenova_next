@@ -143,7 +143,7 @@ finish dark theme; add accents colors and rework style system;
 <del>[X] Yandex.Analytics - UPD: have an integration issue; For now do not know where to put in in the dev version; I just put the script into the final bundle;</del><br>
 <b>UPD: use lib to add Metrika;</b><br>
 [&nbsp;&nbsp;] Non typed YM script;<br>
-[&nbsp;&nbsp;] Implement DB with phpAdminPanel - to go;<br>
+[&nbsp;&nbsp;] Implement DB with phpAdminPane;<br>
 [&nbsp;&nbsp;] Skeleton loading - to go again;
 <hr>
 Version naming:<br>
