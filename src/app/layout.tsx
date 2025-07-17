@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import Metrics from '@/services/metrics';
-import './globals.scss';
+
 import Providers from 'services/provider';
+import './global.scss';
 
 export const metadata: Metadata = {
   title: 'Katerina Semenova',

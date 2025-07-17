@@ -4,7 +4,6 @@ import { useState, useEffect, useRef } from 'react';
 import styles from './Footer.module.scss';
 import scrollToSide from 'services/scroll';
 
-
 export default function Footer() {
   const [showButton, setShowButton] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
