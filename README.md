@@ -130,6 +130,9 @@ deps update; deploy for tests;
 deps update; fetch mock data when in dev env;
 add dark theme and theme state toggler;
 </li>
+<li><b>v: 0.4.4t / d: 17.07.25</b> 
+finish dark theme; add accents colors and rework style system;
+</li>
 </ul>
 <hr>
 <h3> 3. Known issues/to go</h3>
