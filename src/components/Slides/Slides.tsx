@@ -5,13 +5,14 @@ import styles from './Slides.module.scss';
 import { useState, useEffect } from 'react';
 
 import { NextButton, PrevButton, SlideImage } from 'components/index';
-import { useKeenSlider } from 'keen-slider/react';
-
-import { nanoid } from 'nanoid';
 import Skeleton from 'react-loading-skeleton';
+import Tooltip from '../Tooltip/Tooltip';
+
+import { useKeenSlider } from 'keen-slider/react';
+import { nanoid } from 'nanoid';
 import 'react-loading-skeleton/dist/skeleton.css';
 import 'keen-slider/keen-slider.min.css';
-import Tooltip from '../Tooltip/Tooltip';
+
 
 export default function Slides(props) {
   const [currentSlide, setCurrentSlide] = useState(0);

@@ -1,56 +1,60 @@
-@use '@/styles/themes' as *;
+@use '@/styles/mixin' as *;
 
-@each $theme-name in map-keys($themes) {
-  .toggle {
-    input[type='checkbox'] {
-      display: none;
-    }
+.toggle {
+  @include flex(null, center, end);
 
-    label {
-      position: relative;
-      cursor: pointer;
-    }
+  height: 100%;
 
-    input[type='checkbox'] + label::before {
-      position: absolute;
-      top: 0px;
-      left: -65px;
+  font-size: 11px;
+  line-height: 15px;
 
-      display: block;
+  input[type='checkbox'] {
+    display: none;
+  }
 
-      height: 18px;
-      width: 45px;
+  label {
+    position: relative;
+    cursor: pointer;
+  }
 
-      border: 1px solid theme-color($theme-name, button-color);
-      border-radius: 9px;
+  input[type='checkbox'] + label::before {
+    position: absolute;
+    top: -20px;
+    left: 14px;
 
-      background: repeating-radial-gradient();
+    display: block;
 
-      content: ' ';
-    }
+    height: 21px;
+    width: 45px;
 
-    input[type='checkbox'] + label::after {
-      position: absolute;
-      top: -6px;
-      left: -75px;
+    border: 1px solid var(--color-accent);
+    border-radius: 5px;
 
-      display: block;
+    content: ' ';
+  }
 
-      height: 30px;
-      width: 30px;
+  input[type='checkbox'] + label::after {
+    position: absolute;
+    top: -17px;
+    left: 17px;
 
-      border: 1px solid theme-color($theme-name, border);
-      border-radius: 50%;
+    display: block;
 
-      background: theme-color($theme-name, background);
-      transition: all 0.3s ease-in;
+    height: 15px;
+    width: 15px;
 
-      content: ' ';
-    }
+    border: 1px solid var(--color-accent);
+    border-radius: 5px;
 
-    input[type='checkbox']:checked + label::after {
-      left: -40px;
-      transition: all 0.3s ease-in;
-    }
+    background: var(--color-accent);
+    transition: all 0.3s ease-in;
+
+    content: ' ';
+  }
+
+  input[type='checkbox']:checked + label::after {
+    left: 41px;
+    transition: all 0.3s ease-in;
+    background: var(--color-accent);
   }
 }

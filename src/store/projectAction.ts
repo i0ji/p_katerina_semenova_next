@@ -12,11 +12,11 @@ export const fetchProjects = () => async (dispatch: AppDispatch) => {
     dispatch(fetchProjectsStart());
 
     //OPTION: DEV ENV
-    if (process.env.NODE_ENV === 'development') {
-      await new Promise((res) => setTimeout(res, 500));
-      dispatch(fetchProjectsSuccess(mockProjects));
-      return;
-    }
+    // if (process.env.NODE_ENV === 'development') {
+    //   await new Promise((res) => setTimeout(res, 500));
+    //   dispatch(fetchProjectsSuccess(mockProjects));
+    //   return;
+    // }
 
     //OPTION: PROD ENV
     const res = await fetch('https://katerinasemenova.ru/fetchData.php');

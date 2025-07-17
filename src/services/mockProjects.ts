@@ -1,13 +1,3 @@
-interface SlideModel {
-  id: number;
-  img: string;
-}
-
-interface SlidesDataModel {
-  slides: SlideModel[];
-  description: string;
-}
-
 const mockSlidesData = [
   'AnniversarySlides',
   'NagaStyleSlides',
