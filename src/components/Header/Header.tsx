@@ -12,7 +12,7 @@ export default function Header() {
   const { loaded } = useAppSelector((state) => state.projects);
   const themeMode = useAppSelector((state) => state.theme.mode);
   const dispatch = useAppDispatch();
-  
+
   const handleToggleTheme = () => {
     dispatch(toggleTheme());
   };
@@ -25,7 +25,9 @@ export default function Header() {
   return (
     <header className={styles.header}>
       {loaded && (
-        <a onClick={() => scrollToSide('bottom')}>Катерина Семёнова</a>
+        <span id="title" onClick={() => scrollToSide('bottom')}>
+          Катерина Семёнова
+        </span>
       )}
       <Toggle handleToggle={handleToggleTheme} />
     </header>

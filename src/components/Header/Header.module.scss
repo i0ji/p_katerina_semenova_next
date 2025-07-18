@@ -1,4 +1,5 @@
 @use '@/styles/mixin' as *;
+@use '@/styles/underline' as *;
 
 .header {
   @include flex(row, space-between, null);
@@ -9,6 +10,10 @@
 
   font-family: Century-gothic, sans-serif;
   font-weight: 500;
+
+  span {
+    @include underline-effect();
+  }
 }
 
 @media (max-width: 700px) {

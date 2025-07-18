@@ -133,6 +133,9 @@ add dark theme and theme state toggler;
 <li><b>v: 0.4.4t / d: 17.07.25</b> 
 finish dark theme; add accents colors and rework style system;
 </li>
+<li><b>v: 0.4.4.1a / d: 18.07.25</b> 
+GooglePageSpeed offers some a11y features;
+</li>
 </ul>
 <hr>
 <h3> 3. Known issues/to go</h3>
@@ -142,9 +145,11 @@ finish dark theme; add accents colors and rework style system;
 <b>UPD: moved slick styles to component folder and get rid of unused classes</b><br>
 <del>[X] Yandex.Analytics - UPD: have an integration issue; For now do not know where to put in in the dev version; I just put the script into the final bundle;</del><br>
 <b>UPD: use lib to add Metrika;</b><br>
+<del>[X] Implement DB with phpAdminPane;</del><br>
+<b>UPD: Set two tables in php that contains my Slides data;</b><br>
+<del>[X] Skeleton loading;</del><br>
 [&nbsp;&nbsp;] Non typed YM script;<br>
-[&nbsp;&nbsp;] Implement DB with phpAdminPane;<br>
-[&nbsp;&nbsp;] Skeleton loading - to go again;
+
 <hr>
 Version naming:<br>
 t - test;<br>
