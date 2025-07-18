@@ -134,7 +134,7 @@ add dark theme and theme state toggler;
 finish dark theme; add accents colors and rework style system;
 </li>
 <li><b>v: 0.4.4.1a / d: 18.07.25</b> 
-GooglePageSpeed offers some a11y features;
+Check GooglePageSpeed insights: refactor header title link, add 
 </li>
 </ul>
 <hr>

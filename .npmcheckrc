@@ -1,0 +1,12 @@
+{
+    "depcheck": {
+        "ignoreMatches": [
+            "@types/node",
+            "@commitlint/cli",
+            "@commitlint/config-conventional",
+            "@commitlint/types",
+            "cz-customizable",
+            "react-yandex-metrika"
+        ]
+    }
+}

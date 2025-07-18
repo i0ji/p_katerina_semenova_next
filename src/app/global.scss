@@ -1,4 +1,13 @@
-@use '@/styles/index' as *;
+
+@use '@/styles/underline' as *;
+@use '@/styles/font' as *;
+@use '@/styles/mixin' as *;
+
+$brand_gray: #51515180;
+$brand_light: #aeaeae;
+$brand_dark: #212121;
+$white: #ffffff;
+$black: #000000;
 
 :root {
   --color-main: transparent;

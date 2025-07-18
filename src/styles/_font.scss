@@ -3,13 +3,7 @@
   src: url('/centurygothic.woff') format('woff');
   font-weight: normal;
   font-style: normal;
-}
-
-@font-face {
-  font-family: 'slick';
-  src: none;
-  font-weight: normal;
-  font-style: normal;
+  font-display: swap;
 }
 
 * {
