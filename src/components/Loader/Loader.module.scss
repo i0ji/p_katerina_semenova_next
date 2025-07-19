@@ -1,5 +1,7 @@
-@use '@/styles/themes.scss' as *;
+// @use '@/styles/themes.scss' as *;
 @use '@/styles/mixin.scss' as *;
+
+
 
 .loader {
   @include flex(null, center, center);
@@ -10,6 +12,6 @@
   bottom: 0;
   left: 0;
 
-  background-color: $brand_gray;
+  background-color: #51515180;
   opacity: 0.5;
 }

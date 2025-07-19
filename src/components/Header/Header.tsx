@@ -10,19 +10,13 @@ import { Toggle } from 'components/index';
 
 export default function Header() {
   const { loaded } = useAppSelector((state) => state.projects);
-  //CURRENT TESTING
-  //TEST
   const themeMode = useAppSelector((state) => state.theme.mode);
   const dispatch = useAppDispatch();
-
-  //CURRENT DARK THEME TOGGLER
-  //TEST
+  
   const handleToggleTheme = () => {
     dispatch(toggleTheme());
   };
 
-  //CURRENT TESTING
-  //TEST
   useEffect(() => {
     document.documentElement.classList.remove('theme-light', 'theme-dark');
     document.documentElement.classList.add(`theme-${themeMode}`);

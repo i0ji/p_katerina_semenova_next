@@ -130,9 +130,11 @@ deps update; deploy for tests;
 deps update; fetch mock data when in dev env;
 add dark theme and theme state toggler;
 </li>
-<li><b>v: 0.4.3.5 / d: 19.07.25</b> 
-deps update;
+<li><b>v: 0.4.4t / d: 17.07.25</b> 
+finish dark theme; add accents colors and rework style system;
 </li>
+<li><b>v: 0.4.4.1 / d: 19.07.25</b> 
+deps update
 </ul>
 <hr>
 <h3> 3. Known issues/to go</h3>
@@ -143,7 +145,7 @@ deps update;
 <del>[X] Yandex.Analytics - UPD: have an integration issue; For now do not know where to put in in the dev version; I just put the script into the final bundle;</del><br>
 <b>UPD: use lib to add Metrika;</b><br>
 [&nbsp;&nbsp;] Non typed YM script;<br>
-[&nbsp;&nbsp;] Implement DB with phpAdminPanel - to go;<br>
+[&nbsp;&nbsp;] Implement DB with phpAdminPane;<br>
 [&nbsp;&nbsp;] Skeleton loading - to go again;
 <hr>
 Version naming:<br>
