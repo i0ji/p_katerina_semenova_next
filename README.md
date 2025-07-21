@@ -136,7 +136,7 @@ finish dark theme; add accents colors and rework style system;
 <li><b>v: 0.4.4.1a / d: 18.07.25</b> 
 Check GooglePageSpeed insights: refactor header title link, add 
 </li>
-<li><b>v: 0.4.4.1a / d: 21.07.25</b> 
+<li><b>v: 0.4.5.1c / d: 21.07.25</b> 
 deps update;
 </li>
 </ul>
