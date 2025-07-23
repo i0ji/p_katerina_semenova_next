@@ -139,6 +139,9 @@ Check GooglePageSpeed insights: refactor header title link, add
 <li><b>v: 0.4.5.1c / d: 21.07.25</b> 
 deps update;
 </li>
+<li><b>v: 0.4.5.1d / d: 23.07.25</b> 
+deps update; small scroll script changes;
+</li>
 </ul>
 <hr>
 <h3> 3. Known issues/to go</h3>

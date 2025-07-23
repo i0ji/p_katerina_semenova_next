@@ -10,7 +10,7 @@ export default function scrollToSide(direction: string) {
 
     case 'bottom':
       window.scrollTo({
-        top: document.body.scrollHeight + 600,
+        top: document.body.scrollHeight + 100,
         behavior: 'smooth',
       });
       break;
