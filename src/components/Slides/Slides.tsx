@@ -13,7 +13,6 @@ import { nanoid } from 'nanoid';
 import 'react-loading-skeleton/dist/skeleton.css';
 import 'keen-slider/keen-slider.min.css';
 
-
 export default function Slides(props) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isMounted, setIsMounted] = useState(false);
