@@ -27,64 +27,72 @@ export default function Slides(props) {
     },
   });
 
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
+  const [loadedCount, setLoadedCount] = useState(0);
+  const [allLoaded, setAllLoaded] = useState(false);
 
-  if (!isMounted) return <Skeleton height={400} />;
+  useEffect(() => {
+    if (loadedCount === props.slides.length) {
+      setAllLoaded(true);
+    }
+  }, [loadedCount]);
+
+  const handleSlideLoad = () => {
+    setLoadedCount((prev) => prev + 1);
+  };
 
   return (
     <section className={styles.slides}>
-      <div className={styles.slide__wrapper}>
-        <div ref={sliderRef} className={`keen-slider`}>
-          {props.slides.map((slide: SlideModel) => (
-            <div
-              key={slide.id}
-              className={`keen-slider__slide ${styles.slide}`}
-            >
-              <SlideImage
-                src={slide.img}
-                alt={props.description}
-                width={1900}
-                height={900}
-                className={styles.slide__image}
-              />
-            </div>
-          ))}
+      {!allLoaded ? (
+        <Skeleton height={500} />
+      ) : (
+        <div className={styles.slide__wrapper}>
+          <div ref={sliderRef} className="keen-slider">
+            {props.slides.map((slide: SlideModel) => (
+              <div
+                key={slide.id}
+                className={`keen-slider__slide ${styles.slide}`}
+              >
+                <SlideImage
+                  src={slide.img}
+                  alt={props.description}
+                  width={1900}
+                  height={900}
+                  className={styles.slide__image}
+                  onLoad={handleSlideLoad}
+                />
+              </div>
+            ))}
+          </div>
+          {isMounted && (
+            <>
+              <div className={styles.controls}>
+                <PrevButton onClick={() => slider?.current?.prev()} />
+                <NextButton onClick={() => slider?.current?.next()} />
+              </div>
+              <div className={styles.dots}>
+                {props.slides.map((_, idx) => (
+                  <div
+                    key={nanoid()}
+                    className={styles.dots_wrapper}
+                    onMouseEnter={() => setHover(idx)}
+                    onMouseLeave={() => setHover(null)}
+                  >
+                    <button
+                      onClick={() => slider?.current?.moveToIdx(idx)}
+                      className={`${styles.dot} ${
+                        currentSlide === idx ? styles.active : ''
+                      }`}
+                    />
+                    {hover === idx && (
+                      <Tooltip description={`К слайду ${idx + 1}`} />
+                    )}
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
         </div>
-        {isMounted && (
-          <>
-            <div className={styles.controls}>
-              <PrevButton onClick={() => slider?.current?.prev()} />
-              <NextButton onClick={() => slider?.current?.next()} />
-            </div>
-
-            <div className={styles.dots}>
-              {props.slides.map((_, idx: number) => (
-                <div
-                  key={nanoid()}
-                  className={styles.dots_wrapper}
-                  onMouseEnter={() => setHover(idx)}
-                  onMouseLeave={() => setHover(null)}
-                >
-                  <button
-                    onClick={() => slider?.current?.moveToIdx(idx)}
-                    className={`${styles.dot} ${
-                      currentSlide === idx ? styles.active : ''
-                    }`}
-                    popoverTarget={'info'}
-                  />
-
-                  {hover === idx && (
-                    <Tooltip description={`К слайду ${idx + 1}`} />
-                  )}
-                </div>
-              ))}
-            </div>
-          </>
-        )}
-      </div>
-
+      )}
       <p>{props.description}</p>
     </section>
   );
