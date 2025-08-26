@@ -1,7 +1,7 @@
 @use '@/styles/mixin' as *;
 
 .toggle {
-  @include flex(null, center, end);
+  @include flex(null, center, flex-end);
 
   height: 100%;
 

@@ -6,13 +6,4 @@ import { NextButton, PrevButton } from 'components/Button/Button';
 import Loader from './Loader/Loader';
 import Toggle from './Toggle/Toggle';
 
-export {
-  Slides,
-  Header,
-  Footer,
-  NextButton,
-  PrevButton,
-  SlideImage,
-  Loader,
-  Toggle,
-};
+export { Slides, Header, Footer, NextButton, PrevButton, SlideImage, Loader, Toggle };

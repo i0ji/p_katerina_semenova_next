@@ -1,11 +1,7 @@
 import { AppDispatch } from './store';
-import {
-  fetchProjectsStart,
-  fetchProjectsSuccess,
-  fetchProjectsFailure,
-} from './projectSlice';
+import { fetchProjectsStart, fetchProjectsSuccess, fetchProjectsFailure } from './projectSlice';
 
-import { mockProjects } from 'services/mockProjects';
+// import { mockProjects } from 'services/mockProjects';
 
 export const fetchProjects = () => async (dispatch: AppDispatch) => {
   try {
@@ -20,7 +16,7 @@ export const fetchProjects = () => async (dispatch: AppDispatch) => {
 
     //OPTION: PROD ENV
     const res = await fetch('https://katerinasemenova.ru/fetchData.php');
-    
+
     if (!res.ok) throw new Error(`Ошибка: ${res.status}`);
     const data: SlidesDataModel[] = await res.json();
     dispatch(fetchProjectsSuccess(data));
@@ -31,16 +27,4 @@ export const fetchProjects = () => async (dispatch: AppDispatch) => {
     }
     dispatch(fetchProjectsFailure(message));
   }
-
-  //     const res = await fetch('https://katerinasemenova.ru/fetchData.php');
-  //     if (!res.ok) throw new Error(`Ошибка: ${res.status}`);
-  //     const data: SlidesDataModel[] = await res.json();
-  //     dispatch(fetchProjectsSuccess(data));
-  //   } catch (error: unknown) {
-  //     let message = 'Неизвестная ошибка';
-  //     if (error instanceof Error) {
-  //       message = error.message;
-  //     }
-  //     dispatch(fetchProjectsFailure(message));
-  //   }
 };
