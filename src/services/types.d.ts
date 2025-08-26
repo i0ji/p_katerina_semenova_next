@@ -18,3 +18,7 @@ interface ProjectsStateModel {
 interface ThemeModel {
   mode: 'light' | 'dark';
 }
+
+interface TogglePropsModel {
+  handleToggle: () => void;
+}

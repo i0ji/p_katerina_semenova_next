@@ -16,10 +16,7 @@ const projectsSlice = createSlice({
       state.error = null;
       state.loaded = false;
     },
-    fetchProjectsSuccess(
-      state,
-      action: PayloadAction<SlidesDataModel[]>
-    ) {
+    fetchProjectsSuccess(state, action: PayloadAction<SlidesDataModel[]>) {
       state.projects = action.payload;
       state.pending = false;
       state.loaded = true;
@@ -39,11 +36,7 @@ const projectsSlice = createSlice({
   },
 });
 
-export const {
-  fetchProjectsStart,
-  fetchProjectsSuccess,
-  fetchProjectsFailure,
-  clearProjects,
-} = projectsSlice.actions;
+export const { fetchProjectsStart, fetchProjectsSuccess, fetchProjectsFailure, clearProjects } =
+  projectsSlice.actions;
 
 export default projectsSlice.reducer;
