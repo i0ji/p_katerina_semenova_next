@@ -143,7 +143,10 @@ deps update;
 deps update; small scroll script changes;
 </li>
 <li><b>v: 0.4.5 / d: 26.08.25</b> 
-deps update; multiple animations fixes;
+deps update;
+</li>
+<li><b>v: 0.4.5 / d: 29.08.25</b> 
+deps update;
 </li>
 </ul>
 <hr>
