@@ -151,6 +151,9 @@ deps update;
 <li><b>v: 0.4.5 / d: 21.10.25</b> 
 deps update;
 </li>
+<li><b>v: 0.4.5 / d: 27.11.25</b> 
+deps update;
+</li>
 </ul>
 <hr>
 <h3> 3. Known issues/to go</h3>
