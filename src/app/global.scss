@@ -31,7 +31,7 @@
 }
 
 html {
-  @include flex(null, center, null);
+  @include flex(null, space-between, null);
   scroll-behavior: smooth;
 }
 

@@ -1,5 +1,13 @@
 export default function scrollToSide(direction: string) {
   if (typeof window === 'undefined') return;
+
+  const scrollBottom = () => {
+    window.scrollTo({
+      top: document.body.scrollHeight+20,
+      behavior: 'smooth',
+    });
+  };
+
   switch (direction) {
     case 'top':
       window.scrollTo({
@@ -9,10 +17,7 @@ export default function scrollToSide(direction: string) {
       break;
 
     case 'bottom':
-      window.scrollTo({
-        top: document.body.scrollHeight + 100,
-        behavior: 'smooth',
-      });
+      setTimeout(scrollBottom, 100);
       break;
   }
 }

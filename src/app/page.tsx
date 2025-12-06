@@ -16,7 +16,7 @@ export default function Home() {
   );
 
   useEffect(() => {
-    dispatch(fetchProjects());
+      dispatch(fetchProjects());
   }, [dispatch]);
 
   if (!loaded) return <Loader />;

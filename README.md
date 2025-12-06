@@ -142,6 +142,18 @@ deps update;
 <li><b>v: 0.4.5.1d / d: 23.07.25</b> 
 deps update; small scroll script changes;
 </li>
+<li><b>v: 0.4.5 / d: 26.08.25</b> 
+deps update; multiple animations fixes;
+</li>
+<li><b>v: 0.4.5 / d: 31.10.25</b> 
+deps update;
+</li>
+<li><b>v: 0.4.5 / d: 21.10.25</b> 
+deps update;
+</li>
+<li><b>v: 0.4.5 / d: 27.11.25</b> 
+deps update;
+</li>
 </ul>
 <hr>
 <h3> 3. Known issues/to go</h3>
