@@ -57,7 +57,9 @@
   "pnpm": {
     "overrides": {
       "minimatch": "^9.0.5",
-      "brace-expansion": "^2.0.1"
+      "brace-expansion": "^2.0.1",
+      "tmp@<=0.2.3": ">=0.2.4",
+      "js-yaml@>=4.0.0 <4.1.1": ">=4.1.1"
     },
     "ignoredBuiltDependencies": [
       "@parcel/watcher",
