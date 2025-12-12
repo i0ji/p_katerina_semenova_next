@@ -1,47 +1,22 @@
 1:"$Sreact.fragment"
-<<<<<<< HEAD
-2:I[2298,["895","static/chunks/895-c01c78b6df1a4ae4.js","177","static/chunks/app/layout-7ec3e8ca7af4a06b.js"],"default"]
-3:I[586,["895","static/chunks/895-c01c78b6df1a4ae4.js","177","static/chunks/app/layout-7ec3e8ca7af4a06b.js"],"default"]
-4:I[6137,[],""]
-5:I[5117,[],""]
-6:I[9212,["345","static/chunks/app/not-found-47bc979124d8abc8.js"],""]
-7:I[5936,[],"ClientPageRoot"]
-8:I[103,["895","static/chunks/895-c01c78b6df1a4ae4.js","686","static/chunks/686-ad32d1e45b6e4047.js","974","static/chunks/app/page-a10929965016f91b.js"],"default"]
-b:I[7532,[],"OutletBoundary"]
-d:I[4949,[],"AsyncMetadataOutlet"]
-f:I[7532,[],"ViewportBoundary"]
-11:I[7532,[],"MetadataBoundary"]
-12:"$Sreact.suspense"
-14:I[1147,[],""]
-:HL["./_next/static/css/2693b0835e22e90e.css","style"]
-:HL["./_next/static/css/8c8c1cb18a9a133a.css","style"]
-0:{"P":null,"b":"gZw2J9DDtjnjiXsNbNIST","p":".","c":["",""],"i":false,"f":[[["",{"children":["__PAGE__",{}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"./_next/static/css/2693b0835e22e90e.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"ru","children":[["$","$L2",null,{}],["$","body",null,{"children":["$","$L3",null,{"children":["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"children":[["$","h2",null,{"children":"Страница не найдена"}],["$","p",null,{"children":"Запрашиваемый ресурс не существует."}],["$","$L6",null,{"href":"/","children":"Вернуться на главную"}]]}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}]]}],{"children":["__PAGE__",["$","$1","c",{"children":[["$","$L7",null,{"Component":"$8","searchParams":{},"params":{},"promises":["$@9","$@a"]}],[["$","link","0",{"rel":"stylesheet","href":"./_next/static/css/8c8c1cb18a9a133a.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$Lb",null,{"children":["$Lc",["$","$Ld",null,{"promise":"$@e"}]]}]]}],{},null,false]},null,false],["$","$1","h",{"children":[null,[["$","$Lf",null,{"children":"$L10"}],null],["$","$L11",null,{"children":["$","div",null,{"hidden":true,"children":["$","$12",null,{"fallback":null,"children":"$L13"}]}]}]]}],false]],"m":"$undefined","G":["$14",[]],"s":false,"S":true}
-=======
-2:I[2233,["781","static/chunks/781-f3879461ee53bba5.js","177","static/chunks/app/layout-e9d8b3ea1ae71b41.js"],"default"]
-3:I[5451,["781","static/chunks/781-f3879461ee53bba5.js","177","static/chunks/app/layout-e9d8b3ea1ae71b41.js"],"default"]
-4:I[9826,[],""]
-5:I[2720,[],""]
-6:I[3047,["345","static/chunks/app/not-found-25d50aa0423e66be.js"],""]
-7:I[1411,[],"ClientPageRoot"]
-8:I[927,["781","static/chunks/781-f3879461ee53bba5.js","556","static/chunks/556-ae42c13d316c2805.js","974","static/chunks/app/page-82f3d438b71e89de.js"],"default"]
-b:I[2330,[],"OutletBoundary"]
-d:I[282,[],"AsyncMetadataOutlet"]
-f:I[2330,[],"ViewportBoundary"]
-11:I[2330,[],"MetadataBoundary"]
-12:"$Sreact.suspense"
-14:I[5866,[],""]
-:HL["./_next/static/css/19949829a52b1957.css","style"]
-:HL["./_next/static/css/2292d72797be46ce.css","style"]
-0:{"P":null,"b":"YJRhV_dAbBP_795-Mih_k","p":".","c":["",""],"i":false,"f":[[["",{"children":["__PAGE__",{}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"./_next/static/css/19949829a52b1957.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"ru","children":[["$","$L2",null,{}],["$","body",null,{"children":["$","$L3",null,{"children":["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"children":[["$","h2",null,{"children":"Страница не найдена"}],["$","p",null,{"children":"Запрашиваемый ресурс не существует."}],["$","$L6",null,{"href":"/","children":"Вернуться на главную"}]]}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}]]}],{"children":["__PAGE__",["$","$1","c",{"children":[["$","$L7",null,{"Component":"$8","searchParams":{},"params":{},"promises":["$@9","$@a"]}],[["$","link","0",{"rel":"stylesheet","href":"./_next/static/css/2292d72797be46ce.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$Lb",null,{"children":["$Lc",["$","$Ld",null,{"promise":"$@e"}]]}]]}],{},null,false]},null,false],["$","$1","h",{"children":[null,[["$","$Lf",null,{"children":"$L10"}],null],["$","$L11",null,{"children":["$","div",null,{"hidden":true,"children":["$","$12",null,{"fallback":null,"children":"$L13"}]}]}]]}],false]],"m":"$undefined","G":["$14",[]],"s":false,"S":true}
->>>>>>> develop
+2:I[43723,["./_next/static/chunks/3155818f85478c0d.js","./_next/static/chunks/ba6e92ae76663e8e.js"],"default"]
+3:I[63856,["./_next/static/chunks/3155818f85478c0d.js","./_next/static/chunks/ba6e92ae76663e8e.js"],"default"]
+4:I[17294,["./_next/static/chunks/32f8938c14e72586.js","./_next/static/chunks/931d2d8dd019f584.js"],"default"]
+5:I[73835,["./_next/static/chunks/32f8938c14e72586.js","./_next/static/chunks/931d2d8dd019f584.js"],"default"]
+6:I[90492,["./_next/static/chunks/3155818f85478c0d.js","./_next/static/chunks/ba6e92ae76663e8e.js","./_next/static/chunks/7da1f498c2926d04.js"],""]
+7:I[83184,["./_next/static/chunks/32f8938c14e72586.js","./_next/static/chunks/931d2d8dd019f584.js"],"ClientPageRoot"]
+8:I[52683,["./_next/static/chunks/3155818f85478c0d.js","./_next/static/chunks/ba6e92ae76663e8e.js","./_next/static/chunks/10be2fbc4aeb1934.js","./_next/static/chunks/ad04efb4f7e4db1e.js"],"default"]
+b:I[81529,["./_next/static/chunks/32f8938c14e72586.js","./_next/static/chunks/931d2d8dd019f584.js"],"OutletBoundary"]
+c:"$Sreact.suspense"
+e:I[81529,["./_next/static/chunks/32f8938c14e72586.js","./_next/static/chunks/931d2d8dd019f584.js"],"ViewportBoundary"]
+10:I[81529,["./_next/static/chunks/32f8938c14e72586.js","./_next/static/chunks/931d2d8dd019f584.js"],"MetadataBoundary"]
+12:I[24555,["./_next/static/chunks/32f8938c14e72586.js","./_next/static/chunks/931d2d8dd019f584.js"],"default"]
+:HL["./_next/static/chunks/9463ee047dda3290.css","style"]
+:HL["./_next/static/chunks/58f7200e8b3d40ce.css","style"]
+0:{"P":null,"b":"dXC1uiCmNsrG6nrBDkO8D","c":["",""],"q":"","i":false,"f":[[["",{"children":["__PAGE__",{}]},"$undefined","$undefined",true],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"./_next/static/chunks/9463ee047dda3290.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"./_next/static/chunks/3155818f85478c0d.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"./_next/static/chunks/ba6e92ae76663e8e.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"ru","children":[["$","$L2",null,{}],["$","body",null,{"children":["$","$L3",null,{"children":["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"children":[["$","h2",null,{"children":"Страница не найдена"}],["$","p",null,{"children":"Запрашиваемый ресурс не существует."}],["$","$L6",null,{"href":"/","children":"Вернуться на главную"}]]}],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]]}]]}],{"children":[["$","$1","c",{"children":[["$","$L7",null,{"Component":"$8","serverProvidedParams":{"searchParams":{},"params":{},"promises":["$@9","$@a"]}}],[["$","link","0",{"rel":"stylesheet","href":"./_next/static/chunks/58f7200e8b3d40ce.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"./_next/static/chunks/10be2fbc4aeb1934.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"./_next/static/chunks/ad04efb4f7e4db1e.js","async":true,"nonce":"$undefined"}]],["$","$Lb",null,{"children":["$","$c",null,{"name":"Next.MetadataOutlet","children":"$@d"}]}]]}],{},null,false,false]},null,false,false],["$","$1","h",{"children":[null,["$","$Le",null,{"children":"$@f"}],["$","div",null,{"hidden":true,"children":["$","$L10",null,{"children":["$","$c",null,{"name":"Next.Metadata","children":"$@11"}]}]}],null]}],false]],"m":"$undefined","G":["$12",[]],"S":true}
 9:{}
-a:"$0:f:0:1:2:children:1:props:children:0:props:params"
-10:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
-c:null
-<<<<<<< HEAD
-15:I[2669,[],"IconMark"]
-=======
-15:I[1058,[],"IconMark"]
->>>>>>> develop
-e:{"metadata":[["$","title","0",{"children":"Katerina Semenova"}],["$","meta","1",{"name":"description","content":"Graphic designer | Katerina Semenova | "}],["$","link","2",{"rel":"icon","href":"/favicon.ico"}],["$","$L15","3",{}]],"error":null,"digest":"$undefined"}
-13:"$e:metadata"
+a:"$0:f:0:1:1:children:0:props:children:0:props:serverProvidedParams:params"
+f:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+13:I[889,["./_next/static/chunks/32f8938c14e72586.js","./_next/static/chunks/931d2d8dd019f584.js"],"IconMark"]
+11:[["$","title","0",{"children":"Katerina Semenova"}],["$","meta","1",{"name":"description","content":"Graphic designer | Katerina Semenova | "}],["$","link","2",{"rel":"icon","href":"/favicon.ico"}],["$","$L13","3",{}]]
+d:null
