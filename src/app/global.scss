@@ -1,4 +1,5 @@
-@use '@/styles/index' as *;
+@use '@/styles/font' as *;
+@use '@/styles/mixin' as *;
 
 :root {
   --color-main: transparent;
@@ -31,7 +32,7 @@
 }
 
 html {
-  @include flex(null, center, null);
+  // @include flex(null, space-between, null);
   scroll-behavior: smooth;
 }
 

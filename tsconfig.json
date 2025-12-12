@@ -11,7 +11,7 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "incremental": true,
     "noImplicitAny": false,
     "plugins": [
@@ -25,7 +25,8 @@
       "public/*": ["public/"],
       "components/*": ["src/components/*"],
       "services/*": ["src/services/*"],
-      "store/*": ["src/store/*"]
+      "store/*": ["src/store/*"],
+      "@styles/*": ["./src/styles/*"]
     },
     "typeRoots": ["./src/services"]
   },
@@ -36,7 +37,9 @@
     "next-env.d.ts",
     "services/**/*.d.ts",
     "build/types/**/*.ts",
-    "commitlint.config.cjs"
-, "src/components/Slides/Slides.tsx_copy"  ],
+    "commitlint.config.cjs",
+    "src/components/Slides/Slides.tsx_copy",
+    ".next/dev/types/**/*.ts"
+  ],
   "exclude": ["node_modules"]
 }
