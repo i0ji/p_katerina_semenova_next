@@ -143,10 +143,19 @@ deps update;
 deps update; small scroll script changes;
 </li>
 <li><b>v: 0.4.5 / d: 26.08.25</b> 
+deps update; multiple animations fixes;
+</li>
+<li><b>v: 0.4.5 / d: 31.10.25</b> 
 deps update;
 </li>
-<li><b>v: 0.4.5 / d: 29.08.25</b> 
+<li><b>v: 0.4.5 / d: 21.10.25</b> 
 deps update;
+</li>
+<li><b>v: 0.4.5 / d: 27.11.25</b> 
+deps update;
+</li>
+<li><b>v: 0.4.5 / d: 12.12.25</b> 
+critical deps update: next, sass; remove webpack settings in favor of turobpack setup;
 </li>
 </ul>
 <hr>
