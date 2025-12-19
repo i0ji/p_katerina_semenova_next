@@ -157,6 +157,9 @@ deps update;
 <li><b>v: 0.4.5 / d: 12.12.25</b> 
 critical deps update: next, sass; remove webpack settings in favor of turobpack setup;
 </li>
+<li><b>v: 0.4.5 / d: 19.12.25</b> 
+deps update;
+</li>
 </ul>
 <hr>
 <h3> 3. Known issues/to go</h3>
