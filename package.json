@@ -51,7 +51,7 @@
     "react-loading-skeleton": "^3.5.0",
     "react-redux": "^9.2.0",
     "react-yandex-metrika": "^2.6.0",
-    "sass": "^1.97.0",
+    "sass": "^1.97.1",
     "sass-loader": "^16.0.6",
     "typescript": "^5.9.3"
   },
