@@ -31,9 +31,9 @@
     "/temp/"
   ],
   "devDependencies": {
-    "@commitlint/cli": "^20.2.0",
-    "@commitlint/config-conventional": "^20.2.0",
-    "@commitlint/types": "^20.2.0",
+    "@commitlint/cli": "^20.3.1",
+    "@commitlint/config-conventional": "^20.3.1",
+    "@commitlint/types": "^20.3.1",
     "@reduxjs/toolkit": "^2.11.2",
     "@types/node": "^25.0.3",
     "@types/react": "^19.2.7",
@@ -51,7 +51,7 @@
     "react-loading-skeleton": "^3.5.0",
     "react-redux": "^9.2.0",
     "react-yandex-metrika": "^2.6.0",
-    "sass": "^1.97.1",
+    "sass": "^1.97.2",
     "sass-loader": "^16.0.6",
     "typescript": "^5.9.3"
   },
